@@ -40,7 +40,7 @@
 		<![endif]-->
 	</head>
 
-	<body class="login-layout">
+	<body class="login-layout light-login">
 		<div class="main-container">
 			<div class="main-content">
 				<div class="row">
@@ -50,7 +50,7 @@
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
 									<span class="red">E -</span>
-									<span class="white" id="id-text2">Ace Ver 1.0</span>
+									<span class="red" id="id-text2">Arsip Ace Ver 1.0</span>
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; 2015</h4>
 							</div>
@@ -112,13 +112,13 @@
 											</form>
 <?php $this->endWidget(); ?>
 </div><!-- form -->
-											<div class="social-or-login center">
+											<!--<div class="social-or-login center">
 												<span class="bigger-110">Or Login Using</span>
 											</div>
-
+											-->
 											<div class="space-6"></div>
 
-											<div class="social-login center">
+											<!--<div class="social-login center">
 												<a class="btn btn-primary">
 													<i class="ace-icon fa fa-facebook"></i>
 												</a>
@@ -131,6 +131,7 @@
 													<i class="ace-icon fa fa-google-plus"></i>
 												</a>
 											</div>
+										-->
 										</div><!-- /.widget-main -->
 
 										<div class="toolbar clearfix">

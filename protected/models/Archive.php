@@ -146,8 +146,8 @@ class Archive extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('fk_gudang',$this->fk_gudang);
-		$criteria->compare('fk_lajur',$this->fk_lajur);
+		$criteria->compare('fk_gudang',$this->fk_gudang,true);
+		$criteria->compare('fk_lajur',$this->fk_lajur,true);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('kode_klasifikasi',$this->kode_klasifikasi,true);
 		$criteria->compare('hasil_pelaksanaan',$this->hasil_pelaksanaan,true);

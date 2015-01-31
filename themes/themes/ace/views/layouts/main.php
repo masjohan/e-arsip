@@ -56,7 +56,7 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="<?php echo Yii::app()->theme->baseUrl; ?>/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>Guido,</small>
+									<small>Hi,</small>
 									<?php echo Yii::app()->user->name; ?>
 								</span>
 
@@ -129,7 +129,7 @@
 						<span class="btn btn-beaker"></span>
 					</div>
 				</div><!--#sidebar-shortcuts-->
-
+				<?php if(Yii::app()->user->isAdmin()){ ?>
 				<ul class="nav nav-list">
 					<li>
 						<a href="#" class="dropdown-toggle">
@@ -247,62 +247,11 @@
 								
 						</ul>
 					</li>
-<!--
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-subscript"></i>
-							<span class="menu-text"> Fórmulas </span>
-
-							<b class="arrow icon-angle-down"></b>
-						</a>
-
-						<ul class="submenu">
-							<li>
-								<a href="#">
-									<i class="icon-double-angle-right"></i>
-									Administrar
-								</a>
-							</li>
-
-							<li>
-								<a href="#">
-									<i class="icon-double-angle-right"></i>
-									Agregar
-								</a>
-							</li>
-						</ul>
-					</li>
-
-					<li>
-						<a href="#">
-							<i class="icon-beaker"></i>
-							<span class="menu-text"> Áreas </span>
-
-						</a>
-					</li>
-
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-edit"></i>
-							<span class="menu-text"> Libro </span>
-
-							<b class="arrow icon-angle-down"></b>
-						</a>
-
-
-					</li>
-
-					<li>
-						<a href="#">
-							<i class="icon-tags"></i>
-							<span class="menu-text"> Decoradores </span>
-
-							<b class="arrow icon-angle-down"></b>
-						</a>
-					</li>
--->
 				</ul><!--/.nav-list-->
-
+			<?php }else{ ?>
+			<ul class="nav nav-list">
+				</ul>
+				<?php } ?>
 				<div class="sidebar-collapse" id="sidebar-collapse">
 					<i class="icon-double-angle-left"></i>
 				</div>
