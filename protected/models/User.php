@@ -155,6 +155,11 @@ class User extends CActiveRecord
 	{
 		return uniqid('',true);
 	}
+
+	public function getCount()
+		{
+			return User::model()->find()->count();
+		}	
 	
 		//aliasing enum
 	public static function alias($type,$code=NULL) {

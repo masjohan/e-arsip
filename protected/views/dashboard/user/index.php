@@ -28,24 +28,24 @@
 								<div class="span7 infobox-container">
 									<div class="infobox infobox-green  ">
 										<div class="infobox-icon">
-											<i class="icon-comments"></i>
+											<i class="icon-briefcase"></i>
 										</div>
 
 										<div class="infobox-data">
-											<span class="infobox-data-number">32</span>
-											<div class="infobox-content">comments + 2 reviews</div>
+											<span class="infobox-data-number"><?php echo Archive::getCount(); ?></span>
+											<div class="infobox-content">total archives</div>
 										</div>
 										<div class="stat stat-success">8%</div>
 									</div>
 
 									<div class="infobox infobox-blue  ">
 										<div class="infobox-icon">
-											<i class="icon-twitter"></i>
+											<i class="icon-user"></i>
 										</div>
 
 										<div class="infobox-data">
-											<span class="infobox-data-number">11</span>
-											<div class="infobox-content">new followers</div>
+											<span class="infobox-data-number"><?php echo User::getCount(); ?></span>
+											<div class="infobox-content">user registration</div>
 										</div>
 
 										<div class="badge badge-success">
@@ -56,24 +56,24 @@
 
 									<div class="infobox infobox-pink  ">
 										<div class="infobox-icon">
-											<i class="icon-shopping-cart"></i>
+											<i class="icon-key"></i>
 										</div>
 
 										<div class="infobox-data">
-											<span class="infobox-data-number">8</span>
-											<div class="infobox-content">new orders</div>
+											<span class="infobox-data-number"><?php echo User::getCount(); ?></span>
+											<div class="infobox-content">new user</div>
 										</div>
 										<div class="stat stat-important">+4%</div>
 									</div>
 
 									<div class="infobox infobox-red  ">
 										<div class="infobox-icon">
-											<i class="icon-beaker"></i>
+											<i class="icon-home"></i>
 										</div>
 
 										<div class="infobox-data">
-											<span class="infobox-data-number">7</span>
-											<div class="infobox-content">experiments</div>
+											<span class="infobox-data-number"><?php echo Gudang::getCount(); ?></span>
+											<div class="infobox-content">Gudang</div>
 										</div>
 									</div>
 
@@ -84,7 +84,7 @@
 
 										<div class="infobox-data">
 											<span class="infobox-data-number">6,251</span>
-											<div class="infobox-content">pageviews</div>
+											<div class="infobox-content">statistic</div>
 										</div>
 
 										<div class="badge badge-success">
@@ -113,41 +113,6 @@
 
 									<div class="space-6"></div>
 
-									<div class="infobox infobox-green infobox-small infobox-dark">
-										<div class="infobox-progress">
-											<div class="easy-pie-chart percentage" data-percent="61" data-size="39">
-												<span class="percent">61</span>
-												%
-											</div>
-										</div>
-
-										<div class="infobox-data">
-											<div class="infobox-content">Task</div>
-											<div class="infobox-content">Completion</div>
-										</div>
-									</div>
-
-									<div class="infobox infobox-blue infobox-small infobox-dark">
-										<div class="infobox-chart">
-											<span class="sparkline" data-values="3,4,2,3,4,4,2,2"></span>
-										</div>
-
-										<div class="infobox-data">
-											<div class="infobox-content">Earnings</div>
-											<div class="infobox-content">$32,000</div>
-										</div>
-									</div>
-
-									<div class="infobox infobox-grey infobox-small infobox-dark">
-										<div class="infobox-icon">
-											<i class="icon-download-alt"></i>
-										</div>
-
-										<div class="infobox-data">
-											<div class="infobox-content">Downloads</div>
-											<div class="infobox-content">1,205</div>
-										</div>
-									</div>
 								</div>
 
 								<div class="vspace"></div>
@@ -192,31 +157,7 @@
 
 												<div class="hr hr8 hr-double"></div>
 
-												<div class="clearfix">
-													<div class="grid3">
-														<span class="grey">
-															<i class="icon-facebook-sign icon-2x blue"></i>
-															&nbsp; likes
-														</span>
-														<h4 class="bigger pull-right">1,255</h4>
-													</div>
-
-													<div class="grid3">
-														<span class="grey">
-															<i class="icon-twitter-sign icon-2x purple"></i>
-															&nbsp; tweets
-														</span>
-														<h4 class="bigger pull-right">941</h4>
-													</div>
-
-													<div class="grid3">
-														<span class="grey">
-															<i class="icon-pinterest-sign icon-2x red"></i>
-															&nbsp; pins
-														</span>
-														<h4 class="bigger pull-right">1,050</h4>
-													</div>
-												</div>
+											
 											</div><!--/widget-main-->
 										</div><!--/widget-body-->
 									</div><!--/widget-box-->

@@ -3388,3 +3388,62 @@ REQUEST_URI=/e-ace/index.php?r=gudang/admin
 in /home/guido/Project/e-ace/themes/themes/ace/views/layouts/main.php (297)
 in /home/guido/Project/e-ace/themes/themes/ace/views/layouts/column2.php (22)
 in /home/guido/Project/e-ace/protected/controllers/GudangController.php (146)
+2015/01/31 14:38:16 [error] [exception.CException] exception 'CException' with message 'DashboardController and its behaviors do not have a method or closure named "getCommandBuilder".' in /home/guido/Project/yii-16/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1460): CComponent->__call('getCommandBuild...', Array)
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1460): DashboardController->getCommandBuilder()
+#2 /home/guido/Project/e-ace/protected/models/Archive.php(289): CActiveRecord->find()
+#3 /home/guido/Project/e-ace/protected/views/dashboard/user/index.php(35): Archive->getCount()
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', NULL, true)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', NULL, true)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('user/index', NULL, true)
+#8 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#9 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#19 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#20 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+HTTP_REFERER=http://localhost/e-ace/index.php?r=login
+---
+2015/01/31 14:38:49 [error] [exception.CException] exception 'CException' with message 'DashboardController and its behaviors do not have a method or closure named "getCommandBuilder".' in /home/guido/Project/yii-16/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1474): CComponent->__call('getCommandBuild...', Array)
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1474): DashboardController->getCommandBuilder()
+#2 /home/guido/Project/e-ace/protected/models/Archive.php(289): CActiveRecord->findAll()
+#3 /home/guido/Project/e-ace/protected/views/dashboard/user/index.php(35): Archive->getCount()
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', NULL, true)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', NULL, true)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('user/index', NULL, true)
+#8 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#9 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#19 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#20 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+HTTP_REFERER=http://localhost/e-ace/index.php?r=login
+---
+2015/01/31 15:08:52 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (113)
+in /home/guido/Project/e-ace/index.php (13)

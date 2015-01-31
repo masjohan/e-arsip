@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `arsipnew` (
   CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
--- Dumping data for table e_arsip.arsipnew: ~6 rows (approximately)
+-- Dumping data for table e_arsip.arsipnew: ~11 rows (approximately)
 /*!40000 ALTER TABLE `arsipnew` DISABLE KEYS */;
 REPLACE INTO `arsipnew` (`id`, `fk_gudang`, `fk_lajur`, `file`, `kode_klasifikasi`, `hasil_pelaksanaan`, `nomor_definitif`, `isi_berkas`, `unit_pengolah`, `bln_thn`, `month`, `years`, `bentuk_redaksi`, `media`, `kelengkapan`, `masalah`, `uraian_masalah`, `kode_mslh`, `r_aktif`, `r_inaktif`, `j_retensi`, `thn_retensi`, `nilai_guna`, `tingkat_perkembangan`, `pelaksana_hasil`, `create_at`, `edit_at`, `by_user`) VALUES
 	(2, 1, 1, 'G.131.14.0027.pdf', '213', 'sipp', 4, 'aku tidak bisa lepas lagi', 'esdm', '0000-00-00', '8', '2006', 'L', 'T', 'sip', 'HARI RAYA/BESAR', 'SE Menyambut ldul Adha 1423 H Th 2003 dari Panitia Pelaksana ldul Adha 1423', 1, 2, 3, 5, '2015', 'Administrasi', 'Salinan', '3/345', '2015-01-21 14:59:37', '2015-01-21 14:59:37', 'admin'),
@@ -149,10 +149,10 @@ CREATE TABLE IF NOT EXISTS `preferences` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Dumping data for table e_arsip.preferences: ~0 rows (approximately)
+-- Dumping data for table e_arsip.preferences: ~1 rows (approximately)
 /*!40000 ALTER TABLE `preferences` DISABLE KEYS */;
 REPLACE INTO `preferences` (`id`, `program_name`) VALUES
-	(1, 'BADAN ARSIP DAERAH PROVINSI JAWA TENGAH');
+	(1, 'BADAN ARSIP DAERAH PROVINSI JAWA TENGAH 2015');
 /*!40000 ALTER TABLE `preferences` ENABLE KEYS */;
 
 
@@ -180,8 +180,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table e_arsip.user: ~2 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 REPLACE INTO `user` (`id_user`, `username`, `password`, `name_person`, `auth_key`, `email`, `keterangan`, `fk_level`, `status`, `create_at`, `edit_at`, `by_user`) VALUES
-	(1, 'wisnu', 'ee3d929a42a8d5007bbf57c6eecc02a6', 'wisnu', '54cb0ec762e222.48772270', 'wisnu@multisolusi.info', 'iok', 1, 1, '2015-01-30 11:55:35', '0000-00-00 00:00:00', ''),
-	(2, 'narto', '8791a1ce3b362b09b474c4beb8247953', 'narto sabdo', '54cb3544af82b0.39527419', 'narto@nar.com', 'narto', 3, 0, '2015-01-30 14:31:20', '2015-01-30 14:39:48', 'wisnu');
+	(1, 'wisnu', 'e203b793e08604b4fa41b25792d91eba', 'Wisnu Agung Pro', '54cc59b1cb8793.01043817', 'wisnu@multisolusi.info', 'iok', 1, 1, '2015-01-30 11:55:35', '2015-01-31 11:27:29', 'wahyu'),
+	(2, 'narto', '2a5df15717f644db649c31f275a2fa6d', 'Wihanarto', '54cc5a54a47e58.52936481', 'narto@nar.com', 'narto', 1, 1, '2015-01-30 14:31:20', '2015-01-31 11:30:12', 'wisnu'),
+	(3, 'wahyu', '3564c12391a8e060a7f324988d8875c0', 'Wahyu Hendro', '54cc57a2d5f355.26165726', 'whhendro91@gmail.com', '', 2, 1, '2015-01-31 11:18:42', '2015-01-31 11:18:42', 'wisnu');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 

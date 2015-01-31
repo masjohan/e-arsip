@@ -121,4 +121,9 @@ class Gudang extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	public function getCount()
+		{
+			return Gudang::model()->find()->count();
+		}
 }

@@ -56,7 +56,7 @@
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="<?php echo Yii::app()->theme->baseUrl; ?>/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>Hi,</small>
+									<small>Welcome,</small>
 									<?php echo Yii::app()->user->name; ?>
 								</span>
 
@@ -101,32 +101,32 @@
 
 			<div class="sidebar" id="sidebar">
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
 						<button class="btn btn-small btn-success">
-							<i class="icon-user"></i>
+							<i class="icon-signal"></i>
 						</button>
 
 						<button class="btn btn-small btn-info">
-							<i class="icon-tasks"></i>
+							<i class="icon-pencil"></i>
 						</button>
 
 						<button class="btn btn-small btn-warning">
-							<i class="icon-subscript"></i>
+							<i class="icon-group"></i>
 						</button>
 
 						<button class="btn btn-small btn-danger">
-							<i class="icon-beaker"></i>
+							<i class="icon-cogs"></i>
 						</button>
 					</div>
 
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-user"></span>
+						<span class="btn btn-success"></span>
 
-						<span class="btn btn-tasks"></span>
+						<span class="btn btn-info"></span>
 
-						<span class="btn btn-subscript"></span>
+						<span class="btn btn-warning"></span>
 
-						<span class="btn btn-beaker"></span>
+						<span class="btn btn-danger"></span>
 					</div>
 				</div><!--#sidebar-shortcuts-->
 				<?php if(Yii::app()->user->isAdmin()){ ?>
@@ -149,6 +149,12 @@
 
 						<ul class="submenu">
 							<li>
+								<a href="?r=archive/admin">
+									<i class="icon-double-angle-right"></i>
+									Archive
+								</a>
+							</li>
+							<li>
 								<a href="?r=gudang/admin">
 									<i class="icon-double-angle-right"></i>
 									Gudang
@@ -162,12 +168,7 @@
 								</a>
 							</li>
 
-								<li>
-								<a href="?r=archive/admin">
-									<i class="icon-double-angle-right"></i>
-									Archive
-								</a>
-							</li>
+								
 						</ul>
 					</li>
 

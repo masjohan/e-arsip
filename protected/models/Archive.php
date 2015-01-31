@@ -283,6 +283,10 @@ class Archive extends CActiveRecord
     	    return $rows;
 			}
 
+		public function getCount()
+		{
+			return Archive::model()->find()->count();
+		}		
 
 		public function month_select_box( $field_name = 'month' ) {
 			    $month_options = '';
