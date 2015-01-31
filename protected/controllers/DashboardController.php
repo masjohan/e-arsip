@@ -24,6 +24,7 @@ class DashboardController extends Controller
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index'),
 				'users'=>array('@'),
+				//'expression'=>'$user->isUser()',
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
@@ -42,7 +43,7 @@ class DashboardController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		if(Yii::app()->user->name == 'admin') 
+		if(Yii::app()->user->isUser()) 
 			$this->render('admin/index'); else $this->render('user/index'); 
 		
 	}

@@ -143,21 +143,21 @@
 							<li>
 								<a href="#">
 									<i class="icon-double-angle-right"></i>
-									Recientes
+									Menu 1#
 								</a>
 							</li>
 
 							<li>
 								<a href="#">
 									<i class="icon-double-angle-right"></i>
-									Administrar
+									Menu 2#
 								</a>
 							</li>
 
 							<li>
 								<a href="#">
 									<i class="icon-double-angle-right"></i>
-									Agregar
+									Menu 3#
 								</a>
 							</li>
 						</ul>
@@ -215,6 +215,32 @@
 								<a href="#">
 									<i class="icon-double-angle-right"></i>
 									Daftar Arsip Inaktif
+								</a>
+							</li>
+
+								
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="dropdown-toggle">
+							<i class="icon-cog"></i>
+							<span class="menu-text"> Settings </span>
+
+							<b class="arrow icon-angle-down"></b>
+						</a>
+
+						<ul class="submenu">
+							<li>
+								<a href="?r=user/admin">
+									<i class="icon-double-angle-right"></i>
+									User
+								</a>
+							</li>
+
+							<li>
+								<a href="?r=setting">
+									<i class="icon-double-angle-right"></i>
+									Preference
 								</a>
 							</li>
 

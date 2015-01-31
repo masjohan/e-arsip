@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	//array('label'=>'List Lajur', 'url'=>array('index')),
-	array('label'=>'Tambah Lajur', 'url'=>array('create')),
+	//array('label'=>'Tambah Lajur', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -28,7 +28,7 @@ $('.search-form form').submit(function(){
 
 <h1>Manage Lajur</h1>
 <!-- search-form -->
-
+<input class="btn btn-sm btn-primary" type="button" value="Tambah Lajur" onclick="javascript:window.location.href='index.php?r=lajur/create'" />
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'lajur-grid',
 	'dataProvider'=>$model->search(),
@@ -36,7 +36,11 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		//'id',
 		'kd_lajur',
-		'fk_gudang',
+		//'fk_gudang',
+		array(
+          'name' => 'fk_gudang',
+          'value'=>'CHtml::encode($data->fkGudang->nama)',
+       ),
 		'nama',
 		'keterangan',
 	//	'create_at',

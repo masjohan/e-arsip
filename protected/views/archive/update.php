@@ -3,16 +3,16 @@
 /* @var $model Archive */
 
 $this->breadcrumbs=array(
-	'Archives'=>array('index'),
+	'Archives'=>array('admin'),
 	$model->id=>array('view','id'=>$model->id),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Archive', 'url'=>array('index')),
-	array('label'=>'Create Archive', 'url'=>array('create')),
-	array('label'=>'View Archive', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Archive', 'url'=>array('admin')),
+	//array('label'=>'List Archive', 'url'=>array('index')),
+	//array('label'=>'Create Archive', 'url'=>array('create')),
+	//array('label'=>'View Archive', 'url'=>array('view', 'id'=>$model->id)),
+	//array('label'=>'Manage Archive', 'url'=>array('admin')),
 );
 ?>
 

@@ -23,7 +23,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 <table width=100%>
 	<tr>
 		<td><?php echo $form->labelEx($model,'fk_gudang'); ?></td>
@@ -105,36 +105,29 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->ge
 	</tr>
 	<tr>
 		<td><?php echo $form->textField($model,'unit_pengolah',array('size'=>50,'maxlength'=>50)); ?></td>
-		<td>		<select name="Archive[month]">
-
-<option <?php if (date("m")=="01") echo "selected" ?> value="01">Jan</option>
-
-<option <?php if (date("m")=="02") echo "selected" ?> value="02">Feb</option>
-<option <?php if (date("m")=="03") echo "selected" ?> value="03">Mar</option>
-<option <?php if (date("m")=="04") echo "selected" ?> value="04">Apr</option>
-<option <?php if (date("m")=="05") echo "selected" ?> value="05">Mei</option>
-<option <?php if (date("m")=="06") echo "selected" ?> value="06">Jun</option>
-<option <?php if (date("m")=="07") echo "selected" ?> value="07">Jul</option>
-<option <?php if (date("m")=="08") echo "selected" ?> value="08">Aug</option>
-<option <?php if (date("m")=="09") echo "selected" ?> value="09">Sep</option>
-<option <?php if (date("m")=="10") echo "selected" ?> value="10">Okt</option>
-<option <?php if (date("m")=="11") echo "selected" ?> value="11">Nov</option>
-<option <?php if (date("m")=="12") echo "selected" ?> value="12">Des</option>
-</select>
-
-
-
+		
+		<td><?php echo CHtml::dropDownList('Archive[month]', $model->month, 
+              $model->getMonth(),
+              array('empty' => 'Select Bulan')); ?>
 			<?php //echo $form->textField($model,'bln_thn'); ?></td>
-			<td>
-		<select name="Archive[years]">
+		
+		<td>
+			<select name="Archive[years]">
 <?php 
 $years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
 foreach($years as $year){ 
-    echo'<option value="'.$year.'">'.$year.'</option>'; 
+	if($model->isNewRecord)
+    echo'<option value="'.$year.'" >'.$year.'</option>'; 
+	else 
+		echo'<option value="'.$year.'" ';
+	if($year==$model->years){
+	echo 'selected="selected"'; } 
+	echo '>'.$year.'</option>'; 
 } 
 ?> 
 </select>
-</td>
+		
+		</td>
 	</tr>
 	<tr>
 		<td><?php echo $form->error($model,'unit_pengolah'); ?></td>
@@ -152,12 +145,12 @@ foreach($years as $year){
 		<td>
 			<?php echo CHtml::dropDownList('Archive[bentuk_redaksi]', $model->bentuk_redaksi, 
               $model->getRedaksi(),
-              array('empty' => '-- Select Redaksi --')); ?>
+              array('empty' => 'Select Redaksi')); ?>
 			<?php //echo $form->textField($model,'bentuk_redaksi',array('size'=>50,'maxlength'=>50)); ?></td>
 		<td>
 			<?php echo CHtml::dropDownList('Archive[media]', $model->media, 
               $model->getMedia(),
-              array('empty' => '-- Select Media --')); ?>
+              array('empty' => 'Select Media')); ?>
 			<?php //echo $form->textField($model,'media',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
 	<tr>
@@ -204,12 +197,13 @@ foreach($years as $year){
 		</tr>
 	</table>
 <table width="100%">
-	<tr><td><?php echo $form->labelEx($model,'thn_retensi'); ?></td>
+	<tr>
+		<!--<td><?php echo $form->labelEx($model,'thn_retensi'); ?></td>-->
 		<td><?php echo $form->labelEx($model,'nilai_guna'); ?></td>
 		<td><?php echo $form->labelEx($model,'tingkat_perkembangan'); ?></td>	
 	</tr>
 	<tr>
-		<td>Tssss</td>
+		<!--<td>Tssss</td>-->
 		<!--<td>
 		<select name="Archive[thn_retensi]">
 <?php 
@@ -220,19 +214,20 @@ foreach($years as $year){
 ?> 
 </select>
 		<?php //echo $form->textField($model,'thn_retensi',array('size'=>4,'maxlength'=>4)); ?></td>
-		<td>
-		-->
+		--><td>
+		
 			<?php echo CHtml::dropDownList('Archive[nilai_guna]', $model->nilai_guna, 
               $model->getNG(),
-              array('empty' => '-- Select Nilai Guna --')); ?>
+              array('empty' => 'Select Nilai Guna')); ?>
 			<?php //echo $form->textField($model,'nilai_guna',array('size'=>50,'maxlength'=>50)); ?></td>
 		<td>
 <?php echo CHtml::dropDownList('Archive[tingkat_perkembangan]', $model->tingkat_perkembangan, 
               $model->getTk(),
-              array('empty' => '-- Select Tingkat Perkembangan --')); ?>
+              array('empty' => 'Select Tk. Perkembangan')); ?>
 			<?php //echo $form->textField($model,'tingkat_perkembangan',array('size'=>50,'maxlength'=>50)); ?></td>	
 	</tr>
-	<tr><td><?php echo $form->error($model,'thn_retensi'); ?></td>		
+	<tr>
+		<!--<td><?php echo $form->error($model,'thn_retensi'); ?></td>		-->
 		<td><?php echo $form->error($model,'nilai_guna'); ?></td>
 		<td><?php echo $form->error($model,'tingkat_perkembangan'); ?></td>	
 	</tr>
@@ -247,7 +242,7 @@ foreach($years as $year){
 
 
 
-	<div class="row buttons">
+	<div class="row buttons" style="margin-left: 1%">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 

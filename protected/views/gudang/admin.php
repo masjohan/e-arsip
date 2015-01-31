@@ -3,13 +3,13 @@
 /* @var $model Gudang */
 
 $this->breadcrumbs=array(
-	'Gudang'=>array('index'),
+	'Gudang'=>array('admin'),
 	'Manage',
 );
 
 $this->menu=array(
 	//array('label'=>'List Gudang', 'url'=>array('index')),
-	array('label'=>'Tambah Gudang', 'url'=>array('create')),
+	//array('label'=>'Tambah Gudang', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 ?>
 
 <h1>Manage Gudang</h1>
-
+<input class="btn btn-sm btn-primary" type="button" value="Tambah Gudang" onclick="javascript:window.location.href='index.php?r=gudang/create'" />
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'gudang-grid',
 	'dataProvider'=>$model->search(),

@@ -55,7 +55,7 @@ class Archive extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_gudang, fk_lajur,years,month, file, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan, pelaksana_hasil', 'required'),
+			array('fk_gudang, fk_lajur,years,month, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan, pelaksana_hasil', 'required'),
 			array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
 			array('fk_gudang, fk_lajur, nomor_definitif, kode_mslh, r_aktif, r_inaktif', 'numerical', 'integerOnly'=>true),
 			array('file, kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
@@ -215,12 +215,39 @@ class Archive extends CActiveRecord
                         return isset($_items[$type]) ? $_items[$type] : false;
         }
 
-        public function getRedaksi(){
+        public function getMonth()
+        {   		
+   			return array(
+	   			'1' => 'Januari',
+	   			'2' => 'Februari',
+	   			'3' => 'Maret', 
+	   			'4' => 'April',
+	   			'5' => 'Mei',
+	   			'6' => 'Juni',
+	   			'7' => 'Juli', 
+	   			'8' => 'Agustus',
+	   			'9' => 'September',
+	   			'10' => 'Oktober',
+	   			'11' => 'November', 
+	   			'12' => 'Desember'
+	   				);
+		}
+
+		public function getYear()
+        { 
+        	$years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
+			
+    		return $years;
+        	
+        }	
+
+	    public function getRedaksi(){
    		return array('S' => 'Surat', 'L' => 'Laporan', 'K' => 'Kontrak', 'N' => 'Notulen');
 			}
 
+
 		 public function getMedia(){
-   		return array('Tekstural' => 'Tekstural', 'Non Tekstural' => 'Non Tekstural');
+   		return array('T' => 'Tekstural', 'NT' => 'Non Tekstural');
 			}
 
 		 public function getTk(){

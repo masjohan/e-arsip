@@ -1,6 +1,6 @@
 <?php
 
-class LajurController extends Controller
+class SettingController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -27,19 +27,11 @@ class LajurController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','loadlajur'),
-				'users'=>array('*'),
-			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				//'users'=>array('admin'),
+				'actions'=>array('create','update','index'),
 				'expression' => '$user->isAdmin()',
-			),
+			),			
+			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -47,14 +39,11 @@ class LajurController extends Controller
 	}
 
 	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
+	 * Lists all models.
 	 */
-	public function actionView($id)
+	public function actionIndex()
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$this->redirect(array('create'));
 	}
 
 	/**
@@ -63,33 +52,27 @@ class LajurController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Lajur;
-
+		$id = 1;
+		$model=new Preferences;
+		$xxx = $this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Lajur']))
+		if(isset($_POST['Preferences']))
 		{
-			$model->attributes=$_POST['Lajur'];
+			$model->attributes=$_POST['Preferences'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+				$this->redirect('index.php?r=dashboard');
+		}	
 
+		if(isset($xxx))
+			$this->redirect(array('update','id'=>$id));
+		else
 		$this->render('create',array(
 			'model'=>$model,
 		));
 	}
-	public function actionLoadlajur()
-	{
-	   $data=Lajur::model()->findAll('id=:id', 
-	   array(':id'=>(int) $_POST['id']));
-	 
-	   $data=CHtml::listData($data,'id','nama');
-	 
-	   echo "<option value=''>Select Lajur</option>";
-	   foreach($data as $value=>$lajur_name)
-	   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($lajur_name),true);
-	}
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -102,54 +85,14 @@ class LajurController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Lajur']))
+		if(isset($_POST['Preferences']))
 		{
-			$model->attributes=$_POST['Lajur'];
+			$model->attributes=$_POST['Preferences'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect('index.php?r=dashboard');
 		}
 
 		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Lajur');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Lajur('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Lajur']))
-			$model->attributes=$_GET['Lajur'];
-
-		$this->render('admin',array(
 			'model'=>$model,
 		));
 	}
@@ -163,7 +106,7 @@ class LajurController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Lajur::model()->findByPk($id);
+		$model=Preferences::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -175,7 +118,7 @@ class LajurController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='lajur-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='preferences-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -17,6 +17,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.extensions.jtogglecolumn.*',
 	),
 
 	'modules'=>array(
@@ -35,9 +36,15 @@ return array(
 	'components'=>array(
 
 		'user'=>array(
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
+			 'class'=>'application.components.EWebUser',
+			// 'class'=>'application.components.LevelLookUp',
+            // enable cookie-based authentication
+            'allowAutoLogin'=>true,
+			
 		),
+		'format'=>array(
+            'class'=>'YFormatter',
+        ),
 
 		// uncomment the following to enable URLs in path-format
 		/*

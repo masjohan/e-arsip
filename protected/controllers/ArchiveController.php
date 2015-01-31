@@ -37,7 +37,8 @@ class ArchiveController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete','urlProcessing','report'),
-				'users'=>array('admin'),
+				//'users'=>array('admin'),
+				'expression'=>'$user->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -53,10 +54,13 @@ class ArchiveController extends Controller
      public function actionReport()
 	{
 		//$coba = $_SESSION['kelas'];
+		$id = 1 ;
 		$models=new Archive();
+		$nama = Preferences::model()->findByPk($id);
 		$rows = $models->report();
 		$this->renderPartial('reportview',array(
 			'model'=>$rows,
+			'nama'=>$nama,
 		));
   	}
 	/**
@@ -170,9 +174,11 @@ class ArchiveController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Archive']))
 			$model->attributes=$_GET['Archive'];
-
+		$id= 1;
+		$nama = Preferences::model()->findByPk($id);
 		$this->render('admin',array(
 			'model'=>$model,
+			'nama'=>$nama,
 		));
 	}
 
