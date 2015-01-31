@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Users</h1>
+
 <input class="btn btn-sm btn-primary" type="button" value="Tambah User" onclick="javascript:window.location.href='index.php?r=user/create'" />
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

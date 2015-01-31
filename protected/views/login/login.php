@@ -50,7 +50,7 @@
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
 									<span class="red">E -</span>
-									<span class="red" id="id-text2">Arsip Ace Ver 1.0</span>
+									<span class="grey" id="id-text2">Arsip Ace Ver 1.0</span>
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; 2015</h4>
 							</div>

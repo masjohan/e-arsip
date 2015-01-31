@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Archive</h1>
+
 <div style="margin-left: 10px">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

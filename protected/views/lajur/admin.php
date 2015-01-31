@@ -26,7 +26,6 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Lajur</h1>
 <!-- search-form -->
 <input class="btn btn-sm btn-primary" type="button" value="Tambah Lajur" onclick="javascript:window.location.href='index.php?r=lajur/create'" />
 <?php $this->widget('zii.widgets.grid.CGridView', array(

@@ -131,37 +131,13 @@
 				</div><!--#sidebar-shortcuts-->
 				<?php if(Yii::app()->user->isAdmin()){ ?>
 				<ul class="nav nav-list">
-					<li>
-						<a href="#" class="dropdown-toggle">
-							<i class="icon-user"></i>
+					<li class="active">
+						<a href="index.php">
+							<i class="icon-dashboard"></i>
 							<span class="menu-text"> Dashboard </span>
-
-							<b class="arrow icon-angle-down"></b>
 						</a>
-
-						<ul class="submenu">
-							<li>
-								<a href="#">
-									<i class="icon-double-angle-right"></i>
-									Menu 1#
-								</a>
-							</li>
-
-							<li>
-								<a href="#">
-									<i class="icon-double-angle-right"></i>
-									Menu 2#
-								</a>
-							</li>
-
-							<li>
-								<a href="#">
-									<i class="icon-double-angle-right"></i>
-									Menu 3#
-								</a>
-							</li>
-						</ul>
 					</li>
+
 
 					<li>
 						<a href="#" class="dropdown-toggle">
@@ -259,10 +235,26 @@
 
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
-			
+					
+						
+					<?php if(isset($this->breadcrumbs)):
+						if ( Yii::app()->controller->route !== 'site/index' )
+							$this->breadcrumbs = array_merge(array(Yii::t('zii','Home')=>Yii::app()->homeUrl), $this->breadcrumbs);
+						echo '<i style="margin: 0 -10px 0 10px" class="icon-home home-icon"></i> ';	
+						$this->widget('zii.widgets.CBreadcrumbs', array(
+							'tagName'=>'ul',
+							'homeLink'=>false,
+							'separator'=>'',
+							'activeLinkTemplate'=>'<li><a href="{url}">{label}</a> <span class="divider"><i class="icon-angle-right arrow-icon"></i></span></li>',
+							'inactiveLinkTemplate'=>'<li><span>{label}</span></li>',
+							'htmlOptions'=>array('class'=>'breadcrumb','style'=>'margin-top: 6px'),
+							'links'=>$this->breadcrumbs,
+						)); ?><!--.breadcrumb-->
+					<?php endif?>
+							
 
 					<div class="nav-search" id="nav-search">
-						<form class="form-search">
+						<form class="form-search" />
 							<span class="input-icon">
 								<input type="text" placeholder="Search ..." class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
 								<i class="icon-search nav-search-icon"></i>
@@ -270,29 +262,20 @@
 						</form>
 					</div><!--#nav-search-->
 				</div>
-
 				<div class="page-content">
 					<div class="page-header position-relative">
-							<h5><?php if ( Yii::app()->controller->route == 'site/index' ) echo "<a href='#'>DASHBOARD</a>"; ?>
+						<h1>
+							Dashboard
 							<small>
-						
-										<?php if(isset($this->breadcrumbs)):
-						if ( Yii::app()->controller->route !== 'site/index' )
-							$this->breadcrumbs = array_merge(array(Yii::t('zii','Home')=>Yii::app()->homeUrl), $this->breadcrumbs);
-
-						$this->widget('zii.widgets.CBreadcrumbs', array(
-							'tagName'=>'ul',
-							'homeLink'=>false,
-							'separator'=>'',
-							'activeLinkTemplate'=>'<li><a href="{url}">{label}</a> <span class="divider"><i class="icon-angle-right arrow-icon"></i></span></li>',
-							'inactiveLinkTemplate'=>'<li><span>{label}</span></li>',
-							'htmlOptions'=>array('class'=>'breadcrumb'),
-							'links'=>$this->breadcrumbs,
-						)); ?><!--.breadcrumb-->
-					<?php endif?>
+								<i class="icon-double-angle-right"></i>
+								<?php 
+									if (Yii::app()->controller->route !== 'dashboard/index')
+										echo Yii::app()->getController()->getId();
+									else echo 'overview &amp; stats'; ?>
 							</small>
-						</h5>
+						</h1>
 					</div><!--/.page-header-->
+
 
 					<div class="row-fluid">
 						<div class="span12">
@@ -371,12 +354,218 @@
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
 
 		<!--page specific plugin scripts-->
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.slimscroll.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.sparkline.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/flot/jquery.flot.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/flot/jquery.flot.resize.min.js"></script>
 
 		<!--ace scripts-->
+
 
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace-elements.min.js"></script>
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/ace.min.js"></script>
 
-		<!--inline scripts related to this page-->
+			<!--inline scripts related to this page-->
+
+		<script type="text/javascript">
+			$(function() {
+				$('.easy-pie-chart.percentage').each(function(){
+					var $box = $(this).closest('.infobox');
+					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
+					var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
+					var size = parseInt($(this).data('size')) || 50;
+					$(this).easyPieChart({
+						barColor: barColor,
+						trackColor: trackColor,
+						scaleColor: false,
+						lineCap: 'butt',
+						lineWidth: parseInt(size/10),
+						animate: /msie\s*(8|7|6)/.test(navigator.userAgent.toLowerCase()) ? false : 1000,
+						size: size
+					});
+				})
+			
+				$('.sparkline').each(function(){
+					var $box = $(this).closest('.infobox');
+					var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
+					$(this).sparkline('html', {tagValuesAttribute:'data-values', type: 'bar', barColor: barColor , chartRangeMin:$(this).data('min') || 0} );
+				});
+			
+			
+			
+			
+			  var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
+			  var data = [
+				{ label: "social networks",  data: 38.7, color: "#68BC31"},
+				{ label: "search engines",  data: 24.5, color: "#2091CF"},
+				{ label: "ad campaings",  data: 8.2, color: "#AF4E96"},
+				{ label: "direct traffic",  data: 18.6, color: "#DA5430"},
+				{ label: "other",  data: 10, color: "#FEE074"}
+			  ]
+			  function drawPieChart(placeholder, data, position) {
+			 	  $.plot(placeholder, data, {
+					series: {
+						pie: {
+							show: true,
+							tilt:0.8,
+							highlight: {
+								opacity: 0.25
+							},
+							stroke: {
+								color: '#fff',
+								width: 2
+							},
+							startAngle: 2
+						}
+					},
+					legend: {
+						show: true,
+						position: position || "ne", 
+						labelBoxBorderColor: null,
+						margin:[-30,15]
+					}
+					,
+					grid: {
+						hoverable: true,
+						clickable: true
+					}
+				 })
+			 }
+			 drawPieChart(placeholder, data);
+			
+			 /**
+			 we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
+			 so that's not needed actually.
+			 */
+			 placeholder.data('chart', data);
+			 placeholder.data('draw', drawPieChart);
+			
+			
+			
+			  var $tooltip = $("<div class='tooltip top in hide'><div class='tooltip-inner'></div></div>").appendTo('body');
+			  var previousPoint = null;
+			
+			  placeholder.on('plothover', function (event, pos, item) {
+				if(item) {
+					if (previousPoint != item.seriesIndex) {
+						previousPoint = item.seriesIndex;
+						var tip = item.series['label'] + " : " + item.series['percent']+'%';
+						$tooltip.show().children(0).text(tip);
+					}
+					$tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
+				} else {
+					$tooltip.hide();
+					previousPoint = null;
+				}
+				
+			 });
+			
+			
+			
+			
+			
+			
+				var d1 = [];
+				for (var i = 0; i < Math.PI * 2; i += 0.5) {
+					d1.push([i, Math.sin(i)]);
+				}
+			
+				var d2 = [];
+				for (var i = 0; i < Math.PI * 2; i += 0.5) {
+					d2.push([i, Math.cos(i)]);
+				}
+			
+				var d3 = [];
+				for (var i = 0; i < Math.PI * 2; i += 0.2) {
+					d3.push([i, Math.tan(i)]);
+				}
+				
+			
+				var sales_charts = $('#sales-charts').css({'width':'100%' , 'height':'220px'});
+				$.plot("#sales-charts", [
+					{ label: "Domains", data: d1 },
+					{ label: "Hosting", data: d2 },
+					{ label: "Services", data: d3 }
+				], {
+					hoverable: true,
+					shadowSize: 0,
+					series: {
+						lines: { show: true },
+						points: { show: true }
+					},
+					xaxis: {
+						tickLength: 0
+					},
+					yaxis: {
+						ticks: 10,
+						min: -2,
+						max: 2,
+						tickDecimals: 3
+					},
+					grid: {
+						backgroundColor: { colors: [ "#fff", "#fff" ] },
+						borderWidth: 1,
+						borderColor:'#555'
+					}
+				});
+			
+			
+				$('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+				function tooltip_placement(context, source) {
+					var $source = $(source);
+					var $parent = $source.closest('.tab-content')
+					var off1 = $parent.offset();
+					var w1 = $parent.width();
+			
+					var off2 = $source.offset();
+					var w2 = $source.width();
+			
+					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+					return 'left';
+				}
+			
+			
+				$('.dialogs,.comments').slimScroll({
+					height: '300px'
+			    });
+				
+				
+				//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
+				//so disable dragging when clicking on label
+				var agent = navigator.userAgent.toLowerCase();
+				if("ontouchstart" in document && /applewebkit/.test(agent) && /android/.test(agent))
+				  $('#tasks').on('touchstart', function(e){
+					var li = $(e.target).closest('#tasks li');
+					if(li.length == 0)return;
+					var label = li.find('label.inline').get(0);
+					if(label == e.target || $.contains(label, e.target)) e.stopImmediatePropagation() ;
+				});
+			
+				$('#tasks').sortable({
+					opacity:0.8,
+					revert:true,
+					forceHelperSize:true,
+					placeholder: 'draggable-placeholder',
+					forcePlaceholderSize:true,
+					tolerance:'pointer',
+					stop: function( event, ui ) {//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
+						$(ui.item).css('z-index', 'auto');
+					}
+					}
+				);
+				$('#tasks').disableSelection();
+				$('#tasks input:checkbox').removeAttr('checked').on('click', function(){
+					if(this.checked) $(this).closest('li').addClass('selected');
+					else $(this).closest('li').removeClass('selected');
+				});
+				
+			
+			})
+		</script>
+
 	</body>
 </html>

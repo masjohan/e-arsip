@@ -26,7 +26,6 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Gudang</h1>
 <input class="btn btn-sm btn-primary" type="button" value="Tambah Gudang" onclick="javascript:window.location.href='index.php?r=gudang/create'" />
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'gudang-grid',
