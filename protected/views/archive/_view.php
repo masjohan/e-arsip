@@ -2,37 +2,33 @@
 /* @var $this ArchiveController */
 /* @var $data Archive */
 ?>
-
+<table border="1">
 <div class="view">
+	
+	<!--<tr>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('fk_gudang')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('fk_lajur')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('file')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('kode_klasifikasi')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('hasil_pelaksanaan')); ?>:</b></th>
+		<th><b><?php echo CHtml::encode($data->getAttributeLabel('nomor_definitif')); ?>:</b></th>
+	
+	</tr>
+	-->
+	<tr>
+		<td><?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?></td>
+		<td><?php echo CHtml::encode($data->fk_gudang); ?></td>
+		<td><?php echo CHtml::encode($data->fk_lajur); ?></td>
+		<td><?php echo CHtml::encode($data->file); ?></td>
+		<td><?php echo CHtml::encode($data->kode_klasifikasi); ?></td>
+		<td><?php echo CHtml::encode($data->hasil_pelaksanaan); ?></td>
+		<td><?php echo CHtml::encode($data->nomor_definitif); ?></td>
+		
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fk_gudang')); ?>:</b>
-	<?php echo CHtml::encode($data->fk_gudang); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fk_lajur')); ?>:</b>
-	<?php echo CHtml::encode($data->fk_lajur); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('file')); ?>:</b>
-	<?php echo CHtml::encode($data->file); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('kode_klasifikasi')); ?>:</b>
-	<?php echo CHtml::encode($data->kode_klasifikasi); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('hasil_pelaksanaan')); ?>:</b>
-	<?php echo CHtml::encode($data->hasil_pelaksanaan); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('nomor_definitif')); ?>:</b>
-	<?php echo CHtml::encode($data->nomor_definitif); ?>
-	<br />
-
+	</tr>	
+		
+	
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('isi_berkas')); ?>:</b>
 	<?php echo CHtml::encode($data->isi_berkas); ?>
@@ -109,3 +105,4 @@
 	*/ ?>
 
 </div>
+</table>

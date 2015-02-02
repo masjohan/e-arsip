@@ -139,7 +139,7 @@ foreach($years as $year){
 <table width="100%">
 	<tr>
 		<td><?php echo $form->labelEx($model,'bentuk_redaksi'); ?></td>
-		<td><?php echo $form->labelEx($model,'media'); ?></td>
+		<td style="width: 66.5%"><?php echo $form->labelEx($model,'media'); ?></td>
 	</tr>
 	<tr>
 		<td>
@@ -200,7 +200,7 @@ foreach($years as $year){
 	<tr>
 		<!--<td><?php echo $form->labelEx($model,'thn_retensi'); ?></td>-->
 		<td><?php echo $form->labelEx($model,'nilai_guna'); ?></td>
-		<td><?php echo $form->labelEx($model,'tingkat_perkembangan'); ?></td>	
+		<td style="width: 66.5%"><?php echo $form->labelEx($model,'tingkat_perkembangan'); ?></td>	
 	</tr>
 	<tr>
 		<!--<td>Tssss</td>-->

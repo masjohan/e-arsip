@@ -21,8 +21,24 @@
             -->
             </style>
             <h3 align="center">DAFTAR ARSIP <?php //echo $name;?></h3>
-            <h3 align="center"><?php echo $nama->program_name; ?></h3>
-            <h4 align="left" style="margin-top: -5px"><b>Kode Lembaga : 001</b></h4>
+           <!-- <h3 align="center"><?php echo $nama->program_name; ?></h3>-->
+            <!--<h4 align="left" style="margin-top: -5px"><b>NAMA SKPD / BUMN   :</b></h4>
+            <h4 align="left" style="margin-top: -5px"><b>ALAMAT   :</b></h4>
+           -->
+           <div style="text-align: left; margin-left: 50px">
+            <table>
+                <tr>
+                    <td><b style="font-size: 15pt">NAMA SKPD / BUMN</b></td>
+                    <td><b style="font-size: 15pt">:</b></td>
+                    
+                </tr>
+                <tr>
+                    <td><b style="font-size: 15pt">ALAMAT</b></td>
+                    <td><b style="font-size: 15pt">:</b></td>
+                </tr>
+            </table>
+           </div>
+           <br />
            <!-- <div style="text-align: right">    <?php echo 'Jam '.date('H:i:s A'); ?> </div>-->
 			<table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #E8F3F5; text-align: center; font-size: 11pt;">
                 <tr style="color: #000; background-color: #ccc;" >
@@ -34,9 +50,8 @@
                     <th style="width: 7%; vertical-align:middle">Jml Retensi</th>
                     <th style="width: 7%; vertical-align:middle">Tahun Retensi</th>
                     <th style="width: 9%; vertical-align:middle">Nilai Guna</th>
-                    <th style="width: 10%; vertical-align:middle">Tingkat Perkemb.</th>
                     <th style="width: 7%; vertical-align:middle">Pelaks. Hasil</th>
-                
+                    <th style="width: 10%; vertical-align:middle">Tingkat Perkemb.</th>
                 </tr>
             </table>
             <table cellspacing="0" border="1" style="width: 100%" >
@@ -54,18 +69,29 @@
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['j_retensi']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['thn_retensi']; ?></td>
                 <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $data['nilai_guna']; ?></td>
-                <td style="width: 10%; text-align: center; vertical-align:middle;"><?php echo $data['tingkat_perkembangan']; ?></td>
-                <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['pelaksana_hasil']; ?></td>
+                <td style="width: 7%; text-align: center; vertical-align:middle;"><?php echo $data['pelaksana_hasil']; ?></td>
+                <td style="width: 10%; text-align: center; vertical-align:middle"><?php echo $data['tingkat_perkembangan']; ?></td>
             </tr>
         
             <?php $no++; } ?>
             </table>
-            <!--
-            <br>
+            
+            <!--<br>
             <div style="text-align: right">Semarang, <?php echo date('d F Y'); ?></div>
             <br><br><br>
             <div style="text-align: right">Panitia</div>
-        -->
+            -->
+            <br />
+            <div style="margin-left: 750px; font-size: 13pt">
+                <div style="text-align: center">....................,...................</div>
+                
+                <div style="text-align: center">Pimpinan SKPD / BUMN</div>
+                
+                <div style="text-align: center">Tanda Tanggan</div>
+                <br /><br /><br />
+                <div style="text-align: center"><u>....................................</u></div>
+                <div style="text-align: center; margin-left: -130px">NIP. </div>
+            </div>
     </page>
 <?php
 	$content = ob_get_clean();

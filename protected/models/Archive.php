@@ -22,6 +22,7 @@
  * @property string $masalah
  * @property string $uraian_masalah
  * @property integer $kode_mslh
+  * @property integer $status
  * @property integer $r_aktif
  * @property integer $r_inaktif
   * @property integer $j_retensi
@@ -88,6 +89,7 @@ class Archive extends CActiveRecord
 		$this->kode_mslh = '001';
 		$this->j_retensi = $this->r_aktif + $this->r_inaktif;
 		$this->thn_retensi = $this->years + $this->j_retensi;
+		$this->status = 1;
 		return true;
 	}
 	/**
@@ -126,6 +128,7 @@ class Archive extends CActiveRecord
 			'by_user' => 'By User',
 		);
 	}
+
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
@@ -173,7 +176,65 @@ class Archive extends CActiveRecord
 		$criteria->compare('create_at',$this->create_at,true);
 		$criteria->compare('edit_at',$this->edit_at,true);
 		$criteria->compare('by_user',$this->by_user,true);
+		$criteria->compare('status',$this->status);
+		//$status = '1';
+		//$criteria->condition = 'status=:status';
+		//$criteria->params = array(':status'=>$status);
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function search2()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('fk_gudang',$this->fk_gudang,true);
+		$criteria->compare('fk_lajur',$this->fk_lajur,true);
+		$criteria->compare('file',$this->file,true);
+		$criteria->compare('kode_klasifikasi',$this->kode_klasifikasi,true);
+		$criteria->compare('hasil_pelaksanaan',$this->hasil_pelaksanaan,true);
+		$criteria->compare('nomor_definitif',$this->nomor_definitif);
+		$criteria->compare('isi_berkas',$this->isi_berkas,true);
+		$criteria->compare('unit_pengolah',$this->unit_pengolah,true);
+		$criteria->compare('bln_thn',$this->bln_thn,true);
+		$criteria->compare('month',$this->month,true);
+		$criteria->compare('years',$this->years,true);
+		$criteria->compare('bentuk_redaksi',$this->bentuk_redaksi,true);
+		$criteria->compare('media',$this->media,true);
+		$criteria->compare('kelengkapan',$this->kelengkapan,true);
+		$criteria->compare('masalah',$this->masalah,true);
+		$criteria->compare('uraian_masalah',$this->uraian_masalah,true);
+		$criteria->compare('kode_mslh',$this->kode_mslh);
+		$criteria->compare('r_aktif',$this->r_aktif);
+		$criteria->compare('r_inaktif',$this->r_inaktif);
+		$criteria->compare('j_retensi',$this->j_retensi);
+		$criteria->compare('thn_retensi',$this->thn_retensi,true);
+		$criteria->compare('nilai_guna',$this->nilai_guna,true);
+		$criteria->compare('tingkat_perkembangan',$this->tingkat_perkembangan,true);
+		$criteria->compare('pelaksana_hasil',$this->pelaksana_hasil,true);
+		$criteria->compare('create_at',$this->create_at,true);
+		$criteria->compare('edit_at',$this->edit_at,true);
+		$criteria->compare('by_user',$this->by_user,true);
+		$criteria->compare('status',$this->status);
+		$status = '0';
+		$criteria->condition = 'status=:status';
+		$criteria->params = array(':status'=>$status);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -271,9 +332,9 @@ class Archive extends CActiveRecord
 				return $data;
 			}
 
-			public function report($limit = 20)
+			public function report($status)
 			{
-			$sql="SELECT * from arsipnew LIMIT $limit";
+			$sql="SELECT * from arsipnew where status='$status'";
             $connection=Yii::app()->db; 
             $command=$connection->createCommand($sql);
             //$rowCount=$command->execute(); // execute the non-query SQL

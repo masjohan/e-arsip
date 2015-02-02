@@ -72,7 +72,9 @@
 								</li>
 
 								<li>
-									<a href="#">
+									
+									<a 
+									href="index.php?r=userProfile/create">
 										<i class="icon-user"></i>
 										Profil
 									</a>
@@ -182,14 +184,14 @@
 
 						<ul class="submenu">
 							<li>
-								<a href="?r=archive/report" target=_new>
+								<a href="?r=archive">
 									<i class="icon-double-angle-right"></i>
 									Daftar Arsip Aktif
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="?r=archive/nonActive">
 									<i class="icon-double-angle-right"></i>
 									Daftar Arsip Inaktif
 								</a>
@@ -352,9 +354,14 @@
 		<script type="text/javascript">
 			if("ontouchend" in document) document.write("<script src='<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/bootstrap.min.js"></script>
 
 		<!--page specific plugin scripts-->
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.dataTables.min.js"></script>
+		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.dataTables.bootstrap.js"></script>
+
+
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jquery.slimscroll.min.js"></script>
@@ -372,7 +379,7 @@
 
 			<!--inline scripts related to this page-->
 
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			$(function() {
 				$('.easy-pie-chart.percentage').each(function(){
 					var $box = $(this).closest('.infobox');
@@ -567,6 +574,6 @@
 			
 			})
 		</script>
-
+		-->
 	</body>
 </html>

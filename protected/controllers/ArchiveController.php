@@ -28,12 +28,13 @@ class ArchiveController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','nonActive'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update','loadlajur'),
-				'users'=>array('@'),
+				//'users'=>array('@'),
+				'expression'=>'$user->isAdmin()',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete','urlProcessing','report'),
@@ -54,11 +55,18 @@ class ArchiveController extends Controller
      public function actionReport()
 	{
 		//$coba = $_SESSION['kelas'];
+		$param = $_SESSION['status'];
 		$id = 1 ;
 		$models=new Archive();
 		$nama = Preferences::model()->findByPk($id);
-		$rows = $models->report();
+		$rows = $models->report($param);
+		if($param == 1)
 		$this->renderPartial('reportview',array(
+			'model'=>$rows,
+			'nama'=>$nama,
+		));
+		else
+		$this->renderPartial('inactive',array(
 			'model'=>$rows,
 			'nama'=>$nama,
 		));
@@ -159,12 +167,43 @@ class ArchiveController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Archive');
+		unset($_SESSION['AN']);
+		unset($_SESSION['status']);
+		Yii::app()->session['AN'] = 'Active';
+		Yii::app()->session['status'] = '1';
+		$criteria=new CDbCriteria(array(                    
+                              //  'order'=>'status desc',
+                                //'with'   => array('userToProject'=>array('alias'=>'user')),
+                                'condition'=>'status="1"',
+
+                        ));
+		$dataProvider=new CActiveDataProvider('Archive',array('criteria'=>$criteria));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
 	}
 
+
+	/**
+	 * Lists all models.
+	 */
+	public function actionNonActive()
+	{
+		unset($_SESSION['AN']);
+		unset($_SESSION['status']);
+		Yii::app()->session['AN'] = 'Inactive';
+		Yii::app()->session['status'] = '0';
+		$criteria=new CDbCriteria(array(                    
+                              //  'order'=>'status desc',
+                                //'with'   => array('userToProject'=>array('alias'=>'user')),
+                                'condition'=>'status="0"',
+
+                        ));
+		$dataProvider=new CActiveDataProvider('Archive',array('criteria'=>$criteria));
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+	}
 	/**
 	 * Manages all models.
 	 */
@@ -227,7 +266,7 @@ class ArchiveController extends Controller
     }*/
     //$_POST['id'] = 2 ;
     
-     $data=Lajur::model()->findAll('fk_gudang=:fk_gudang', 
+     	$data=Lajur::model()->findAll('fk_gudang=:fk_gudang', 
 	   array(':fk_gudang'=>(int) $_POST['id']));
 	 
 	   $data=CHtml::listData($data,'id','nama' );
