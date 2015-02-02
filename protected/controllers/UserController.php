@@ -73,6 +73,11 @@ class UserController extends Controller
 		));
 	}
 
+	// function untuk memanggil profile user
+	public function actionProfile()
+	{
+		$model = new UserProfile;
+	}
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.

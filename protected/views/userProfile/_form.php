@@ -18,10 +18,10 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php //echo $form->errorSummary($model); ?>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'address'); ?>
-		<?php echo $form->textField($model,'address',array('size'=>50,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'address',array('size'=>100,'maxlength'=>100)); ?>
 		<?php echo $form->error($model,'address'); ?>
 	</div>
 

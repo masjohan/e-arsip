@@ -4013,3 +4013,466 @@ Stack trace:
 REQUEST_URI=/e-ace/index.php?r=userProfile/create
 HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/create
 ---
+2015/02/02 19:19:03 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/guido/Project/yii-16/framework/web/CController.php:336
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#10 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update
+HTTP_REFERER=http://localhost/e-ace/index.php?r=dashboard
+---
+2015/02/02 19:19:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:162
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(94): UserProfileController->loadModel('$id')
+#1 [internal function]: UserProfileController->actionUpdate('$id')
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=$id
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update
+---
+2015/02/02 19:22:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:162
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(77): UserProfileController->loadModel('2')
+#1 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#12 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=dashboard
+---
+2015/02/02 19:23:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:163
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(77): UserProfileController->loadModel('2')
+#1 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#12 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+---
+2015/02/02 19:23:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:163
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(77): UserProfileController->loadModel('2')
+#1 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#12 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+---
+2015/02/02 19:24:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:164
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(77): UserProfileController->loadModel('2')
+#1 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#12 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+---
+2015/02/02 19:25:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:164
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(77): UserProfileController->loadModel('2')
+#1 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#12 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+---
+2015/02/02 22:16:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `user_profile` (`address`, `about_me`, `photo`, `fk_user`) VALUES (:yp0, :yp1, :yp2, :yp3).
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (73)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/02 22:16:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: INSERT INTO `user_profile` (`address`, `about_me`, `photo`, `fk_user`) VALUES (:yp0, :yp1, :yp2, :yp3)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(73): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/cre...')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/create
+---
+2015/02/02 22:17:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php:165
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(97): UserProfileController->loadModel('2')
+#1 [internal function]: UserProfileController->actionUpdate('2')
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=2
+HTTP_REFERER=http://localhost/e-ace/index.php?r=dashboard
+---
+2015/02/02 23:19:13 [error] [exception.CException] exception 'CException' with message 'Property "User.address" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('address')
+#1 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('address')
+#2 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(User), 'address')
+#3 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(1533): CHtml::activeInputField('text', Object(User), 'address', Array)
+#4 /home/guido/Project/yii-16/framework/web/widgets/CActiveForm.php(792): CHtml::activeTextField(Object(User), 'address', Array)
+#5 /home/guido/Project/e-ace/protected/views/userProfile/_form.php(28): CActiveForm->textField(Object(User), 'address', Array)
+#6 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#7 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#8 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#9 /home/guido/Project/e-ace/protected/views/userProfile/update.php(16): CController->renderPartial('_form', Array)
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#12 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#14 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(113): CController->render('update', Array)
+#15 [internal function]: UserProfileController->actionUpdate('1')
+#16 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#17 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#18 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#25 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#27 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#28 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#29 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=1
+---
+2015/02/02 23:19:22 [error] [exception.CException] exception 'CException' with message 'Property "User.address" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('address')
+#1 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('address')
+#2 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(User), 'address')
+#3 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(1533): CHtml::activeInputField('text', Object(User), 'address', Array)
+#4 /home/guido/Project/yii-16/framework/web/widgets/CActiveForm.php(792): CHtml::activeTextField(Object(User), 'address', Array)
+#5 /home/guido/Project/e-ace/protected/views/userProfile/_form.php(28): CActiveForm->textField(Object(User), 'address', Array)
+#6 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#7 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#8 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#9 /home/guido/Project/e-ace/protected/views/userProfile/update.php(16): CController->renderPartial('_form', Array)
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#12 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('update', Array, true)
+#14 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(113): CController->render('update', Array)
+#15 [internal function]: UserProfileController->actionUpdate('1')
+#16 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#17 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#18 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#25 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#27 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#28 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#29 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/view&id=1
+---
+2015/02/02 23:28:44 [error] [php] Undefined index: email (/home/guido/Project/e-ace/protected/controllers/UserProfileController.php:106)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (106)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/02 23:29:15 [error] [exception.CException] exception 'CException' with message 'Property "UserProfile.email" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(161): CComponent->__set('email', 'wisnu@multisolu...')
+#1 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(106): CActiveRecord->__set('email', 'wisnu@multisolu...')
+#2 [internal function]: UserProfileController->actionUpdate('1')
+#3 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=1
+---
+2015/02/02 23:30:40 [error] [php] Undefined index: email (/home/guido/Project/e-ace/protected/controllers/UserProfileController.php:107)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (107)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/02 23:31:27 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "saveWithRelated".' in /home/guido/Project/yii-16/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(227): CComponent->__call('saveWithRelated', Array)
+#1 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(109): CActiveRecord->__call('saveWithRelated', Array)
+#2 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(109): User->saveWithRelated('fkUser')
+#3 [internal function]: UserProfileController->actionUpdate('1')
+#4 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#5 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#16 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#17 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=1
+---
+2015/02/02 23:33:03 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (118)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/02 23:33:17 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (118)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/02 23:57:01 [error] [exception.CException] exception 'CException' with message 'Property "UserProfile.email" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('email')
+#1 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(107): CActiveRecord->__get('email')
+#2 [internal function]: UserProfileController->actionUpdate('1')
+#3 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=1
+---
+2015/02/03 00:13:07 [error] [php] Undefined variable: model2 (/home/guido/Project/e-ace/protected/views/userProfile/_form.php:22)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): UserProfileController->renderFile()
+#1 /home/guido/Project/e-ace/protected/views/userProfile/create.php(15): UserProfileController->renderPartial()
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require()
+#3 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): UserProfileController->renderInternal()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(869): UserProfileController->renderFile()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(782): UserProfileController->renderPartial()
+#6 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(86): UserProfileController->render()
+#7 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): UserProfileController->actionCreate()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#12 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#13 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#17 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#18 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#19 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/create
+in /home/guido/Project/e-ace/protected/views/userProfile/_form.php (22)
+in /home/guido/Project/e-ace/protected/views/userProfile/create.php (15)
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (86)
+2015/02/03 00:21:42 [error] [php] Trying to get property of non-object (/home/guido/Project/e-ace/protected/views/userProfile/view.php:105)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): UserProfileController->renderFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(782): UserProfileController->renderPartial()
+#2 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(56): UserProfileController->render()
+#3 unknown(0): UserProfileController->actionView()
+#4 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#5 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#10 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#17 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/view&id=1
+in /home/guido/Project/e-ace/protected/views/userProfile/view.php (105)
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (56)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 00:22:17 [error] [exception.CException] exception 'CException' with message 'Property "User.level" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('level')
+#1 /home/guido/Project/e-ace/protected/views/userProfile/view.php(105): CActiveRecord->__get('level')
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#3 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(56): CController->render('view', Array)
+#7 [internal function]: UserProfileController->actionView('1')
+#8 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#9 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#10 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/vie...')
+#20 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/view&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=user/update&id=1
+---
+2015/02/03 00:25:50 [error] [php] Undefined index: User (/home/guido/Project/e-ace/protected/controllers/UserProfileController.php:106)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (106)
+in /home/guido/Project/e-ace/index.php (13)

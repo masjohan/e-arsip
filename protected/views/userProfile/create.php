@@ -7,12 +7,9 @@ $this->breadcrumbs=array(
 	'Create',
 );
 
-$this->menu=array(
-	array('label'=>'List UserProfile', 'url'=>array('index')),
-	array('label'=>'Manage UserProfile', 'url'=>array('admin')),
-);
+
 ?>
 
-<h1>Create UserProfile</h1>
+<h1>User Profile</h1>
 <div style="margin-left: 10px">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

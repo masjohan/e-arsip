@@ -50,7 +50,10 @@ class UserProfile extends CActiveRecord
 	{
 		$id = Yii::app()->user->id;
 		$data = UserProfile::model()->findByPk($id);
+		if(!empty($data))
 		return $data;
+		else 
+		return null;
 	}
 	/**
 	 * @return array relational rules.

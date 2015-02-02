@@ -72,9 +72,13 @@
 								</li>
 
 								<li>
-									
+									<?php $id = UserProfile::getProfile(); $is = Yii::app()->user->id;?>
 									<a 
+									<?php if(empty($id)) { ?>
 									href="index.php?r=userProfile/create">
+								<?php   } else { echo 'href="index.php?r=userProfile/view&id='.$is.'">'; } ?>
+								
+										
 										<i class="icon-user"></i>
 										Profil
 									</a>

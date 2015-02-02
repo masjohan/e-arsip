@@ -73,15 +73,18 @@ class UserProfileController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->fk_user));
 		}
-		$id = Yii::app()->user->id;
+		/*$id = Yii::app()->user->id;
 		$load=$this->loadModel($id);
 		$data = UserProfile::getProfile();
-		if(!empty($data))
-			$this->render('update',array('model'=>$load));
-		else
+		*/
+		/*if(!empty($data)){
+			$this->redirect("index.php?r=userProfile/update&id=$id",array('model'=>$load));
+		} else {
+		*/
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		//}
 	}
 
 	/**
@@ -92,11 +95,27 @@ class UserProfileController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$model2 = User::model()->findByPk($id);
+		$model3= new User;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['UserProfile']))
+		if (isset($_POST['UserProfile'])){
+            $model->attributes = $_POST['UserProfile'];
+            if ($model->save()) {
+                $modelEmail = new User;
+                $modelEmail->attributes = $_POST['User'];
+               // $modelEmail->email = $_POST['User']['email'];
+                if ($modelEmail->save())
+                    $this->redirect(array('view', 'id' => $model->id));
+            }
+        }
+ 
+        $this->render('update', array(
+            'model' => $model,
+            'model2'=>$model2,
+        ));
+    
+	/*	if(isset($_POST['UserProfile']))
 		{
 			$model->attributes=$_POST['UserProfile'];
 			if($model->save())
@@ -106,6 +125,7 @@ class UserProfileController extends Controller
 		$this->render('update',array(
 			'model'=>$model,
 		));
+		*/
 	}
 
 	/**
