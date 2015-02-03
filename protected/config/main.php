@@ -18,6 +18,7 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.extensions.jtogglecolumn.*',
+		'application.extensions.flash.*',
 	),
 
 	'modules'=>array(

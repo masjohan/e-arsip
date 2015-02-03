@@ -74,6 +74,7 @@ class GudangController extends Controller
 		{
 			$model->attributes=$_POST['Gudang'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -98,6 +99,7 @@ class GudangController extends Controller
 		{
 			$model->attributes=$_POST['Gudang'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was updated !");
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

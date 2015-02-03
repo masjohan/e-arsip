@@ -110,6 +110,7 @@ class ArchiveController extends Controller
 			{
 				exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
 				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
+					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('admin'));
 			}
 				//$this->redirect(array('view','id'=>$model->id));
@@ -128,10 +129,10 @@ class ArchiveController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$prevFile = $model->file;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		unset($_SESSION['namefile']);
+			
 			unset($_SESSION['id']);
 			unset($_SESSION['fk_gudang']);
 		Yii::app()->session['fk_gudang'] = $model->fk_gudang;
@@ -139,8 +140,31 @@ class ArchiveController extends Controller
 		if(isset($_POST['Archive']))
 		{
 			$model->attributes=$_POST['Archive'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$simpanArsip=CUploadedFile::getInstance($model,'file');
+			$model->file=CUploadedFile::getInstance($model,'file');     
+		    if(!empty($model->file))
+		    {
+		   		$name = $model->file->name;
+		   		
+				//Yii::app()->session['namefile'] = $name;
+		        exec("rmdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+				exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
+				
+			
+		    } elseif(empty($model->file)) {
+		    	//unset($_SESSION['namefile']);
+				//unset($_SESSION['id']);
+				//Yii::app()->session['namefile'] = $prevFile;
+		    	$model->file = $prevFile;
+		    }
+					
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', "Data was Updated !");			
+				$this->redirect(array('admin'));
+			}
+				
+				//$this->redirect(array('view','id'=>$model->id));
 		}
 
 		$this->render('update',array(

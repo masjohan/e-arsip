@@ -34,6 +34,8 @@ class UserProfileController extends Controller
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
+				//'users'=>'Yii::app()->user->name',
+				//'expression'=>'$model->isAdmin()',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -71,6 +73,7 @@ class UserProfileController extends Controller
 		{
 			$model->attributes=$_POST['UserProfile'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('view','id'=>$model->fk_user));
 		}
 		/*$id = Yii::app()->user->id;
@@ -101,12 +104,15 @@ class UserProfileController extends Controller
 		// $this->performAjaxValidation($model);
 		if (isset($_POST['UserProfile'])){
             $model->attributes = $_POST['UserProfile'];
+           if(!$model->save())
+           $model->addError('Error broooo !');
             if ($model->save()) {
-                $modelEmail = new User;
-                $modelEmail->attributes = $_POST['User'];
+                ////$modelEmail = new User;
+                //$modelEmail->attributes = $_POST['User'];
                // $modelEmail->email = $_POST['User']['email'];
-                if ($modelEmail->save())
-                    $this->redirect(array('view', 'id' => $model->id));
+               // if ($modelEmail->save())
+                		Yii::app()->user->setFlash('success', "Data was updated !");
+                    $this->redirect(array('view', 'id' => $model->fk_user));
             }
         }
  

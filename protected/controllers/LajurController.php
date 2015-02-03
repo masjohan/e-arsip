@@ -72,6 +72,7 @@ class LajurController extends Controller
 		{
 			$model->attributes=$_POST['Lajur'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -106,6 +107,7 @@ class LajurController extends Controller
 		{
 			$model->attributes=$_POST['Lajur'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was updated !");
 				$this->redirect(array('view','id'=>$model->id));
 		}
 

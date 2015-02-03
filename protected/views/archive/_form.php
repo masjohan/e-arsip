@@ -67,7 +67,8 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->ge
 		<td><?php echo $form->labelEx($model,'file'); ?></td>
 	</tr>
 		<tr>
-		<td><?php echo $form->fileField($model,'file',array('size'=>50,'maxlength'=>50)); ?>
+		<td><?php echo  CHtml::activeFileField($model,'file'); ?>
+			<?php //echo $form->fileField($model,'file',array('size'=>50,'maxlength'=>50)); ?>
 		<?php //echo $form->textField($model,'file',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
 		<tr>

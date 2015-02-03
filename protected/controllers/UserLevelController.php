@@ -71,6 +71,7 @@ class UserLevelController extends Controller
 		{
 			$model->attributes=$_POST['UserLevel'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('view','id'=>$model->id_level));
 		}
 
@@ -95,6 +96,7 @@ class UserLevelController extends Controller
 		{
 			$model->attributes=$_POST['UserLevel'];
 			if($model->save())
+					Yii::app()->user->setFlash('success', "Data was updated !");
 				$this->redirect(array('view','id'=>$model->id_level));
 		}
 

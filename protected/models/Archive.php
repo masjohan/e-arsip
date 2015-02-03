@@ -56,10 +56,10 @@ class Archive extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_gudang, fk_lajur,years,month, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan, pelaksana_hasil', 'required'),
-			array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
+			array('fk_gudang, file, fk_lajur,years,month, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan, pelaksana_hasil', 'required'),
+			//array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
 			array('fk_gudang, fk_lajur, nomor_definitif, kode_mslh, r_aktif, r_inaktif', 'numerical', 'integerOnly'=>true),
-			array('file, kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
+			array('kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
 			array('masalah', 'length', 'max'=>100),
 			array('thn_retensi', 'length', 'max'=>4),
 			array('edit_at', 'safe'),
@@ -89,7 +89,8 @@ class Archive extends CActiveRecord
 		$this->kode_mslh = '001';
 		$this->j_retensi = $this->r_aktif + $this->r_inaktif;
 		$this->thn_retensi = $this->years + $this->j_retensi;
-		$this->status = 1;
+		//$this->status = 1;
+		//$this->file = $_SESSION['namefile'];
 		return true;
 	}
 	/**

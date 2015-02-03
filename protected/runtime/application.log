@@ -4476,3 +4476,482 @@ Stack trace:
 REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
 in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (106)
 in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:14:08 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (118)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:26:06 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (94)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:30:42 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (119)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:34:38 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (119)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:35:59 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (119)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:43:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserController.php:182
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserController.php(138): UserController->loadModel('4')
+#1 [internal function]: UserController->actionDelete('4')
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(1116): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('user/delete')
+#17 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/e-ace/index.php?ajax=user-grid&id=4&r=user%2Fdelete
+HTTP_REFERER=http://localhost/e-ace/index.php?r=user/admin
+---
+2015/02/03 09:44:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserController.php:182
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserController.php(137): UserController->loadModel('4')
+#1 [internal function]: UserController->actionDelete('4')
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(1116): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('user/delete')
+#17 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/e-ace/index.php?ajax=user-grid&id=4&r=user%2Fdelete
+HTTP_REFERER=http://localhost/e-ace/index.php?r=user/admin
+---
+2015/02/03 09:45:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE). The SQL statement executed was: DELETE FROM `lajur` WHERE `lajur`.`id`=6.
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (124)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:45:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE). The SQL statement executed was: DELETE FROM `lajur` WHERE `lajur`.`id`=6' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1807): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1227): CActiveRecord->deleteByPk('6')
+#2 /home/guido/Project/e-ace/protected/controllers/LajurController.php(124): CActiveRecord->delete()
+#3 [internal function]: LajurController->actionDelete('6')
+#4 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(LajurController), Array)
+#5 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(LajurController), Object(ReflectionMethod), Array)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1116): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('delete')
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/delete')
+#19 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/e-ace/index.php?ajax=lajur-grid&id=6&r=lajur%2Fdelete
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/03 09:47:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE). The SQL statement executed was: DELETE FROM `lajur` WHERE `lajur`.`id`=6.
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (124)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:47:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE). The SQL statement executed was: DELETE FROM `lajur` WHERE `lajur`.`id`=6' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1807): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1227): CActiveRecord->deleteByPk('6')
+#2 /home/guido/Project/e-ace/protected/controllers/LajurController.php(124): CActiveRecord->delete()
+#3 [internal function]: LajurController->actionDelete('6')
+#4 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(LajurController), Array)
+#5 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(LajurController), Object(ReflectionMethod), Array)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1116): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('delete')
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/delete')
+#19 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#20 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/e-ace/index.php?ajax=lajur-grid&id=6&r=lajur%2Fdelete
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/03 09:48:50 [warning] [application] Failed to set unsafe attribute "keterangan" of "User".
+in /home/guido/Project/e-ace/protected/controllers/UserController.php (94)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:52:38 [error] [php] Undefined index: User (/home/guido/Project/e-ace/protected/controllers/UserProfileController.php:107)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): UserProfileController->runAction()
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (107)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 09:53:23 [error] [exception.CException] exception 'CException' with message 'Property "UserProfile.id" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('id')
+#1 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(111): CActiveRecord->__get('id')
+#2 [internal function]: UserProfileController->actionUpdate('1')
+#3 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=1
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=1
+---
+2015/02/03 10:09:44 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.flash.Flash" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(146): YiiBase::import('application.ext...', true)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(DashboardController), 'application.ext...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('application.ext...', Array)
+#3 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/main.php(288): CBaseController->widget('application.ext...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /home/guido/Project/yii-16/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(214): COutputProcessor->run()
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#13 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(784): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+HTTP_REFERER=http://localhost/e-ace/index.php?r=login
+---
+2015/02/03 10:10:11 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.flash.Flash" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(146): YiiBase::import('application.ext...', true)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(DashboardController), 'application.ext...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('application.ext...', Array)
+#3 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/main.php(288): CBaseController->widget('application.ext...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /home/guido/Project/yii-16/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(214): COutputProcessor->run()
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#13 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(784): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+HTTP_REFERER=http://localhost/e-ace/index.php?r=login
+---
+2015/02/03 10:10:28 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.flash.Flash" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(146): YiiBase::import('application.ext...', true)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(DashboardController), 'application.ext...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('application.ext...', Array)
+#3 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/main.php(288): CBaseController->widget('application.ext...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /home/guido/Project/yii-16/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(214): COutputProcessor->run()
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#13 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(784): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+---
+2015/02/03 10:10:50 [error] [exception.CException] exception 'CException' with message 'Alias "application.ext.flash.Flash" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(146): YiiBase::import('application.ext...', true)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(DashboardController), 'application.ext...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('application.ext...', Array)
+#3 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/main.php(288): CBaseController->widget('application.ext...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /home/guido/Project/yii-16/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(214): COutputProcessor->run()
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 /home/guido/Project/e-ace/themes/themes/ace/views/layouts/column1.php(6): CBaseController->endContent()
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#13 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(784): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/DashboardController.php(47): CController->render('user/index')
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): DashboardController->actionIndex()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('dashboard')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?r=dashboard
+---
+2015/02/03 10:11:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in /home/guido/Project/e-ace/protected/controllers/UserController.php:182
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/UserController.php(138): UserController->loadModel('5')
+#1 [internal function]: UserController->actionDelete('5')
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserController), Array)
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserController), Object(ReflectionMethod), Array)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(1116): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('delete')
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('user/delete')
+#17 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/e-ace/index.php?ajax=user-grid&id=5&r=user%2Fdelete
+HTTP_REFERER=http://localhost/e-ace/index.php?r=user/admin
+---
+2015/02/03 10:51:14 [error] [php] array_map(): Argument #2 should be an array (/home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php:115)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#1 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#3 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#4 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/view&id=1
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 10:51:29 [error] [php] array_map(): Argument #2 should be an array (/home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php:115)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): UserProfileController->filterAccessControl()
+#1 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#3 /home/guido/Project/yii-16/framework/web/CController.php(265): UserProfileController->runActionWithFilters()
+#4 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): UserProfileController->run()
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#6 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=userProfile/view&id=1
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 10:52:54 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: UPDATE `user_profile` SET `fk_user`=:yp0, `address`=:yp1, `about_me`=:yp2, `photo`=:yp3 WHERE `user_profile`.`fk_user`=2.
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (107)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 10:52:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: UPDATE `user_profile` SET `fk_user`=:yp0, `address`=:yp1, `about_me`=:yp2, `photo`=:yp3 WHERE `user_profile`.`fk_user`=2' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1753): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1127): CActiveRecord->updateByPk('2', Array)
+#2 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->update(NULL)
+#3 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(107): CActiveRecord->save()
+#4 [internal function]: UserProfileController->actionUpdate('2')
+#5 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#6 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#17 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=2
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=2
+---
+2015/02/03 11:01:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: UPDATE `user_profile` SET `fk_user`=:yp0, `address`=:yp1, `about_me`=:yp2, `photo`=:yp3 WHERE `user_profile`.`fk_user`=2.
+in /home/guido/Project/e-ace/protected/controllers/UserProfileController.php (107)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 11:01:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: UPDATE `user_profile` SET `fk_user`=:yp0, `address`=:yp1, `about_me`=:yp2, `photo`=:yp3 WHERE `user_profile`.`fk_user`=2' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1753): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1127): CActiveRecord->updateByPk('2', Array)
+#2 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->update(NULL)
+#3 /home/guido/Project/e-ace/protected/controllers/UserProfileController.php(107): CActiveRecord->save()
+#4 [internal function]: UserProfileController->actionUpdate('2')
+#5 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(UserProfileController), Array)
+#6 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(UserProfileController), Object(ReflectionMethod), Array)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#14 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('userProfile/upd...')
+#17 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#18 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#19 {main}
+REQUEST_URI=/e-ace/index.php?r=userProfile/update&id=2
+HTTP_REFERER=http://localhost/e-ace/index.php?r=userProfile/update&id=2
+---
+2015/02/03 11:41:31 [error] [php] Undefined index: namafile (/home/guido/Project/e-ace/protected/models/Archive.php:93)
+Stack trace:
+#0 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(151): Archive->save()
+#1 unknown(0): ArchiveController->actionUpdate()
+#2 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): ArchiveController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): ArchiveController->filterAccessControl()
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): ArchiveController->runActionWithFilters()
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): ArchiveController->run()
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=archive/update&id=2
+in /home/guido/Project/e-ace/protected/models/Archive.php (93)
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (151)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 12:02:50 [warning] [application] Failed to set unsafe attribute "file" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (143)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 13:10:48 [error] [php] Undefined variable: smodel (/home/guido/Project/e-ace/protected/controllers/ArchiveController.php:152)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): ArchiveController->runAction()
+#3 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): ArchiveController->filterAccessControl()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(265): ArchiveController->runActionWithFilters()
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): ArchiveController->run()
+#10 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=archive/update&id=2
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (152)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 13:13:09 [error] [exception.CException] exception 'CException' with message 'Archive and its behaviors do not have a method or closure named "saveAs".' in /home/guido/Project/yii-16/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(227): CComponent->__call('saveAs', Array)
+#1 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(152): CActiveRecord->__call('saveAs', Array)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(152): Archive->saveAs('/home/guido/Pro...')
+#3 [internal function]: ArchiveController->actionUpdate('3')
+#4 /home/guido/Project/yii-16/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ArchiveController), Array)
+#5 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ArchiveController), Object(ReflectionMethod), Array)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#9 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('update')
+#15 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/update')
+#16 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#17 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/update&id=3
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/update&id=3
+---

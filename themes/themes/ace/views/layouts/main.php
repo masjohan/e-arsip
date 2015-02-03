@@ -282,7 +282,37 @@
 							</small>
 						</h1>
 					</div><!--/.page-header-->
+					<?php
+								$flashMessages = Yii::app()->user->getFlashes();
+								if ($flashMessages) { ?>
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="alert alert-block alert-success">
+								<button type="button" class="close" data-dismiss="alert">
+									<i class="icon-remove"></i>
+								</button>
 
+								<i class="icon-ok green"></i>
+									<?php
+								   	    foreach($flashMessages as $key => $message) {
+								        echo $message;
+								    }
+								    
+								
+								?>
+								
+							</div>
+							<?php
+							Yii::app()->clientScript->registerScript(
+							   'myHideEffect',
+							   '$(".info").animate({opacity: 1.0}, 3000).fadeOut("slow");',
+							   CClientScript::POS_READY
+							);
+							?>
+								
+						</div>
+				</div>
+				<?php } ?>
 
 					<div class="row-fluid">
 						<div class="span12">
