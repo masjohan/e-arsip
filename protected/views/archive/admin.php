@@ -31,6 +31,8 @@ $('.search-form form').submit(function(){
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'archive-grid',
 	'dataProvider'=>$model->search(),
+	'pager' => array('cssFile' => Yii::app()->baseUrl . '/css/silver/pager.css'),
+	//'cssFile' => Yii::app()->request->baseUrl.'/css/silver/styles.css',
 	'filter'=>$model,
 	'columns'=>array(
 		//'id',

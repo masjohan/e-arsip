@@ -4955,3 +4955,190 @@ Stack trace:
 REQUEST_URI=/e-ace/index.php?r=archive/update&id=3
 HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/update&id=3
 ---
+2015/02/03 17:50:52 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:50:58 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:51:17 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:51:26 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:51:49 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:51:54 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:51:59 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/03 17:52:03 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/04 15:33:54 [error] [php] Missing argument 2 for YiiBase::t(), called in /home/guido/Project/e-ace/protected/views/gudang/admin.php on line 56 and defined (/home/guido/Project/yii-16/framework/YiiBase.php:582)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): GudangController->renderInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(869): GudangController->renderFile()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(782): GudangController->renderPartial()
+#3 /home/guido/Project/e-ace/protected/controllers/GudangController.php(152): GudangController->render()
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): GudangController->actionAdmin()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): GudangController->runAction()
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): GudangController->filterAccessControl()
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): GudangController->runActionWithFilters()
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): GudangController->run()
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=gudang/admin
+in /home/guido/Project/e-ace/protected/views/gudang/admin.php (56)
+in /home/guido/Project/e-ace/protected/controllers/GudangController.php (152)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/04 15:35:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested view "index" was not found.' in /home/guido/Project/yii-16/framework/web/actions/CViewAction.php:112
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/actions/CViewAction.php(123): CViewAction->resolveView('index')
+#1 /home/guido/Project/yii-16/framework/web/actions/CAction.php(76): CViewAction->run()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(308): CAction->runWithParams(Array)
+#3 /home/guido/Project/yii-16/framework/web/CController.php(286): CController->runAction(Object(CViewAction))
+#4 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CViewAction), Array)
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('page')
+#6 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('site/page')
+#7 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#8 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/e-ace/index.php?r=site/page
+HTTP_REFERER=http://localhost/e-ace/index.php?r=gudang/admin
+---
+2015/02/04 15:35:43 [error] [php] strpos() expects parameter 1 to be string, array given (/home/guido/Project/yii-16/framework/web/CController.php:706)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(586): CTheme->getViewFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(867): GudangController->getViewFile()
+#2 /home/guido/Project/e-ace/protected/controllers/GudangController.php(53): GudangController->renderPartial()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): GudangController->actionPage()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): GudangController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): GudangController->filterAccessControl()
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): GudangController->runActionWithFilters()
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): GudangController->run()
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=gudang/page
+in /home/guido/Project/e-ace/protected/controllers/GudangController.php (53)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/04 15:36:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "page".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('page')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('page')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('gudang/page')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=gudang/page
+HTTP_REFERER=http://localhost/e-ace/index.php?r=gudang/admin
+---
+2015/02/05 09:41:44 [error] [exception.CException] exception 'CException' with message 'Property "CGridView.0" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(161): CComponent->__set('0', Array)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(ArchiveController), 'zii.widgets.gri...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 /home/guido/Project/e-ace/protected/views/archive/admin.php(92): CBaseController->widget('zii.widgets.gri...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#8 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(245): CController->render('admin', Array)
+#9 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionAdmin()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#19 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/admin')
+#20 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/admin
+HTTP_REFERER=http://192.168.22.5/e-ace/index.php?r=dashboard
+---
+2015/02/05 09:41:58 [error] [exception.CException] exception 'CException' with message 'Property "CGridView.0" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:173
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWidgetFactory.php(161): CComponent->__set('0', Array)
+#1 /home/guido/Project/yii-16/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(ArchiveController), 'zii.widgets.gri...', Array)
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#3 /home/guido/Project/e-ace/protected/views/archive/admin.php(92): CBaseController->widget('zii.widgets.gri...', Array)
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#5 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#7 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#8 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(245): CController->render('admin', Array)
+#9 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionAdmin()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#19 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/admin')
+#20 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#21 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/admin
+HTTP_REFERER=http://192.168.22.5/e-ace/index.php?r=gudang/admin
+---
+2015/02/05 09:45:19 [error] [php] Array to string conversion (/home/guido/Project/yii-16/framework/web/helpers/CHtml.php:2378)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(1531): resolveNameID()
+#1 /home/guido/Project/yii-16/framework/zii/widgets/grid/CDataColumn.php(104): activeTextField()
+#2 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridColumn.php(253): CDataColumn->getFilterCellContent()
+#3 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridColumn.php(119): CDataColumn->renderFilterCellContent()
+#4 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(538): CDataColumn->renderFilterCell()
+#5 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(516): CGridView->renderFilter()
+#6 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(486): CGridView->renderTableHeader()
+#7 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(181): CGridView->renderItems()
+#8 unknown(0): CGridView->renderSection()
+#9 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#10 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(149): CGridView->renderContent()
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(181): CGridView->run()
+#12 /home/guido/Project/e-ace/protected/views/archive/admin.php(92): ArchiveController->widget()
+#13 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require()
+#14 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): ArchiveController->renderInternal()
+#15 /home/guido/Project/yii-16/framework/web/CController.php(869): ArchiveController->renderFile()
+#16 /home/guido/Project/yii-16/framework/web/CController.php(782): ArchiveController->renderPartial()
+#17 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(245): ArchiveController->render()
+#18 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionAdmin()
+#19 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#20 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): ArchiveController->runAction()
+#21 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#22 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#23 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): ArchiveController->filterAccessControl()
+#24 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#25 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#26 /home/guido/Project/yii-16/framework/web/CController.php(265): ArchiveController->runActionWithFilters()
+#27 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): ArchiveController->run()
+#28 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#29 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#30 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=archive/admin
+in /home/guido/Project/e-ace/protected/views/archive/admin.php (92)
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (245)
+in /home/guido/Project/e-ace/index.php (13)

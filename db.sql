@@ -10,10 +10,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for e_arsip
-DROP DATABASE IF EXISTS `e_arsip`;
-CREATE DATABASE IF NOT EXISTS `e_arsip` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `e_arsip`;
 
 
 -- Dumping structure for table e_arsip.arsip
@@ -63,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `arsipnew` (
   `nilai_guna` varchar(50) NOT NULL,
   `tingkat_perkembangan` varchar(50) NOT NULL,
   `pelaksana_hasil` varchar(50) NOT NULL,
-  `status` enum('0','1') NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '1',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `by_user` varchar(50) NOT NULL,
@@ -72,23 +68,25 @@ CREATE TABLE IF NOT EXISTS `arsipnew` (
   KEY `fk_lajur` (`fk_lajur`),
   CONSTRAINT `FK_arsipnew_gudang` FOREIGN KEY (`fk_gudang`) REFERENCES `gudang` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `FK_arsipnew_lajur` FOREIGN KEY (`fk_lajur`) REFERENCES `lajur` (`id`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table e_arsip.arsipnew: ~12 rows (approximately)
+-- Dumping data for table e_arsip.arsipnew: ~13 rows (approximately)
 /*!40000 ALTER TABLE `arsipnew` DISABLE KEYS */;
 REPLACE INTO `arsipnew` (`id`, `fk_gudang`, `fk_lajur`, `file`, `kode_klasifikasi`, `hasil_pelaksanaan`, `nomor_definitif`, `isi_berkas`, `unit_pengolah`, `bln_thn`, `month`, `years`, `bentuk_redaksi`, `media`, `kelengkapan`, `masalah`, `uraian_masalah`, `kode_mslh`, `r_aktif`, `r_inaktif`, `j_retensi`, `thn_retensi`, `nilai_guna`, `tingkat_perkembangan`, `pelaksana_hasil`, `status`, `create_at`, `edit_at`, `by_user`) VALUES
-	(2, 1, 1, 'G.131.14.0027.pdf', '213', 'sipp', 4, 'aku tidak bisa lepas lagi', 'esdm', '0000-00-00', '8', '2006', 'L', 'T', 'sip', 'HARI RAYA/BESAR', 'SE Menyambut ldul Adha 1423 H Th 2003 dari Panitia Pelaksana ldul Adha 1423', 1, 2, 3, 5, '2015', 'Administrasi', 'Salinan', '3/345', '1', '2015-01-21 14:59:37', '2015-01-21 14:59:37', 'admin'),
-	(3, 2, 2, 'G.131.14.0033.pdf', '123', 'asdfas', 321, 'aku jika kamu kan mengerti', 'esdm', '0000-00-00', '3', '2007', 'K', 'T', 'soppp', 'HARI RAYA/BESAR', 'SE Menyambut ldul Adha 1423 H Th 2003 dari Panitia Pelaksana ldul Adha 1423', 1, 1, 2, 3, '2014', 'Keuangan', 'Tembusan', '3/349', '1', '2015-01-21 15:25:05', '2015-01-21 15:25:05', 'admin'),
+	(2, 3, 5, 'G.211.12.0001.pdf', '213', 'sipp', 4, 'aku tidak bisa lepas lagi', 'esdm', '0000-00-00', '8', '2006', 'L', 'T', 'sip', 'HARI RAYA/BESAR', 'SE Menyambut ldul Adha 1423 H Th 2003 dari Panitia Pelaksana ldul Adha 1423', 1, 2, 3, 5, '2011', 'Administrasi', 'Salinan', '3/345', '0', '2015-01-21 14:59:37', '2015-02-03 13:14:36', 'wisnu'),
+	(3, 1, 4, 'G.231.11.0001.pdf', '123', 'asdfas', 321, 'aku jika kamu kan mengerti', 'esdm', '0000-00-00', '3', '2007', 'K', 'T', 'soppp', 'HARI RAYA/BESAR', 'SE Menyambut ldul Adha 1423 H Th 2003 dari Panitia Pelaksana ldul Adha 1423', 1, 1, 2, 3, '2010', 'Keuangan', 'Tembusan', '3/349', '0', '2015-01-21 15:25:05', '2015-02-03 13:14:12', 'wisnu'),
 	(5, 2, 2, 'G.131.14.0060.pdf', '10213', 'sipp', 1, 'jdfj', 'aspek', '0000-00-00', '6', '2008', 'K', 'NT', 'fgasdf', 'HARI RAYA/BESAR', 'Pengumpulan hewan qurban dan shodaqoh hari raya idul Adha 1426 H', 1, 1, 2, 3, '2010', 'Administrasi', 'Asli', '4/234', '1', '2015-01-22 11:36:23', '2015-01-22 11:36:23', 'admin'),
-	(6, 2, 3, 'G.211.10.0001.pdf', '002', 'sa', 192, 'MAsalah kelembagaan', 'aspek', '0000-00-00', '7', '2014', 'S', 'T', 'ok', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'sambutan Gubernur Jawa Tengah dalam rangka HUT Rl Ke 56', 1, 1, 2, 3, '2015', 'Administrasi', 'Tembusan', '1/221', '1', '2015-01-28 18:08:44', '2015-01-28 18:08:44', 'admin'),
+	(6, 2, 3, 'G.211.10.0001.pdf', '002', 'sa', 192, 'MAsalah kelembagaan', 'aspek', '0000-00-00', '7', '2014', 'S', 'T', 'ok', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'sambutan Gubernur Jawa Tengah dalam rangka HUT Rl Ke 56', 1, 1, 2, 3, '2015', 'Administrasi', 'Tembusan', '1/221', '0', '2015-01-28 18:08:44', '2015-01-28 18:08:44', 'admin'),
 	(7, 1, 4, 'G.231.11.0040.pdf', '213', 'sipp', 1, 'sdfsafafaf', 'esdm', '0000-00-00', '1', '2009', 'K', 'NT', 'fgasdf', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'penyeleng garaan upacara\r\r\nperingatan Hari Kesaktian Pancasila Tahun 2001', 1, 1, 2, 3, '2015', 'Keuangan', 'Tembusan', '1/221', '0', '2015-01-28 18:58:07', '2015-01-28 18:58:07', 'admin'),
 	(8, 2, 2, 'earsip.pdf', '212', 'baik', 5, 'selalu siap sedia', 'esdm', '0000-00-00', '1', '2002', 'S', 'T', 'OK', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'upacara bendera penngatan Hari Sumpah Pemuda', 1, 1, 2, 3, '2018', 'Administrasi', 'Tembusan', '3/346', '1', '2015-01-29 15:16:19', '2015-01-29 15:16:19', 'admin'),
 	(9, 2, 2, 'G.131.14.0012 (1).pdf', '005', 'baik', 14, 'Perayaan Hari ultah', 'aspek', '0000-00-00', '3', '2012', 'L', 'T', 'sip', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'Pedoman Peringatan HUT RI ke-59 iahun 2004', 1, 1, 4, 5, '2017', 'Keuangan', 'Tembusan', '3/347', '0', '2015-01-31 08:36:48', '2015-01-31 08:36:48', 'wisnu'),
-	(10, 2, 2, 'contoh paper_Konsep Sistem Informasi.pdf', '007', 'baik', 4, 'coba lagi', 'esdm', '0000-00-00', '3', '2010', 'N', 'T', 'OK', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'Pedoman penyelenggaraan upacara harkitnas 2006', 1, 2, 3, 5, '2015', 'Keuangan', 'Tembusan', '3/348', '0', '2015-01-31 08:38:45', '2015-01-31 08:38:45', 'wisnu'),
+	(10, 2, 3, 'G.211.11.0001.pdf', '007', 'baik', 4, 'coba lagi', 'esdm', '0000-00-00', '3', '2010', 'N', 'T', 'OK', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'Pedoman penyelenggaraan upacara harkitnas 2006', 1, 2, 3, 5, '2015', 'Keuangan', 'Tembusan', '3/348', '1', '2015-01-31 08:38:45', '2015-02-03 11:53:56', 'wisnu'),
 	(11, 3, 5, 'G.131.14.0014.pdf', '213', 'sipp', 4, 'Perayaan hari jadi bayangakara', 'esdm', '0000-00-00', '4', '2010', 'L', 'NT', 'sip', 'HARI RAYA KEAGAMAAN', 'undangan pengajian keliling putaran ke 4', 1, 1, 2, 3, '2013', 'Keuangan', 'Tembusan', '1/221', '0', '2015-01-31 08:40:10', '2015-01-31 08:40:10', 'wisnu'),
 	(12, 4, 6, 'G.231.11.0100.pdf', '219', 'sipp', 9, 'haloooo', 'akon', '0000-00-00', '5', '2015', 'L', 'T', 'OK', 'HARI RAYA KEAGAMAAN', 'jadwal tarawih keliling\r\r\nIahun 142412003\r', 1, 1, 3, 4, '2019', 'Keuangan', 'Copy', '3/348', '0', '2015-01-31 08:42:53', '2015-01-31 08:42:53', 'wisnu'),
 	(13, 3, 5, 'contoh paper_Konsep Sistem Informasi.pdf', '009', 'sipp', 19, 'heeeelp', 'esdm', '0000-00-00', '9', '2013', 'K', 'NT', 'sip', 'HARI RAYA KEAGAMAAN', 'peningkatan amalan di\r\r\nbulan ramadhan\r', 1, 1, 3, 4, '2017', 'Keuangan', 'Asli', '1/221', '0', '2015-01-31 08:44:06', '2015-01-31 08:44:06', 'wisnu'),
-	(14, 4, 6, 'G.131.14.0014.pdf', '008', 'baik', 1, 'tesss', 'aspek', '0000-00-00', '9', '2010', 'L', 'T', 'OK', 'Perayaan Hari jadi Pahlawan OK', 'aku pun ingin mengerti', 1, 1, 2, 3, '2013', 'Keuangan', 'Salinan', '3/350', '1', '2015-02-02 14:34:04', '2015-02-02 14:34:04', 'wisnu');
+	(14, 4, 6, 'G.131.14.0014.pdf', '008', 'baik', 1, 'tesss', 'aspek', '0000-00-00', '9', '2010', 'L', 'T', 'OK', 'Perayaan Hari jadi Pahlawan OK', 'aku pun ingin mengerti', 1, 1, 2, 3, '2013', 'Keuangan', 'Salinan', '3/350', '0', '2015-02-02 14:34:04', '2015-02-02 14:34:04', 'wisnu'),
+	(15, 2, 3, 'G.211.12.0035.pdf', '212', 'baik', 9, 'test', 'akon', '0000-00-00', '3', '2011', 'L', 'T', 'sip', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'Hari ultah indonesia', 1, 2, 3, 5, '2016', 'Keuangan', 'Tembusan', '1/229', '1', '2015-02-03 13:16:49', '2015-02-03 13:17:15', 'wisnu'),
+	(16, 3, 5, 'G.131.14.0012 (1).pdf', '009', 'baik', 321, 'halo', 'esdm', '0000-00-00', '3', '2012', 'L', 'NT', 'sip', 'HARI NASTONAL (17AGUSTUS. HARI PAHLAWAN, HARI ANAK,HKSN dsb)', 'test', 1, 2, 3, 5, '2017', 'Administrasi', 'Asli', '3/348', '1', '2015-02-03 13:25:54', '2015-02-03 13:25:54', 'wisnu');
 /*!40000 ALTER TABLE `arsipnew` ENABLE KEYS */;
 
 
@@ -128,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `lajur` (
   `by_user` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_gudang` (`fk_gudang`),
-  CONSTRAINT `FK_lajur_gudang` FOREIGN KEY (`fk_gudang`) REFERENCES `gudang` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `FK_lajur_gudang` FOREIGN KEY (`fk_gudang`) REFERENCES `gudang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT COMMENT='Tabel lajur gudang tempat penyimpanan arsip fisik';
 
 -- Dumping data for table e_arsip.lajur: ~6 rows (approximately)
@@ -177,13 +175,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `email` (`email`),
   KEY `fk_level` (`fk_level`),
   CONSTRAINT `FK1_user_level` FOREIGN KEY (`fk_level`) REFERENCES `user_level` (`id_level`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table e_arsip.user: ~3 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 REPLACE INTO `user` (`id_user`, `username`, `password`, `name_person`, `auth_key`, `email`, `keterangan`, `fk_level`, `status`, `create_at`, `edit_at`, `by_user`) VALUES
-	(1, 'wisnu', '65c9cb8e44b1a85971fc55cc0127e923', 'Wisnu Agung Pro', '54cfa6cdd193a6.84517310', 'wisnu@multisolusi.infos', 'iok', 1, 1, '2015-01-30 11:55:35', '2015-02-02 23:33:17', 'wisnu'),
-	(2, 'narto', 'b0303c46bd0c4eea7a619e88196b26b6', 'Wihanarto', '54cc8d94c3e4f9.44041778', 'narto@nar.com', 'narto', 1, 1, '2015-01-30 14:31:20', '2015-01-31 15:08:52', 'wisnu'),
+	(1, 'wisnu', '338d726bd8f3fbec819b48b99b38df44', 'Wisnu Agung Pro', '54d032d2588928.12755677', 'wisnu@multisolusi.info', 'iok', 1, 1, '2015-01-30 11:55:35', '2015-02-03 09:30:42', 'wisnu'),
+	(2, 'narto', 'a73cb87c28575a48761f5bfd19bd54a9', 'Wihanarto', '54d0340f8b3171.24447708', 'narto@nar.com', 'narto', 1, 1, '2015-01-30 14:31:20', '2015-02-03 09:35:59', 'wisnu'),
 	(3, 'wahyu', '3564c12391a8e060a7f324988d8875c0', 'Wahyu Hendro', '54cc57a2d5f355.26165726', 'whhendro91@gmail.com', '', 2, 1, '2015-01-31 11:18:42', '2015-01-31 11:18:42', 'wisnu');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
