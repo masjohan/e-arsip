@@ -5142,3 +5142,873 @@ REQUEST_URI=/e-ace/index.php?r=archive/admin
 in /home/guido/Project/e-ace/protected/views/archive/admin.php (92)
 in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (245)
 in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 12:13:14 [error] [exception.CException] exception 'CException' with message 'Property "Archive." is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('')
+#1 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2728): CActiveRecord->__get('')
+#2 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(2451): CHtml::resolveValue(Object(Archive), '')
+#3 /home/guido/Project/yii-16/framework/web/helpers/CHtml.php(1533): CHtml::activeInputField('text', Object(Archive), '', Array)
+#4 /home/guido/Project/yii-16/framework/web/widgets/CActiveForm.php(792): CHtml::activeTextField(Object(Archive), '', Array)
+#5 /home/guido/Project/e-ace/protected/views/archive/_form.php(112): CActiveForm->textField(Object(Archive), '', Array)
+#6 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#7 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#8 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#9 /home/guido/Project/e-ace/protected/views/archive/create.php(18): CController->renderPartial('_form', Array)
+#10 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#12 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#14 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(121): CController->render('create', Array)
+#15 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#16 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#17 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#19 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#20 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#23 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#24 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#26 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#27 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#28 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:16:02 [error] [exception.CException] exception 'CException' with message 'Alias "ext.actions.XSuggestAction" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/YiiBase.php(196): YiiBase::import('ext.actions.XSu...', true)
+#1 /home/guido/Project/yii-16/framework/web/CController.php(440): YiiBase::createComponent(Array, Object(RequestController), 'suggestSKPD')
+#2 /home/guido/Project/yii-16/framework/web/CController.php(417): CController->createActionFromMap(Array, 'suggestSKPD', 'suggestSKPD')
+#3 /home/guido/Project/yii-16/framework/web/CController.php(259): CController->createAction('suggestSKPD')
+#4 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestSKPD')
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#6 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestSKPD&term=a
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:18:26 [error] [exception.CException] exception 'CException' with message 'Alias "ext.actions.XSuggestAction" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/YiiBase.php(196): YiiBase::import('ext.actions.XSu...', true)
+#1 /home/guido/Project/yii-16/framework/web/CController.php(440): YiiBase::createComponent(Array, Object(RequestController), 'suggestSKPD')
+#2 /home/guido/Project/yii-16/framework/web/CController.php(417): CController->createActionFromMap(Array, 'suggestSKPD', 'suggestSKPD')
+#3 /home/guido/Project/yii-16/framework/web/CController.php(259): CController->createAction('suggestSKPD')
+#4 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestSKPD')
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#6 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestSKPD&term=0
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:18:52 [error] [exception.CException] exception 'CException' with message 'Alias "ext.actions.XSuggestAction" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /home/guido/Project/yii-16/framework/YiiBase.php:323
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/YiiBase.php(196): YiiBase::import('ext.actions.XSu...', true)
+#1 /home/guido/Project/yii-16/framework/web/CController.php(440): YiiBase::createComponent(Array, Object(RequestController), 'suggestSKPD')
+#2 /home/guido/Project/yii-16/framework/web/CController.php(417): CController->createActionFromMap(Array, 'suggestSKPD', 'suggestSKPD')
+#3 /home/guido/Project/yii-16/framework/web/CController.php(259): CController->createAction('suggestSKPD')
+#4 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestSKPD')
+#5 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#6 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestSKPD&term=b
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:28:00 [error] [exception.CException] exception 'CException' with message 'Archive and its behaviors do not have a method or closure named "getBox".' in /home/guido/Project/yii-16/framework/base/CComponent.php:266
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(227): CComponent->__call('getBox', Array)
+#1 /home/guido/Project/e-ace/protected/views/archive/_form.php(58): CActiveRecord->__call('getBox', Array)
+#2 /home/guido/Project/e-ace/protected/views/archive/_form.php(58): Archive->getBox()
+#3 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#4 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#6 /home/guido/Project/e-ace/protected/views/archive/create.php(18): CController->renderPartial('_form', Array)
+#7 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#8 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#9 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#10 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#11 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(121): CController->render('create', Array)
+#12 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#13 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#15 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#17 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#22 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#23 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:39:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "loadbox".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('loadbox')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('loadbox')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/loadbox')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/loadbox
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 12:40:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "loadbox".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('loadbox')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('loadbox')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/loadbox')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/loadbox
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 13:45:40 [error] [php] Trying to get property of non-object (/home/guido/Project/e-ace/protected/models/Lajur.php:107)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): LajurController->renderInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(869): LajurController->renderFile()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(782): LajurController->renderPartial()
+#3 /home/guido/Project/e-ace/protected/controllers/LajurController.php(156): LajurController->render()
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): LajurController->actionAdmin()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): LajurController->runAction()
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): LajurController->filterAccessControl()
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): LajurController->runActionWithFilters()
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): LajurController->run()
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=lajur/admin
+in /home/guido/Project/e-ace/protected/models/Lajur.php (107)
+in /home/guido/Project/e-ace/protected/views/lajur/admin.php (33)
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (156)
+2015/02/09 13:46:47 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fkGudang.nama' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE fkGudang.nama LIKE :ycp0.
+in /home/guido/Project/e-ace/protected/views/lajur/admin.php (55)
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (156)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 13:46:47 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'fkGudang.nama' in 'where clause'. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE fkGudang.nama LIKE :ycp0' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1606): CDbCommand->queryScalar()
+#2 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/guido/Project/yii-16/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/guido/Project/yii-16/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(125): CDataProvider->getData()
+#7 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(339): CBaseListView->init()
+#8 /home/guido/Project/yii-16/framework/web/CBaseController.php(147): CGridView->init()
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 /home/guido/Project/e-ace/protected/views/lajur/admin.php(55): CBaseController->widget('zii.widgets.gri...', Array)
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/LajurController.php(156): CController->render('admin', Array)
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): LajurController->actionAdmin()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/admin')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?Lajur%5Bkd_lajur%5D=&Lajur%5Bfk_gudang%5D=A&Lajur%5Bnama%5D=&Lajur%5Bketerangan%5D=&Lajur_page=1&ajax=lajur-grid&r=lajur%2Fadmin
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/09 13:48:03 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>fkGudang->nama LIKE '%a%'' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE $this->fkGudang->nama LIKE :ycp0.
+in /home/guido/Project/e-ace/protected/views/lajur/admin.php (55)
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (156)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 13:48:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>fkGudang->nama LIKE '%a%'' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE $this->fkGudang->nama LIKE :ycp0' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1606): CDbCommand->queryScalar()
+#2 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/guido/Project/yii-16/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/guido/Project/yii-16/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(125): CDataProvider->getData()
+#7 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(339): CBaseListView->init()
+#8 /home/guido/Project/yii-16/framework/web/CBaseController.php(147): CGridView->init()
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 /home/guido/Project/e-ace/protected/views/lajur/admin.php(55): CBaseController->widget('zii.widgets.gri...', Array)
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/LajurController.php(156): CController->render('admin', Array)
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): LajurController->actionAdmin()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/admin')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?Lajur%5Bkd_lajur%5D=&Lajur%5Bfk_gudang%5D=a&Lajur%5Bnama%5D=&Lajur%5Bketerangan%5D=&Lajur_page=1&ajax=lajur-grid&r=lajur%2Fadmin
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/09 13:48:56 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>nama LIKE '%a%'' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE fkGudang->nama LIKE :ycp0.
+in /home/guido/Project/e-ace/protected/views/lajur/admin.php (55)
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (156)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 13:48:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '>nama LIKE '%a%'' at line 1. The SQL statement executed was: SELECT COUNT(*) FROM `lajur` `t` WHERE fkGudang->nama LIKE :ycp0' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:543
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1606): CDbCommand->queryScalar()
+#2 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#3 /home/guido/Project/yii-16/framework/web/CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#4 /home/guido/Project/yii-16/framework/web/CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#5 /home/guido/Project/yii-16/framework/web/CDataProvider.php(168): CActiveDataProvider->fetchData()
+#6 /home/guido/Project/yii-16/framework/zii/widgets/CBaseListView.php(125): CDataProvider->getData()
+#7 /home/guido/Project/yii-16/framework/zii/widgets/grid/CGridView.php(339): CBaseListView->init()
+#8 /home/guido/Project/yii-16/framework/web/CBaseController.php(147): CGridView->init()
+#9 /home/guido/Project/yii-16/framework/web/CBaseController.php(180): CBaseController->createWidget('zii.widgets.gri...', Array)
+#10 /home/guido/Project/e-ace/protected/views/lajur/admin.php(55): CBaseController->widget('zii.widgets.gri...', Array)
+#11 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#12 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#13 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#14 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('admin', Array, true)
+#15 /home/guido/Project/e-ace/protected/controllers/LajurController.php(156): CController->render('admin', Array)
+#16 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): LajurController->actionAdmin()
+#17 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#24 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#26 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/admin')
+#27 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/e-ace/index.php?Lajur%5Bkd_lajur%5D=&Lajur%5Bfk_gudang%5D=a&Lajur%5Bnama%5D=&Lajur%5Bketerangan%5D=&Lajur_page=1&ajax=lajur-grid&r=lajur%2Fadmin
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/09 13:51:25 [error] [php] Trying to get property of non-object (/home/guido/Project/e-ace/protected/models/Lajur.php:108)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): LajurController->renderInternal()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(869): LajurController->renderFile()
+#2 /home/guido/Project/yii-16/framework/web/CController.php(782): LajurController->renderPartial()
+#3 /home/guido/Project/e-ace/protected/controllers/LajurController.php(156): LajurController->render()
+#4 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): LajurController->actionAdmin()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): LajurController->runAction()
+#7 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#9 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): LajurController->filterAccessControl()
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#12 /home/guido/Project/yii-16/framework/web/CController.php(265): LajurController->runActionWithFilters()
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): LajurController->run()
+#14 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#15 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/index.php?r=lajur/admin
+in /home/guido/Project/e-ace/protected/models/Lajur.php (108)
+in /home/guido/Project/e-ace/protected/views/lajur/admin.php (33)
+in /home/guido/Project/e-ace/protected/controllers/LajurController.php (156)
+2015/02/09 14:47:05 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/guido/Project/yii-16/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(EWebUser), 'You are not aut...')
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('lajur/admin')
+#10 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/e-ace/index.php?Lajur%5Bkd_lajur%5D=&Lajur%5Bfk_gudang%5D=&Lajur%5Bnama%5D=&Lajur%5Bketerangan%5D=&Lajur_page=1&ajax=lajur-grid&r=lajur%2Fadmin
+HTTP_REFERER=http://localhost/e-ace/index.php?r=lajur/admin
+---
+2015/02/09 14:51:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kode_klasifikasi`, `unit_pengolah`, `isi_berkas`, `month`, `years`, `bentuk_redaksi`, `media`, `kelengkapan`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:51:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kode_klasifikasi`, `unit_pengolah`, `isi_berkas`, `month`, `years`, `bentuk_redaksi`, `media`, `kelengkapan`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 14:54:32 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:54:35 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:57:13 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:57:20 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:57:24 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:57:32 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 14:57:36 [warning] [application] Failed to set unsafe attribute "j_retensi" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (239)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 20:02:23 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 20:14:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "suggestMasalah".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('suggestMasalah')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestMasalah')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestMasalah&term=b
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 20:14:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "suggestMasalah".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('suggestMasalah')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestMasalah')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestMasalah&term=bp
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 20:15:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "suggestMasalah".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('suggestMasalah')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestMasalah')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestMasalah&term=b
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 20:15:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "suggestMasalah".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('suggestMasalah')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('suggestMasalah')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('request/suggest...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/index.php?r=request/suggestMasalah&term=b
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 20:40:44 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 20:40:44 [warning] [application] Failed to set unsafe attribute "kd_mslh" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:23:48 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:23:48 [warning] [application] Failed to set unsafe attribute "kd_mslh" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:23:49 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:23:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 21:28:25 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:28:25 [warning] [application] Failed to set unsafe attribute "kd_mslh" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:28:25 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:28:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 21:31:39 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:31:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:31:39 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 21:38:25 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:38:25 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:38:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 21:41:36 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:42:28 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:42:28 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23).
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (109)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:42:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`e_arsip`.`arsipnew`, CONSTRAINT `FK_c_masalah` FOREIGN KEY (`kode_mslh`) REFERENCES `masalah` (`id`) ON UPDATE CASCADE). The SQL statement executed was: INSERT INTO `arsipnew` (`status`, `edit_at`, `fk_skpd`, `fk_gudang`, `fk_lajur`, `fk_box`, `file`, `kelengkapan`, `kode_klasifikasi`, `unit_pengolah`, `month`, `years`, `media`, `bentuk_redaksi`, `kode_mslh`, `masalah`, `uraian_masalah`, `r_aktif`, `r_inaktif`, `nilai_guna`, `tingkat_perkembangan`, `by_user`, `j_retensi`, `thn_retensi`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10, :yp11, :yp12, :yp13, :yp14, :yp15, :yp16, :yp17, :yp18, :yp19, :yp20, :yp21, :yp22, :yp23)' in /home/guido/Project/yii-16/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(109): CActiveRecord->save()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionCreate()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#6 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#10 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('create')
+#13 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/create')
+#14 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/e-ace/index.php?r=archive/create
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/create
+---
+2015/02/09 21:45:00 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:47:36 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:48:52 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:49:11 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:50:30 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 21:50:45 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 22:11:59 [warning] [application] Failed to set unsafe attribute "isi_berkas" of "Archive".
+in /home/guido/Project/e-ace/protected/controllers/ArchiveController.php (98)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/09 23:04:21 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /home/guido/Project/yii-16/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(EWebUser), 'You are not aut...')
+#2 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#7 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('admin')
+#9 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive/admin')
+#10 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/e-ace/index.php?Archive%5Bfile%5D=&Archive%5Bfk_gudang%5D=ng&Archive%5Bfk_lajur%5D=&Archive%5Bmonth%5D=&Archive%5Byears%5D=&Archive%5Bmasalah%5D=&Archive%5Buraian_masalah%5D=&Archive%5Br_aktif%5D=&Archive%5Br_inaktif%5D=&Archive%5Bj_retensi%5D=&Archive%5Bthn_retensi%5D=&Archive%5Bnilai_guna%5D=&Archive%5Btingkat_perkembangan%5D=&Archive%5Bpelaksana_hasil%5D=&Archive_page=1&ajax=archive-grid&r=archive%2Fadmin
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/admin
+---
+2015/02/09 23:15:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "box".' in /home/guido/Project/yii-16/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('box')
+#1 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-ace/index.php?r=box
+---
+2015/02/09 23:29:55 [error] [exception.CException] exception 'CException' with message 'Property "Masalah.fk_gudang" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/db/ar/CActiveRecord.php(145): CComponent->__get('fk_gudang')
+#1 /home/guido/Project/e-ace/protected/views/master/addmasalah.php(46): CActiveRecord->__get('fk_gudang')
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#3 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('addmasalah', Array, true)
+#6 /home/guido/Project/e-ace/protected/controllers/MasterController.php(91): CController->render('addmasalah', Array)
+#7 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): MasterController->actionMasalah()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('masalah')
+#17 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/masalah')
+#18 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#19 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/e-ace/index.php?r=master/masalah
+---
+2015/02/09 23:39:58 [error] [exception.CException] exception 'CException' with message 'MasterController cannot find the requested view "addbox".' in /home/guido/Project/yii-16/framework/web/CController.php:878
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('addbox', Array, true)
+#1 /home/guido/Project/e-ace/protected/controllers/MasterController.php(71): CController->render('addbox', Array)
+#2 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): MasterController->actionBox()
+#3 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('box')
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/box')
+#13 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/e-ace/index.php?r=master/box
+HTTP_REFERER=http://localhost/e-ace/index.php?r=archive/admin
+---
+2015/02/09 23:41:41 [error] [exception.CException] exception 'CException' with message 'MasterController cannot find the requested view "addbox".' in /home/guido/Project/yii-16/framework/web/CController.php:878
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('addbox', Array, true)
+#1 /home/guido/Project/e-ace/protected/controllers/MasterController.php(71): CController->render('addbox', Array)
+#2 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): MasterController->actionBox()
+#3 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('box')
+#12 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/box')
+#13 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/e-ace/index.php?r=master/box
+---
+2015/02/09 23:50:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/index.ph...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/master/index.php?r=archive/admin
+HTTP_REFERER=http://localhost/e-ace/master/masalah?r=master/box
+---
+2015/02/09 23:50:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "index.php".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('index.php')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('index.php')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/index.ph...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/master/index.php
+HTTP_REFERER=http://localhost/e-ace/master/index.php?r=archive/admin
+---
+2015/02/10 00:01:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php:182
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(EWebUser), 'You are not aut...')
+#1 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('nilai_guna')
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/nilai_gu...')
+#9 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/e-ace/master/nilai_guna
+HTTP_REFERER=http://localhost/e-ace/master/masalah
+---
+2015/02/10 00:04:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "dashboard".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('dashboard')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('dashboard')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('master/dashboar...')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/master/dashboard
+HTTP_REFERER=http://localhost/e-ace/master/nilai_guna
+---
+2015/02/10 00:12:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "logout' ;".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('logout' ;')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('logout' ;')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logout' ;')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/site/logout'%20;?%3E
+HTTP_REFERER=http://localhost/e-ace/archive/admin
+---
+2015/02/10 00:12:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "logou".' in /home/guido/Project/yii-16/framework/web/CController.php:483
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(270): CController->missingAction('logou')
+#1 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('logou')
+#2 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('site/logou')
+#3 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/e-ace/site/logou
+HTTP_REFERER=http://localhost/e-ace/dashboard
+---
+2015/02/10 00:12:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/css/images/pattern.jpg".' in /home/guido/Project/yii-16/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('assets/css/imag...')
+#1 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-ace/assets/css/images/pattern.jpg
+HTTP_REFERER=http://localhost/e-ace/login
+---
+2015/02/10 00:17:52 [error] [php] Undefined variable: model (/home/guido/Project/e-ace/protected/views/site/login.php:28)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): SiteController->renderFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /home/guido/Project/e-ace/protected/controllers/SiteController.php(33): SiteController->render()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(286): SiteController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/
+in /home/guido/Project/e-ace/protected/views/site/login.php (28)
+in /home/guido/Project/e-ace/protected/controllers/SiteController.php (33)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/10 00:17:58 [error] [php] Undefined variable: model (/home/guido/Project/e-ace/protected/views/site/login.php:28)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): SiteController->renderFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /home/guido/Project/e-ace/protected/controllers/SiteController.php(33): SiteController->render()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(286): SiteController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/
+in /home/guido/Project/e-ace/protected/views/site/login.php (28)
+in /home/guido/Project/e-ace/protected/controllers/SiteController.php (33)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/10 00:18:03 [error] [php] Undefined variable: model (/home/guido/Project/e-ace/protected/views/site/login.php:28)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): SiteController->renderFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /home/guido/Project/e-ace/protected/controllers/SiteController.php(33): SiteController->render()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(286): SiteController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/
+in /home/guido/Project/e-ace/protected/views/site/login.php (28)
+in /home/guido/Project/e-ace/protected/controllers/SiteController.php (33)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/10 00:18:21 [error] [php] Undefined variable: model (/home/guido/Project/e-ace/protected/views/site/login.php:28)
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CController.php(869): SiteController->renderFile()
+#1 /home/guido/Project/yii-16/framework/web/CController.php(782): SiteController->renderPartial()
+#2 /home/guido/Project/e-ace/protected/controllers/SiteController.php(33): SiteController->render()
+#3 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#4 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams()
+#5 /home/guido/Project/yii-16/framework/web/CController.php(286): SiteController->runAction()
+#6 /home/guido/Project/yii-16/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#7 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): SiteController->run()
+#8 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /home/guido/Project/e-ace/index.php(13): CWebApplication->run()
+REQUEST_URI=/e-ace/
+in /home/guido/Project/e-ace/protected/views/site/login.php (28)
+in /home/guido/Project/e-ace/protected/controllers/SiteController.php (33)
+in /home/guido/Project/e-ace/index.php (13)
+2015/02/10 00:21:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/css/images/pattern.jpg".' in /home/guido/Project/yii-16/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('assets/css/imag...')
+#1 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-ace/assets/css/images/pattern.jpg
+HTTP_REFERER=http://localhost/e-ace/login
+---
+2015/02/10 00:21:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/css/images/pattern.jpg".' in /home/guido/Project/yii-16/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('assets/css/imag...')
+#1 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-ace/assets/css/images/pattern.jpg
+HTTP_REFERER=http://localhost/e-ace/login
+---
+2015/02/10 00:24:35 [error] [exception.CException] exception 'CException' with message 'Property "CWebApplication.requet" is not defined.' in /home/guido/Project/yii-16/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/base/CModule.php(105): CComponent->__get('requet')
+#1 /home/guido/Project/e-ace/protected/views/archive/index.php(18): CModule->__get('requet')
+#2 /home/guido/Project/yii-16/framework/web/CBaseController.php(126): require('/home/guido/Pro...')
+#3 /home/guido/Project/yii-16/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/guido/Pro...', Array, true)
+#4 /home/guido/Project/yii-16/framework/web/CController.php(869): CBaseController->renderFile('/home/guido/Pro...', Array, true)
+#5 /home/guido/Project/yii-16/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#6 /home/guido/Project/e-ace/protected/controllers/ArchiveController.php(207): CController->render('index', Array)
+#7 /home/guido/Project/yii-16/framework/web/actions/CInlineAction.php(49): ArchiveController->actionIndex()
+#8 /home/guido/Project/yii-16/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 /home/guido/Project/yii-16/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/guido/Project/yii-16/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 /home/guido/Project/yii-16/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/guido/Project/yii-16/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/guido/Project/yii-16/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/guido/Project/yii-16/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/guido/Project/yii-16/framework/web/CWebApplication.php(282): CController->run('')
+#17 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('archive')
+#18 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#19 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/e-ace/archive
+---
+2015/02/10 10:38:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "assets/css/images/pattern.jpg".' in /home/guido/Project/yii-16/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/guido/Project/yii-16/framework/web/CWebApplication.php(141): CWebApplication->runController('assets/css/imag...')
+#1 /home/guido/Project/yii-16/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /home/guido/Project/e-ace/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/e-ace/assets/css/images/pattern.jpg
+HTTP_REFERER=http://localhost/e-ace/login
+---

@@ -65,7 +65,7 @@ public function actionLogin()
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
 			//	$this->redirect(Yii::app()->user->returnUrl);
-			$this->redirect('index.php?r=dashboard');
+			$this->redirect('dashboard');
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));

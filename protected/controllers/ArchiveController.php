@@ -32,7 +32,7 @@ class ArchiveController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','loadlajur'),
+				'actions'=>array('create','update','loadlajur','loadbox'),
 				//'users'=>array('@'),
 				'expression'=>'$user->isAdmin()',
 			),
@@ -274,7 +274,7 @@ class ArchiveController extends Controller
 	}
 
 	public function actionLoadlajur()
-{
+	{
 	
     /*$data=Lajur::model()->findAll('fk_gudang=:fk_gudang', 
                   array(':fk_gudang'=>(int) $_POST['fk_gudang']));
@@ -305,5 +305,23 @@ class ArchiveController extends Controller
 	   foreach($data as $value=>$lajur_name)
 	   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($lajur_name),true);
 	
-}
+	}
+	public function actionLoadbox()
+	{
+		$data=Box::model()->findAll('fk_lajur=:fk_lajur', 
+	   array(':fk_lajur'=>(int) $_POST['id']));
+	 
+	   $data=CHtml::listData($data,'id','nama_box' );
+	  
+	  // $data=CHtml::listData(Lajur::model()->findAll('fk_gudang=:fk_gudang', array(':fk_gudang'=>(int) $_POST['id']), array('order'=>"`order` DESC")), 'nama', 'nama'); 
+	 /*	echo "<pre>";
+    	print_r($data);
+    	echo "</pre>";
+    	*/
+    	
+	   echo "<option value=''>Select Box / Rack</option>";
+	   foreach($data as $value=>$lajur_name)
+	   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($lajur_name),true);
+
+	}
 }

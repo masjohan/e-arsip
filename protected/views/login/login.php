@@ -75,7 +75,7 @@
 		'validateOnSubmit'=>true,
 	),
 )); ?>	
-											<form>
+											<form method="post" action="<?php echo Yii::app()->request->baseUrl ?>/site/login">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">

@@ -87,7 +87,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="<?php echo Yii::app()->getHomeUrl().'?r=site/logout' ;?>">
+									<a href="<?php echo Yii::app()->request->baseUrl ?>/site/logout">
 										<i class="icon-off"></i>
 									Logout
 										
@@ -137,15 +137,21 @@
 				</div><!--#sidebar-shortcuts-->
 				<?php if(Yii::app()->user->isAdmin()){ ?>
 				<ul class="nav nav-list">
-					<li class="active">
-						<a href="index.php">
+					<li <?php if(Yii::app()->controller->id == 'dashboard') echo 'class="active"' ;?>  >
+						<a href="<?php echo Yii::app()->request->baseUrl ?>">
 							<i class="icon-dashboard"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
 					</li>
 
+					<li <?php if(Yii::app()->controller->id == 'archive') echo 'class="active"' ;?> >
+						<a href="<?php echo Yii::app()->request->baseUrl ?>/archive/admin">
+							<i class="icon-briefcase"></i>
+							<span class="menu-text"> Archive </span>
+						</a>
+					</li>	
 
-					<li>
+					<li <?php if(Yii::app()->controller->id == 'master') echo 'class="active"' ;?>>
 						<a href="#" class="dropdown-toggle">
 							<i class="icon-tasks"></i>
 							<span class="menu-text"> Master </span>
@@ -154,23 +160,38 @@
 						</a>
 
 						<ul class="submenu">
-							<li>
-								<a href="?r=archive/admin">
+							
+							<li <?php if(Yii::app()->controller->action->id == 'box') echo 'class="active"' ;?>>
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/master/box">
 									<i class="icon-double-angle-right"></i>
-									Archive
+									Box
 								</a>
 							</li>
 							<li>
-								<a href="?r=gudang/admin">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/gudang/admin">
 									<i class="icon-double-angle-right"></i>
 									Gudang
 								</a>
 							</li>
 
 							<li>
-								<a href="?r=lajur/admin">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/lajur/admin">
 									<i class="icon-double-angle-right"></i>
 									Lajur
+								</a>
+							</li>
+							
+							<li <?php if(Yii::app()->controller->action->id == 'masalah') echo 'class="active"' ;?>>
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/master/masalah">
+									<i class="icon-double-angle-right"></i>
+									Masalah
+								</a>
+							</li>						
+
+							<li <?php if(Yii::app()->controller->action->id == 'nilai_guna') echo 'class="active"' ;?>>
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/master/nilai_guna">
+									<i class="icon-double-angle-right"></i>
+									Nilai Guna
 								</a>
 							</li>
 
@@ -188,14 +209,14 @@
 
 						<ul class="submenu">
 							<li>
-								<a href="?r=archive">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/archive">
 									<i class="icon-double-angle-right"></i>
 									Daftar Arsip Aktif
 								</a>
 							</li>
 
 							<li>
-								<a href="?r=archive/nonActive">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/archive/nonActive">
 									<i class="icon-double-angle-right"></i>
 									Daftar Arsip Inaktif
 								</a>
@@ -214,14 +235,14 @@
 
 						<ul class="submenu">
 							<li>
-								<a href="?r=user/admin">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/user/admin">
 									<i class="icon-double-angle-right"></i>
 									User
 								</a>
 							</li>
 
 							<li>
-								<a href="?r=setting">
+								<a href="<?php echo Yii::app()->request->baseUrl ?>/setting">
 									<i class="icon-double-angle-right"></i>
 									Preference
 								</a>

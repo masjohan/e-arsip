@@ -23,25 +23,65 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php //echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model); ?>
+<table width=100% border="0" align="center" bordercolor="#ccc">
+	<tr align="">
+		<td><?php echo $form->labelEx($model,'fk_skpd'); ?></td>
+		<td>Nama SKPD</td>
+		
+	</tr>
+		<tr align="">
+		<td>
+        <?php
+$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'name'=>'Archive[fk_skpd]',
+    'source'=>$this->createUrl('request/suggestSKPD'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#nis').val(ui.item.nis);
+            $('#nama').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+       // 'value'=>$model->fk_skpd,
+
+    ),
+));
+?>
+
+</td>
+		<td width="66.5%"><input type="text" readonly id="nama"></td>
+		
+	</tr>
+		<tr>
+		<td><?php echo $form->error($model,'fk_skpd'); ?></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
 <table width=100%>
 	<tr>
 		<td><?php echo $form->labelEx($model,'fk_gudang'); ?></td>
-		<td style="width: 70%"><?php echo $form->labelEx($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->labelEx($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->labelEx($model,'fk_box'); ?></td>
 		
 	</tr>	
-	<tr><!--
-		<td><?php echo $form->dropDownList($model, "fk_gudang", CHtml::listData(Gudang::model()->findAll(),'id' ,'nama'),array('empty'=> 'Pilih Gudang')); ?>
-		<?php //echo $form->textField($model,'fk_gudang'); ?></td>
-		<td style="width: 70%"><?php echo $form->dropDownList($model, "fk_lajur", CHtml::listData(Lajur::model()->findAll(),'id' ,'nama'),array('empty'=> 'Pilih Lajur')); ?>	
-		--><?php //echo $form->textField($model,'fk_lajur'); ?></td>
-	
+	<tr>
 	<?php                                   
   echo '<td>'.CHtml::dropDownList('Archive[fk_gudang]',$model->fk_gudang, 
 	  CHtml::listData(Gudang::model()->findAll(),'id' ,'nama'),
 	 
 	  array(
 	    'prompt'=>'Select Gudang',
+
 	    'ajax' => array(
 	    'type'=>'POST', 
 	    'url'=>Yii::app()->createUrl('archive/loadlajur'), //or $this->createUrl('loadcities') if '$this' extends CController
@@ -53,43 +93,52 @@
  
  
  
-echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->getLajur(), array('prompt'=>'Select Lajur')).'</td>';
+echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->getLajur(), array('prompt'=>'Select Lajur', 
+		'ajax' => array(
+	    'type'=>'POST', 
+	    'url'=>Yii::app()->createUrl('archive/loadbox'), //or $this->createUrl('loadcities') if '$this' extends CController
+	    'update'=>'#Archive_fk_box', //or 'success' => 'function(data){...handle the data in the way you want...}',
+	  'data'=>array('id'=>'js:this.value'),
+	  ))).'</td>';
+echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox(), array('prompt'=>'Select Box / Rack')).'</td>';
 
 ?>
 
 	</tr>
 	<tr>
 		<td><?php echo $form->error($model,'fk_gudang'); ?></td>
-		<td style="width: 70%"><?php echo $form->error($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->error($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->error($model,'fk_box'); ?></td>
 		
 	</tr>	
+
+</table>
+<table width="100%" align="left">
 	<tr>
 		<td><?php echo $form->labelEx($model,'file'); ?></td>
+		<td><?php echo $form->labelEx($model,'kelengkapan'); ?></td>
 	</tr>
-		<tr>
-		<td><?php echo  CHtml::activeFileField($model,'file'); ?>
-			<?php //echo $form->fileField($model,'file',array('size'=>50,'maxlength'=>50)); ?>
-		<?php //echo $form->textField($model,'file',array('size'=>50,'maxlength'=>50)); ?></td>
+	<tr>
+		<td><?php echo CHtml::activeFileField($model,'file'); ?>
+		<td width="66.5%"><?php echo CHtml::activeFileField($model,'kelengkapan'); ?>	
 	</tr>
-		<tr>
+	<tr>
 		<td><?php echo $form->error($model,'file'); ?></td>
-	</tr>
-</table>
-<table width=100% border="1" align="center" bordercolor="#ccc">
-	<tr align="center">
+		<td><?php echo $form->error($model,'kelengkapan'); ?></td>
+	</tr>				
+</table>	
+<table width=100% border="0" align="left" bordercolor="#ccc">
+	<tr>		
 		<td><?php echo $form->labelEx($model,'kode_klasifikasi'); ?></td>
-		<td><?php echo $form->labelEx($model,'hasil_pelaksanaan'); ?></td>
-		<td><?php echo $form->labelEx($model,'nomor_definitif'); ?></td>
+		<td><?php echo $form->labelEx($model,'unit_pengolah'); ?></td>
 	</tr>
-		<tr align="center">
+	<tr>		
 		<td><?php echo $form->textField($model,'kode_klasifikasi',array('size'=>50,'maxlength'=>50)); ?></td>
-		<td><?php echo $form->textField($model,'hasil_pelaksanaan',array('size'=>50,'maxlength'=>50)); ?></td>
-		<td><?php echo $form->textField($model,'nomor_definitif'); ?></td>
+		<td width="66.5%"><?php echo $form->textField($model,'unit_pengolah',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
-		<tr>
+	<tr>		
 		<td><?php echo $form->error($model,'kode_klasifikasi'); ?></td>
-		<td><?php echo $form->error($model,'hasil_pelaksanaan'); ?></td>
-		<td><?php echo $form->error($model,'nomor_definitif'); ?></td>
+		<td><?php echo $form->error($model,'unit_pengolah'); ?></td>
 	</tr>
 </table>	
 <table width="100%">
@@ -100,19 +149,19 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->ge
 </table>
 <table width="100%">
 	<tr>
-		<td><?php echo $form->labelEx($model,'unit_pengolah'); ?></td>
+		
 		<td><?php echo $form->labelEx($model,'month'); ?></td>
 		<td><?php echo $form->labelEx($model,'years'); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $form->textField($model,'unit_pengolah',array('size'=>50,'maxlength'=>50)); ?></td>
+		
 		
 		<td><?php echo CHtml::dropDownList('Archive[month]', $model->month, 
               $model->getMonth(),
               array('empty' => 'Select Bulan')); ?>
 			<?php //echo $form->textField($model,'bln_thn'); ?></td>
 		
-		<td>
+		<td width="66.5%">
 			<select name="Archive[years]">
 <?php 
 $years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
@@ -131,7 +180,7 @@ foreach($years as $year){
 		</td>
 	</tr>
 	<tr>
-		<td><?php echo $form->error($model,'unit_pengolah'); ?></td>
+		
 		<td><?php echo $form->error($model,'month'); ?></td>
 		<td><?php echo $form->error($model,'years'); ?></td>
 	</tr>
@@ -139,31 +188,53 @@ foreach($years as $year){
 </table>
 <table width="100%">
 	<tr>
+		<td><?php echo $form->labelEx($model,'media'); ?></td>
 		<td><?php echo $form->labelEx($model,'bentuk_redaksi'); ?></td>
-		<td style="width: 66.5%"><?php echo $form->labelEx($model,'media'); ?></td>
 	</tr>
 	<tr>
-		<td>
-			<?php echo CHtml::dropDownList('Archive[bentuk_redaksi]', $model->bentuk_redaksi, 
-              $model->getRedaksi(),
-              array('empty' => 'Select Redaksi')); ?>
-			<?php //echo $form->textField($model,'bentuk_redaksi',array('size'=>50,'maxlength'=>50)); ?></td>
-		<td>
+		<td >
 			<?php echo CHtml::dropDownList('Archive[media]', $model->media, 
               $model->getMedia(),
               array('empty' => 'Select Media')); ?>
 			<?php //echo $form->textField($model,'media',array('size'=>50,'maxlength'=>50)); ?></td>
+		<td width="66.5%">
+			<?php echo CHtml::dropDownList('Archive[bentuk_redaksi]', $model->bentuk_redaksi, 
+              $model->getRedaksi(),
+              array('empty' => 'Select Redaksi')); ?>
+			<?php //echo $form->textField($model,'bentuk_redaksi',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $form->error($model,'bentuk_redaksi'); ?></td>
 		<td><?php echo $form->error($model,'media'); ?></td>
+		<td><?php echo $form->error($model,'bentuk_redaksi'); ?></td>
 	</tr>
-	<tr><td><?php echo $form->labelEx($model,'kelengkapan'); ?></td></tr>
-	<tr><td><?php echo $form->textField($model,'kelengkapan',array('size'=>50,'maxlength'=>50)); ?></td></tr>
-	<tr><td><?php echo $form->error($model,'kelengkapan'); ?></td></tr>
+	<tr><td><?php echo $form->labelEx($model,'kode_mslh'); ?></td></tr>
+	<tr><td> <?php
+$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'name'=>'Archive[kode_mslh]',
+    'source'=>$this->createUrl('request/suggestMasalah'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#Archive_masalah').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+
+    ),
+));
+?></td></tr>
+	<tr><td><?php echo $form->error($model,'kode_mslh'); ?></td></tr>
+	
 	<tr><td><?php echo $form->labelEx($model,'masalah'); ?></td></tr>
 	<tr><td><?php echo $form->textField($model,'masalah',array('size'=>60,'maxlength'=>100)); ?></td></tr>
 	<tr><td><?php echo $form->error($model,'masalah'); ?></td></tr>
+
 
 </table>
 	<table width="100%">
@@ -235,12 +306,6 @@ foreach($years as $year){
 
 
 </table>
-<table width="100%">
-	<tr><td<?php echo $form->labelEx($model,'pelaksana_hasil'); ?></td></tr>
-	<tr><td><?php echo $form->textField($model,'pelaksana_hasil',array('size'=>50,'maxlength'=>50)); ?></td></tr>
-	<tr><td><?php echo $form->error($model,'pelaksana_hasil'); ?></td></tr>
-</table>
-
 
 
 	<div class="row buttons" style="margin-left: 1%">

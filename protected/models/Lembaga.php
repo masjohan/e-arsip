@@ -1,13 +1,12 @@
 <?php
 
 /**
- * This is the model class for table "lajur".
+ * This is the model class for table "lembaga".
  *
- * The followings are the available columns in table 'lajur':
+ * The followings are the available columns in table 'lembaga':
  * @property integer $id
- * @property string $kd_lajur
- * @property integer $fk_gudang
- * @property string $nama
+ * @property string $kode_skpd
+ * @property string $nama_skpd
  * @property string $keterangan
  * @property string $create_at
  * @property string $edit_at
@@ -15,16 +14,15 @@
  *
  * The followings are the available model relations:
  * @property Arsipnew[] $arsipnews
- * @property Gudang $fkGudang
  */
-class Lajur extends CActiveRecord
+class Lembaga extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'lajur';
+		return 'lembaga';
 	}
 
 	/**
@@ -35,13 +33,11 @@ class Lajur extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('kd_lajur, fk_gudang, ', 'required'),
-			array('fk_gudang', 'numerical', 'integerOnly'=>true),
-			array('kd_lajur, nama, by_user', 'length', 'max'=>50),
-			array('keterangan, edit_at', 'safe'),
+			array('kode_skpd, nama_skpd, by_user', 'length', 'max'=>50),
+			array('keterangan, create_at, edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, kd_lajur, fk_gudang, nama, keterangan, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
+			array('id, kode_skpd, nama_skpd, keterangan, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,17 +49,8 @@ class Lajur extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'arsipnews' => array(self::HAS_MANY, 'Arsipnew', 'fk_lajur'),
-			'fkGudang' => array(self::BELONGS_TO, 'Gudang', 'fk_gudang'),
+			'arsipnews' => array(self::HAS_MANY, 'Archive', 'fk_skpd'),
 		);
-	}
-
-	// fungsi sebelum dilakukan penyimpanan 
-		public function beforeSave()
-	{
-		$this->by_user=Yii::app()->user->name;
-		$this->edit_at = date('Y-m-d H:i:s',time());
-		return true;
 	}
 
 	/**
@@ -73,9 +60,8 @@ class Lajur extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'kd_lajur' => 'Kode Lajur',
-			'fk_gudang' => 'Gudang',
-			'nama' => 'Nama Lajur',
+			'kode_skpd' => 'Kode Skpd',
+			'nama_skpd' => 'Nama Skpd',
 			'keterangan' => 'Keterangan',
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
@@ -100,13 +86,10 @@ class Lajur extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with = array('fkGudang');
-		 		$criteria->together = true;
+
 		$criteria->compare('id',$this->id);
-		$criteria->compare('kd_lajur',$this->kd_lajur,true);
-		//$criteria->compare('fk_gudang',$this->fk_gudang);
-		$criteria->compare('fkGudang.nama',$this->fk_gudang,true);
-		$criteria->compare('nama',$this->nama,true);
+		$criteria->compare('kode_skpd',$this->kode_skpd,true);
+		$criteria->compare('nama_skpd',$this->nama_skpd,true);
 		$criteria->compare('keterangan',$this->keterangan,true);
 		$criteria->compare('create_at',$this->create_at,true);
 		$criteria->compare('edit_at',$this->edit_at,true);
@@ -121,7 +104,7 @@ class Lajur extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Lajur the static model class
+	 * @return Lembaga the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

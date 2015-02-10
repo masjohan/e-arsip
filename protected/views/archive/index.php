@@ -15,7 +15,7 @@ $this->menu=array(
 
 <h1>Archives <?php if(isset($_SESSION['AN'])) echo $nama;?></h1>
 <!--<input class="btn btn-sm btn-danger" type="button" value="Cetak PDF" onclick="javascript:window.location.href='index.php?r=archive/report'" />-->
-<a href="index.php?r=archive/report" target=_new><button class="btn btn-danger"><i class="icon-print  bigger-125 icon-on-right"></i> Print PDF
+<a href="<?php echo Yii::app()->request->baseUrl ?>/archive/report" target=_new><button class="btn btn-danger"><i class="icon-print  bigger-125 icon-on-right"></i> Print PDF
 </button></a>
 <?php $this->renderPartial('_datatable', array('data'=>$dataProvider)); ?>
 

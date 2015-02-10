@@ -56,9 +56,9 @@ class Archive extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_gudang, file, fk_lajur,years,month, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan, pelaksana_hasil', 'required'),
+			array('fk_gudang, file, fk_skpd, fk_lajur,years,month, kode_klasifikasi, unit_pengolah, bentuk_redaksi, media, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan', 'required'),
 			//array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
-			array('fk_gudang, fk_lajur, nomor_definitif, kode_mslh, r_aktif, r_inaktif', 'numerical', 'integerOnly'=>true),
+			array('fk_gudang, fk_lajur, fk_skpd, fk_box, nomor_definitif, kode_mslh, r_aktif, r_inaktif', 'numerical', 'integerOnly'=>true),
 			array('kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
 			array('masalah', 'length', 'max'=>100),
 			array('thn_retensi', 'length', 'max'=>4),
@@ -79,6 +79,8 @@ class Archive extends CActiveRecord
 		return array(
 			'fkGudang' => array(self::BELONGS_TO, 'Gudang', 'fk_gudang'),
 			'fkLajur' => array(self::BELONGS_TO, 'Lajur', 'fk_lajur'),
+			'fkMasalah' => array(self::BELONGS_TO, 'Masalah', 'kode_mslh'),
+			'fkBox' => array(self::BELONGS_TO, 'Box', 'fk_box'),
 		);
 	}
 	//fungsi untuk sebelum simpan
@@ -86,10 +88,10 @@ class Archive extends CActiveRecord
 	{
 		$this->by_user = Yii::app()->user->name ;
 		$this->edit_at = date('Y-m-d H:i:s',time());
-		$this->kode_mslh = '001';
+		//$this->kode_mslh = '001';
 		$this->j_retensi = $this->r_aktif + $this->r_inaktif;
 		$this->thn_retensi = $this->years + $this->j_retensi;
-		//$this->status = 1;
+		$this->status = 1;
 		//$this->file = $_SESSION['namefile'];
 		return true;
 	}
@@ -101,7 +103,9 @@ class Archive extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'fk_gudang' => 'Gudang',
+			'fk_box' => 'Box / Rack',
 			'fk_lajur' => 'Lajur',
+			'fk_skpd' => 'Kode / Nama SKPD ',
 			'file' => 'File Archive',
 			'kode_klasifikasi' => 'Kode Klasifikasi',
 			'hasil_pelaksanaan' => 'Hasil Pelaksanaan',
@@ -148,10 +152,11 @@ class Archive extends CActiveRecord
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
+		$criteria->with = array('fkGudang','fkLajur');
+		 		$criteria->together = true;
 		$criteria->compare('id',$this->id);
-		$criteria->compare('fk_gudang',$this->fk_gudang,true);
-		$criteria->compare('fk_lajur',$this->fk_lajur,true);
+		$criteria->compare('fkGudang.nama',$this->fk_gudang,true);
+		$criteria->compare('fkLajur.nama',$this->fk_lajur,true);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('kode_klasifikasi',$this->kode_klasifikasi,true);
 		$criteria->compare('hasil_pelaksanaan',$this->hasil_pelaksanaan,true);
@@ -277,7 +282,7 @@ class Archive extends CActiveRecord
                         return isset($_items[$type]) ? $_items[$type] : false;
         }
 
-        public function getMonth()
+        public static function getMonth()
         {   		
    			return array(
 	   			'1' => 'Januari',
@@ -295,7 +300,7 @@ class Archive extends CActiveRecord
 	   				);
 		}
 
-		public function getYear()
+		public static function getYear()
         { 
         	$years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
 			
@@ -303,23 +308,23 @@ class Archive extends CActiveRecord
         	
         }	
 
-	    public function getRedaksi(){
+	    public static function getRedaksi(){
    		return array('S' => 'Surat', 'L' => 'Laporan', 'K' => 'Kontrak', 'N' => 'Notulen');
 			}
 
 
-		 public function getMedia(){
+		 public static function getMedia(){
    		return array('T' => 'Tekstural', 'NT' => 'Non Tekstural');
 			}
 
-		 public function getTk(){
+		 public static function getTk(){
    		return array('Asli' => 'Asli', 'Tembusan' => 'Tembusan', 'Salinan' => 'Salinan', 'Copy' => 'Copy', 'Pertinggal' => 'Pertinggal');
 			}
-			 public function getNG(){
+			 public static function getNG(){
    		return array('Administrasi' => 'Administrasi', 'Keuangan' => 'Keuangan', 'Hukum' => 'Hukum', 'IPTEK' => 'IPTEK');
 			}
 
-		public function getLajur()
+		public static function getLajur()
 			{
 				if(isset($_SESSION['fk_gudang'])) {
 					$fk_lajur = $_SESSION['fk_gudang'];
@@ -333,6 +338,19 @@ class Archive extends CActiveRecord
 				return $data;
 			}
 
+			public static function getBox()
+			{
+				if(isset($_SESSION['fk_lajur'])) {
+					$fk_box = $_SESSION['fk_lajur'];
+				}
+				if(isset($fk_box))
+					$data =	CHtml::listData(Box::model()->findAll('fk_box=:fk_box', 
+	   				array(':fk_box'=>$fk_box)), 'id', 'nama_box');		
+				else
+					$data =	CHtml::listData(Box::model()->findAll(), 'id', 'nama_box'); 
+				//foreach($data as $value=>$lajur_name)
+				return $data;
+			}
 			public function report($status)
 			{
 			$sql="SELECT * from arsipnew where status='$status'";
