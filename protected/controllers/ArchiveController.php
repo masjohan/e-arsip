@@ -32,7 +32,7 @@ class ArchiveController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','loadlajur','loadbox'),
+				'actions'=>array('create','update','loadlajur','loadbox','loadbentukredaksi'),
 				//'users'=>array('@'),
 				'expression'=>'$user->isAdmin()',
 			),
@@ -105,14 +105,26 @@ class ArchiveController extends Controller
 			unset($_SESSION['namefile']);
 			unset($_SESSION['id']);
 			Yii::app()->session['namefile'] = $name;
-
-			if($model->save())
-			{
-				exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
-				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
-					Yii::app()->user->setFlash('success', "Data was saved !");
-				$this->redirect(array('admin'));
-			}
+				// $banding = Lembaga::model()->findBySql("SELECT * from lembaga where ");
+				// $model2 = new Lembaga;
+				
+				// $model2->kode_skpd = $_POST['Archive']['fk_skpd'];
+				// $model2->nama_skpd = $_POST['Archive']['nama_skpd'];
+		
+		//	if($model2->save())
+		//	{				
+		//		$model->fk_skpd = $_POST['Archive']['fk_skpd'];
+				if($model->save())
+				{
+					exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+					$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
+						Yii::app()->user->setFlash('success', "Data was saved !");
+					$this->redirect(array('admin'));
+				}
+				else { 
+						Yii::app()->user->setFlash('error', "Data fail to be saved !");
+					}
+		//	 }
 				//$this->redirect(array('view','id'=>$model->id));
 		}
 
@@ -158,11 +170,18 @@ class ArchiveController extends Controller
 				//Yii::app()->session['namefile'] = $prevFile;
 		    	$model->file = $prevFile;
 		    }
-					
+				// $model2 = new Lembaga;
+				// $model2->kode_skpd = $_POST['Archive']['fk_skpd'];
+				// $model2->nama_skpd = $_POST['Archive']['nama_skpd'];
+				// if($model2->save()){				
+				// $model->fk_skpd = $_POST['Archive']['fk_skpd'];
 			if($model->save()) {
 				Yii::app()->user->setFlash('success', "Data was Updated !");			
 				$this->redirect(array('admin'));
-			}
+				} else {
+				Yii::app()->user->setFlash('error', "Failed Save Data !");				
+				}
+			//}
 				
 				//$this->redirect(array('view','id'=>$model->id));
 		}
@@ -320,6 +339,20 @@ class ArchiveController extends Controller
     	*/
     	
 	   echo "<option value=''>Select Box / Rack</option>";
+	   foreach($data as $value=>$lajur_name)
+	   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($lajur_name),true);
+
+	}
+
+	public function actionLoadbentukredaksi()
+	{
+		$data=BentukRedaksi::model()->findAll('type_media=:type_media', 
+	   array(':type_media'=>$_POST['type_media']));
+	 
+	   $data=CHtml::listData($data,'bentuk_redaksi','bentuk_redaksi' );
+	  
+	 	
+	   echo "<option value=''>Pilih</option>";
 	   foreach($data as $value=>$lajur_name)
 	   echo CHtml::tag('option', array('value'=>$value),CHtml::encode($lajur_name),true);
 

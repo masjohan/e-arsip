@@ -33,6 +33,8 @@
  * @property string $create_at
  * @property string $edit_at
  * @property string $by_user
+ ** @property integer $user_id
+ ** @property string $hasil
  *
  * The followings are the available model relations:
  * @property Gudang $fkGudang
@@ -56,9 +58,9 @@ class Archive extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_gudang, file, fk_skpd, fk_lajur,years,month, kode_klasifikasi, unit_pengolah, bentuk_redaksi, media, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan', 'required'),
+			array('fk_gudang,fk_box, file, fk_skpd,kode_mslh, fk_lajur,years,month, kode_klasifikasi, unit_pengolah, bentuk_redaksi, media, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan', 'required'),
 			//array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
-			array('fk_gudang, fk_lajur, fk_skpd, fk_box, nomor_definitif, kode_mslh, r_aktif, r_inaktif', 'numerical', 'integerOnly'=>true),
+			array('fk_gudang, fk_lajur, fk_skpd, fk_box, nomor_definitif,  r_aktif, r_inaktif, user_id', 'numerical', 'integerOnly'=>true),
 			array('kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
 			array('masalah', 'length', 'max'=>100),
 			array('thn_retensi', 'length', 'max'=>4),
@@ -81,18 +83,49 @@ class Archive extends CActiveRecord
 			'fkLajur' => array(self::BELONGS_TO, 'Lajur', 'fk_lajur'),
 			'fkMasalah' => array(self::BELONGS_TO, 'Masalah', 'kode_mslh'),
 			'fkBox' => array(self::BELONGS_TO, 'Box', 'fk_box'),
+			'fkSKPD' => array(self::BELONGS_TO, 'Lembaga', 'fk_skpd'),
 		);
 	}
 	//fungsi untuk sebelum simpan
 	public function beforeSave()
 	{
 		$this->by_user = Yii::app()->user->name ;
+		$this->user_id = Yii::app()->user->id ;
 		$this->edit_at = date('Y-m-d H:i:s',time());
+
 		//$this->kode_mslh = '001';
 		$this->j_retensi = $this->r_aktif + $this->r_inaktif;
 		$this->thn_retensi = $this->years + $this->j_retensi;
 		$this->status = 1;
+		if($this->isNewRecord)
+                {
+                $criteria=new CDbCriteria;      //kita menggunakan criteria untuk mengetahui nomor terakhir dar$
+                $criteria->select = 'hasil';   //yang ingin kita lihat adalah field "nilai1"
+				$criteria->condition = 'user_id=:user_id';
+				$criteria->params = array(':user_id'=>Yii::app()->user->id);               
+                $criteria->limit=1;             // kita hanya mengambil 1 buah nilai terakhir
+                $criteria->order='id DESC';  //yang dimbil nilai terakhir
+                $last = $this->find($criteria);
+	//cek user ada atau tidak
+	 /*       $cek_user = Penembak::model()->exists('id = :id', array(":id"=>'id'));
+		if ($cek_user) {
+		$this->addError('Nama user sudah terdaftar !');
+		}*/ 
+		if($last)   // jika ternyata ada nilai dalam data tersebut maka nilai nya saat ini tinggal di t$
+                {
+                $newID = (int)substr($last->hasil,0) + 1;
+                $newID = $newID;
+                }
+                else  //jika ternyata pada tabel terebut masih kosong, maka akan di input otomatis nilai "sabit$
+                {
+                $newID = '1';
+                }
+                $this->hasil=$newID; // nilai1 di set nilai yang sudah di dapat tadi
+                } 
+
+
 		//$this->file = $_SESSION['namefile'];
+		
 		return true;
 	}
 	/**
@@ -314,7 +347,7 @@ class Archive extends CActiveRecord
 
 
 		 public static function getMedia(){
-   		return array('T' => 'Tekstural', 'NT' => 'Non Tekstural');
+   		return array('T' => 'Tekstual', 'NT' => 'Non Tekstual');
 			}
 
 		 public static function getTk(){

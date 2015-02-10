@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<input class="btn btn-sm btn-primary" type="button" value="Tambah Data Arsip" onclick="javascript:window.location.href='index.php?r=archive/create'" />
+<input class="btn btn-sm btn-primary" type="button" value="Tambah Data Arsip" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/create'" />
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'archive-grid',
@@ -42,7 +42,7 @@ $('.search-form form').submit(function(){
 		array(
 			'name'=>'file',
 			'type'=>'raw',
-			'value'=>'CHtml::link($data->file,Yii::app()->createUrl("archive/UrlProcessing",array("url"=>"http://".$_SERVER["SERVER_NAME"].Yii::app()->getBaseUrl() . "/wh/upload/{$data->id}/" . $data->file)),array("target"=>"_blank"))',
+			'value'=>'CHtml::link($data->file,Yii::app()->createUrl("archive/UrlProcessing",array("url"=>"http://".$_SERVER["SERVER_NAME"]. "/wh/upload/{$data->id}/" . $data->file)),array("target"=>"_blank"))',
 		),
 		array(
           'name' => 'fk_gudang',

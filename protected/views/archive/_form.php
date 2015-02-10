@@ -32,8 +32,35 @@
 	</tr>
 		<tr align="">
 		<td>
-        <?php
+        <?php if($model->isNewRecord) {
 $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+   'name'=>'Archive[fk_skpd]',
+    'source'=>$this->createUrl('request/suggestSKPD'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#nis').val(ui.item.nis);
+            $('#nama').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+       // 'value'=>$model->fk_skpd,
+
+    ),
+));
+} else {
+
+	$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+    //'attribute'=>'fk_skpd',
+  	'value'=>$model->fkSKPD->kode_skpd ,
     'name'=>'Archive[fk_skpd]',
     'source'=>$this->createUrl('request/suggestSKPD'),
    'options'=>array(
@@ -54,10 +81,11 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 
     ),
 ));
+}
 ?>
 
 </td>
-		<td width="66.5%"><input type="text" readonly id="nama"></td>
+		<td width="66.5%"><input type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>"></td>
 		
 	</tr>
 		<tr>
@@ -195,11 +223,16 @@ foreach($years as $year){
 		<td >
 			<?php echo CHtml::dropDownList('Archive[media]', $model->media, 
               $model->getMedia(),
-              array('empty' => 'Select Media')); ?>
+              array('empty' => 'Select Media',  'ajax' => array(
+	    'type'=>'POST', 
+	    'url'=>Yii::app()->createUrl('archive/loadbentukredaksi'), //or $this->createUrl('loadcities') if '$this' extends CController
+	    'update'=>'#Archive_bentuk_redaksi', //or 'success' => 'function(data){...handle the data in the way you want...}',
+	  'data'=>array('type_media'=>'js:this.value'),
+	  ))); ?>
 			<?php //echo $form->textField($model,'media',array('size'=>50,'maxlength'=>50)); ?></td>
 		<td width="66.5%">
 			<?php echo CHtml::dropDownList('Archive[bentuk_redaksi]', $model->bentuk_redaksi, 
-              $model->getRedaksi(),
+              CHtml::listData(BentukRedaksi::model()->findAll(),'bentuk_redaksi' ,'bentuk_redaksi'),
               array('empty' => 'Select Redaksi')); ?>
 			<?php //echo $form->textField($model,'bentuk_redaksi',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
@@ -210,6 +243,10 @@ foreach($years as $year){
 	<tr><td><?php echo $form->labelEx($model,'kode_mslh'); ?></td></tr>
 	<tr><td> <?php
 $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+    'attribute'=>'kode_mslh',
+  //  'value'=>$model->kode_mslh,
+   
     'name'=>'Archive[kode_mslh]',
     'source'=>$this->createUrl('request/suggestMasalah'),
    'options'=>array(
@@ -225,9 +262,12 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
         'htmlOptions'=>array(
         'size'=>'25',
         'placeholder'=>'Cari kode/nama disini !',
-
+        //'autocomplete'=>'on',
+        //'value'=>$model->kode_mslh,
     ),
 ));
+
+
 ?></td></tr>
 	<tr><td><?php echo $form->error($model,'kode_mslh'); ?></td></tr>
 	
@@ -258,8 +298,8 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 		</tr>
 		<tr>
 			<td><?php echo $form->textField($model,'r_aktif'); ?></td>
-			<td><?php echo $form->textField($model,'r_inaktif'); ?></td>
-			<td><input type="text" name="jumlahretensi" id="jmlres" readonly value='1'/></td>
+			<td><?php echo $form->textField($model,'r_inaktif',array('onCange'=>'Total()')); ?></td>
+			<td><input type="text" name="jumlahretensi" id="jumlah_retensi" readonly value="<?php if(!$model->isNewRecord) echo $model->j_retensi; ?>"/></td>
 
 		</tr>
 		<tr>
@@ -289,7 +329,7 @@ foreach($years as $year){
 		--><td>
 		
 			<?php echo CHtml::dropDownList('Archive[nilai_guna]', $model->nilai_guna, 
-              $model->getNG(),
+              CHtml::listData(NilaiGuna::model()->findAll(), 'id', 'nilai_guna'),
               array('empty' => 'Select Nilai Guna')); ?>
 			<?php //echo $form->textField($model,'nilai_guna',array('size'=>50,'maxlength'=>50)); ?></td>
 		<td>
@@ -315,3 +355,19 @@ foreach($years as $year){
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script>
+$(document).ready(function(){
+    
+     $("#Archive_r_inaktif").keyup(function(){
+        $("Archive_r_inaktif").css("background-color", "white");
+        var a = $("#Archive_r_aktif").val();
+        var b = $("#Archive_r_inaktif").val();
+
+        var total = eval(a) + eval(b);
+        $("#jumlah_retensi").val(total);
+    });
+    
+    
+});
+</script>
