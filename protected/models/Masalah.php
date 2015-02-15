@@ -53,6 +53,15 @@ class Masalah extends CActiveRecord
 		);
 	}
 
+	//fungsi untuk sebelum simpan
+	public function beforeSave()
+	{
+		$this->by_user = Yii::app()->user->name ;
+		$this->name_masalah = strtoupper($this->name_masalah);
+		$this->edit_at = date('Y-m-d H:i:s',time());
+		return true;
+	}
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

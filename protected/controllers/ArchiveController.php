@@ -28,16 +28,12 @@ class ArchiveController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','nonActive'),
-				'users'=>array('*'),
+				'actions'=>array('skpdadd','masalahadd','upload','uploadMultifile','index','view','nonActive','create','loadlajur','loadbox','loadbentukredaksi','urlProcessing','report',),
+				'users'=>array('@'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','loadlajur','loadbox','loadbentukredaksi'),
-				//'users'=>array('@'),
-				'expression'=>'$user->isAdmin()',
-			),
+			
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','urlProcessing','report'),
+				'actions'=>array('admin','delete','update','retensi'),
 				//'users'=>array('admin'),
 				'expression'=>'$user->isAdmin()',
 			),
@@ -47,6 +43,58 @@ class ArchiveController extends Controller
 		);
 	}
 
+	public function actions()
+    {
+        return array(
+            'upload'=>array(
+                'class'=>'xupload.actions.XUploadAction',
+                'path' =>Yii::app() -> getBasePath() . "/../wh/up/",
+                'publicPath' => Yii::app() -> getBaseUrl() . "/wh/up/",
+            ),
+        );
+    }
+
+    public function actionSkpdadd()
+    {
+    	$model = new Lembaga;
+    	if(isset($_POST['Skpd']))
+		{
+			//$model->attributes = $_POST[''];
+			$model->kode_skpd = $_POST['Skpd']['kode'];
+			$model->nama_skpd = $_POST['Skpd']['nama'];
+			$model->keterangan = $_POST['Skpd']['alamat'];
+			if($model->save())
+			{
+				echo "<script>window.close();</script>";
+				
+			} else 
+			{
+				echo "<script>window.close();</script>";
+				echo "<script>alert('data gagal disimpan'); </script>";
+			}
+		}	
+    }
+    //action tambah masalah
+       public function actionMasalahadd()
+    {
+    	$model = new Masalah;
+    	if(isset($_POST['Masalah']))
+		{
+			//$model->attributes = $_POST[''];
+			$model->code_masalah = $_POST['Masalah']['kode'];
+			$model->name_masalah = $_POST['Masalah']['nama'];
+			
+			if($model->save())
+			{
+				echo "<script>window.close();</script>";
+				echo "<script>alert('Data berhasil disimpan !');</script>";
+			} else 
+			{
+				echo "<script>window.close();</script>";
+				echo "<script>alert('data gagal disimpan'); </script>";
+			}
+		}	
+    }
 		// URL Processing
 	public function actionUrlProcessing(){
         $this->redirect($_GET['url']);
@@ -82,6 +130,7 @@ class ArchiveController extends Controller
 		));
 	}
 
+	
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -100,38 +149,67 @@ class ArchiveController extends Controller
 			$model->file=  CUploadedFile::getInstance($model, 'file');
 			if(isset($model->file)) 
 			$name = $model->file->name ; else $name = "";	
-			
-	
 			unset($_SESSION['namefile']);
 			unset($_SESSION['id']);
 			Yii::app()->session['namefile'] = $name;
-				// $banding = Lembaga::model()->findBySql("SELECT * from lembaga where ");
-				// $model2 = new Lembaga;
-				
-				// $model2->kode_skpd = $_POST['Archive']['fk_skpd'];
-				// $model2->nama_skpd = $_POST['Archive']['nama_skpd'];
-		
-		//	if($model2->save())
-		//	{				
-		//		$model->fk_skpd = $_POST['Archive']['fk_skpd'];
-				if($model->save())
-				{
-					exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+			
+                if(isset($_POST['Archive']))
+                {
+
+                  //  $model->attributes=$_POST['Archive'];
+                    if($model->save())
+				{							
+
+					//exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+					mkdir(Yii::app()->basePath . "/../wh/upload/{$model->id}/");
 					$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
+					  //exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/kelengkapan/");
+                   mkdir(Yii::app()->basePath . "/../wh/upload/{$model->id}/kelengkapan/");
+                    if($filez=$this->uploadMultifile($model,'kelengkapan',"/../wh/upload/{$model->id}/kelengkapan/"))
+                    {
+                     	$model = $this->loadModel($model->id);   
+                        $model->kelengkapan=implode(",", $filez);
+                        $model->save();
+                    }
+					
 						Yii::app()->user->setFlash('success', "Data was saved !");
-					$this->redirect(array('admin'));
+					$this->redirect(array('create'));
 				}
 				else { 
 						Yii::app()->user->setFlash('error', "Data fail to be saved !");
 					}
-		//	 }
+                }
+           
+
 				//$this->redirect(array('view','id'=>$model->id));
 		}
-
+		 //Yii::import("xupload.models.XUploadForm");
+        //$up = new XUploadForm;
 		$this->render('create',array(
 			'model'=>$model,
+		//	'model2'=>$up,
 		));
 	}
+
+	public function uploadMultifile ($model,$attr,$path)
+    {
+    /*
+     * path when uploads folder is on site root.
+     * $path='/uploads/doc/'
+     */
+    if($sfile=CUploadedFile::getInstances($model, $attr)){
+    	
+      foreach ($sfile as $i=>$file){  
+
+        // $formatName=time().$i.'.'.$file->getExtensionName();
+        $fileName = "{$sfile[$i]}";
+          $formatName=time().$i.'_'.$fileName;
+         $file->saveAs(Yii::app()->basePath.$path.$formatName);
+         $ffile[$i]=$formatName;
+         }
+        return ($ffile);
+       }
+     }
 
 	/**
 	 * Updates a particular model.
@@ -159,22 +237,17 @@ class ArchiveController extends Controller
 		   		$name = $model->file->name;
 		   		
 				//Yii::app()->session['namefile'] = $name;
-		        exec("rmdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
-				exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+		       // exec("rmdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+				//exec("mkdir -p " . Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+				$this->rrmdir(Yii::app()->basePath . "/../wh/upload/{$model->id}/");
+				mkdir(Yii::app()->basePath . "/../wh/upload/{$model->id}/");
 				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/upload/{$model->id}/" . $name);
 				
 			
 		    } elseif(empty($model->file)) {
-		    	//unset($_SESSION['namefile']);
-				//unset($_SESSION['id']);
-				//Yii::app()->session['namefile'] = $prevFile;
 		    	$model->file = $prevFile;
 		    }
-				// $model2 = new Lembaga;
-				// $model2->kode_skpd = $_POST['Archive']['fk_skpd'];
-				// $model2->nama_skpd = $_POST['Archive']['nama_skpd'];
-				// if($model2->save()){				
-				// $model->fk_skpd = $_POST['Archive']['fk_skpd'];
+
 			if($model->save()) {
 				Yii::app()->user->setFlash('success', "Data was Updated !");			
 				$this->redirect(array('admin'));
@@ -190,6 +263,19 @@ class ArchiveController extends Controller
 			'model'=>$model,
 		));
 	}
+	//function menghapus folder 
+	public function rrmdir($dir) { 
+		   if (is_dir($dir)) { 
+		     $objects = scandir($dir); 
+		     foreach ($objects as $object) { 
+		       if ($object != "." && $object != "..") { 
+			 if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink	($dir."/".$object); 
+		       } 
+		     } 
+		     reset($objects); 
+		     rmdir($dir); 
+		   } 
+		} 
 
 	/**
 	 * Deletes a particular model.
@@ -226,7 +312,33 @@ class ArchiveController extends Controller
 		));
 	}
 
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionRetensi()
+	{
+		unset($_SESSION['AN']);
+		unset($_SESSION['status']);
+		Yii::app()->session['AN'] = 'Active';
+		Yii::app()->session['status'] = '1';
+		$criteria=new CDbCriteria(array(                    
+                              //  'order'=>'status desc',
+                                //'with'   => array('userToProject'=>array('alias'=>'user')),
+                                'condition'=>'status="1"',
 
+                        ));
+		$dataProvider=new CActiveDataProvider('Archive',array('criteria'=>$criteria));
+		
+			$waktu = new Aksi;
+			$date = "2015-04-05";
+    echo "Deadline : ".$waktu->deadline($date);
+		/*$this->render('_retensi',array(
+			'dataProvider'=>$dataProvider,
+			'model' => $hari,
+		));
+		*/
+	}
 	/**
 	 * Lists all models.
 	 */

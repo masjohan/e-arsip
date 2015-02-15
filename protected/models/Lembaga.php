@@ -53,6 +53,16 @@ class Lembaga extends CActiveRecord
 		);
 	}
 
+	//fungsi untuk sebelum simpan
+	public function beforeSave()
+	{
+		$this->by_user = Yii::app()->user->name ;
+		$this->nama_skpd = strtoupper($this->nama_skpd);
+		$this->edit_at = date('Y-m-d H:i:s',time());
+		return true;
+	}
+
+
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -109,5 +119,13 @@ class Lembaga extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+	/**
+	 * @return array for dropdown (attr1 => attr2)
+	 */
+	public function getOptions()
+	{
+		return CHtml::listData($this->findAll(),'kode_skpd','nama_skpd');
 	}
 }

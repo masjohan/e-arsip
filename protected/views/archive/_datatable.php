@@ -27,7 +27,7 @@
 		'thn_retensi',
 		'nilai_guna',
 		'tingkat_perkembangan',
-		'pelaksana_hasil'
+		array('name'=>'pelaksana_hasil', 'value'=>'CHtml::encode($data->user_id)."/".CHtml::encode($data->hasil)'),
 		),
 	));
 ?>

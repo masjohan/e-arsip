@@ -47,7 +47,7 @@
             <tr>
                 <td style="width: 5%; text-align: center; vertical-align:middle"><?php echo $no; ?></td>
                 <td style="width: 17%; text-align: left; vertical-align:middle"><?php echo $data['masalah']; ?></td>
-                <td style="width: 20%; text-align: left; vertical-align:middle" ><?php echo $data['kode_klasifikasi']; ?><br /><?php echo $data['uraian_masalah']; ?></td>
+                <td style="width: 20%; text-align: left; vertical-align:middle" ><?php echo $data['kode_mslh']; ?><br /><?php echo $data['uraian_masalah']; ?></td>
                 <td style="width: 8%; text-align: center; vertical-align:middle" ><?php echo $data['month'].'/'.$data['years']; ?></td>
                 <td style="width: 6%; text-align: center; vertical-align:middle"><?php echo $data['r_aktif']; ?></td>
                 <td style="width: 6%; text-align: center; vertical-align:middle"><?php echo $data['r_inaktif']; ?></td>
@@ -55,7 +55,7 @@
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['thn_retensi']; ?></td>
                 <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $data['nilai_guna']; ?></td>
                 <td style="width: 10%; text-align: center; vertical-align:middle;"><?php echo $data['tingkat_perkembangan']; ?></td>
-                <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['pelaksana_hasil']; ?></td>
+                <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['user_id'].'/'.$data['hasil']; ?></td>
             </tr>
         
             <?php $no++; } ?>

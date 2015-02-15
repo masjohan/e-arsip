@@ -20,6 +20,12 @@ return array(
 		'application.extensions.jtogglecolumn.*',
 		'application.extensions.flash.*',
 	),
+	'aliases' => array(
+	    //If you used composer your path should be
+	    //'xupload' => 'ext.vendor.asgaroth.xupload'
+	    //If you manually installed it
+	    'xupload' => 'ext.xupload'
+		),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool

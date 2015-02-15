@@ -63,7 +63,8 @@ class MasterController extends Controller
 		{
 			$model->attributes=$_POST['Box'];
 			if($model->save())
-				$this->redirect('index.php?r=dashboard');
+				Yii::app()->user->setFlash('success', "Data was saved !");
+				$this->redirect(array('box'));
 		}	
 
 		$this->render('addbox',array(
@@ -83,7 +84,8 @@ class MasterController extends Controller
 		{
 			$model->attributes=$_POST['Masalah'];
 			if($model->save())
-				$this->redirect('index.php?r=dashboard');
+				Yii::app()->user->setFlash('success', "Data was saved !");
+				$this->redirect(array('masalah'));
 		}	
 
 		$this->render('addmasalah',array(
@@ -103,7 +105,8 @@ class MasterController extends Controller
 		{
 			$model->attributes=$_POST['NilaiGuna'];
 			if($model->save())
-				$this->redirect('dashboard');
+				Yii::app()->user->setFlash('success', "Data was saved !");
+				$this->redirect(array('nilai_guna'));
 		}	
 
 		$this->render('nilaiguna',array(

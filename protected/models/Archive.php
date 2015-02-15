@@ -5,6 +5,7 @@
  *
  * The followings are the available columns in table 'arsipnew':
  * @property integer $id
+  * @property string $code_archive
  * @property integer $fk_gudang
  * @property integer $fk_lajur
  * @property string $file
@@ -58,16 +59,16 @@ class Archive extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_gudang,fk_box, file, fk_skpd,kode_mslh, fk_lajur,years,month, kode_klasifikasi, unit_pengolah, bentuk_redaksi, media, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan', 'required'),
+			array('fk_gudang,fk_box, file, fk_skpd, kode_mslh, fk_lajur,years,month, kode_klasifikasi, unit_pengolah, bentuk_redaksi, media, masalah, uraian_masalah, r_aktif, r_inaktif, nilai_guna, tingkat_perkembangan', 'required'),
 			//array('file', 'file', 'types'=>'pdf','maxSize'=>1024*1024*10, 'tooLarge'=>'File tidak boleh lebih dari 10MB'),
 			array('fk_gudang, fk_lajur, fk_skpd, fk_box, nomor_definitif,  r_aktif, r_inaktif, user_id', 'numerical', 'integerOnly'=>true),
-			array('kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, kelengkapan, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
+			array('kode_klasifikasi, hasil_pelaksanaan, unit_pengolah, bentuk_redaksi, media, nilai_guna, tingkat_perkembangan, pelaksana_hasil, by_user', 'length', 'max'=>50),
 			array('masalah', 'length', 'max'=>100),
 			array('thn_retensi', 'length', 'max'=>4),
 			array('edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fk_gudang, fk_lajur, file, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bln_thn, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, kode_mslh, r_aktif, r_inaktif, thn_retensi, nilai_guna, tingkat_perkembangan, pelaksana_hasil, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
+			array('hasil, code_archive, user_id ,id, fk_gudang, fk_lajur, file, kode_klasifikasi, hasil_pelaksanaan, nomor_definitif, isi_berkas, unit_pengolah, bln_thn, bentuk_redaksi, media, kelengkapan, masalah, uraian_masalah, kode_mslh, r_aktif, r_inaktif, thn_retensi, nilai_guna, tingkat_perkembangan, pelaksana_hasil, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,19 +85,22 @@ class Archive extends CActiveRecord
 			'fkMasalah' => array(self::BELONGS_TO, 'Masalah', 'kode_mslh'),
 			'fkBox' => array(self::BELONGS_TO, 'Box', 'fk_box'),
 			'fkSKPD' => array(self::BELONGS_TO, 'Lembaga', 'fk_skpd'),
+			'fkNilaiGuna' => array(self::BELONGS_TO, 'NilaiGuna', 'nilai_guna'),
 		);
 	}
 	//fungsi untuk sebelum simpan
 	public function beforeSave()
 	{
-		$this->by_user = Yii::app()->user->name ;
-		$this->user_id = Yii::app()->user->id ;
+		
 		$this->edit_at = date('Y-m-d H:i:s',time());
 
 		//$this->kode_mslh = '001';
 		$this->j_retensi = $this->r_aktif + $this->r_inaktif;
 		$this->thn_retensi = $this->years + $this->j_retensi;
-		$this->status = 1;
+		//$this->status = 1;
+		if(Yii::app()->user->isAdmin() || Yii::app()->user->isSupervisor()){
+			$this->approval = Yii::app()->user->name;
+		}
 		if($this->isNewRecord)
                 {
                 $criteria=new CDbCriteria;      //kita menggunakan criteria untuk mengetahui nomor terakhir dar$
@@ -106,11 +110,7 @@ class Archive extends CActiveRecord
                 $criteria->limit=1;             // kita hanya mengambil 1 buah nilai terakhir
                 $criteria->order='id DESC';  //yang dimbil nilai terakhir
                 $last = $this->find($criteria);
-	//cek user ada atau tidak
-	 /*       $cek_user = Penembak::model()->exists('id = :id', array(":id"=>'id'));
-		if ($cek_user) {
-		$this->addError('Nama user sudah terdaftar !');
-		}*/ 
+	
 		if($last)   // jika ternyata ada nilai dalam data tersebut maka nilai nya saat ini tinggal di t$
                 {
                 $newID = (int)substr($last->hasil,0) + 1;
@@ -121,6 +121,9 @@ class Archive extends CActiveRecord
                 $newID = '1';
                 }
                 $this->hasil=$newID; // nilai1 di set nilai yang sudah di dapat tadi
+                $this->by_user = Yii::app()->user->name ;
+				$this->user_id = Yii::app()->user->id ;
+                $this->code_archive = $this->fkGudang->kd_gudang.'/'.$this->fkLajur->kd_lajur.'/'.$this->fkBox->kode_box.'/'.$newID;
                 } 
 
 
@@ -164,6 +167,9 @@ class Archive extends CActiveRecord
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
 			'by_user' => 'By User',
+			'user_id' => 'ID USER',
+			'hasil' => 'hasil',
+			'code_archive' => 'Kode Arsip',
 		);
 	}
 
@@ -190,6 +196,7 @@ class Archive extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('fkGudang.nama',$this->fk_gudang,true);
 		$criteria->compare('fkLajur.nama',$this->fk_lajur,true);
+		$criteria->compare('code_archive',$this->code_archive,true);
 		$criteria->compare('file',$this->file,true);
 		$criteria->compare('kode_klasifikasi',$this->kode_klasifikasi,true);
 		$criteria->compare('hasil_pelaksanaan',$this->hasil_pelaksanaan,true);
@@ -216,6 +223,8 @@ class Archive extends CActiveRecord
 		$criteria->compare('edit_at',$this->edit_at,true);
 		$criteria->compare('by_user',$this->by_user,true);
 		$criteria->compare('status',$this->status);
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('hasil',$this->hasil);
 		//$status = '1';
 		//$criteria->condition = 'status=:status';
 		//$criteria->params = array(':status'=>$status);
@@ -386,7 +395,7 @@ class Archive extends CActiveRecord
 			}
 			public function report($status)
 			{
-			$sql="SELECT * from arsipnew where status='$status'";
+			$sql="SELECT * from arsipnew where status='$status' order by hasil DESC";
             $connection=Yii::app()->db; 
             $command=$connection->createCommand($sql);
             //$rowCount=$command->execute(); // execute the non-query SQL
@@ -409,6 +418,14 @@ class Archive extends CActiveRecord
 			        $month_options .= '<option value="' . esc_attr( $month_num ) . '">' . $month_name . '</option>';
 			    }
 			    return '<select name="' . $field_name . '">' . $month_options . '</select>';
+			}
+
+			//menghitung retensi aktif 
+		public static function retensiCalc($bithdate){
+			$birthdate = new DateTime($birthdate);
+			$today = new DateTime('today');
+			$age = $birthdate->diff($today)->y;
+			return $age;
 			}
 	
 }

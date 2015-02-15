@@ -36,6 +36,14 @@ class NilaiGuna extends CActiveRecord
 			array('id, nilai_guna, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
 		);
 	}
+	//fungsi untuk sebelum simpan
+	public function beforeSave()
+	{
+		$this->by_user = Yii::app()->user->name ;	
+		$this->edit_at = date('Y-m-d H:i:s',time());
+		return true;
+	}
+
 
 	/**
 	 * @return array relational rules.

@@ -23,8 +23,17 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php //echo $form->errorSummary($model); ?>
 <table width=100% border="0" align="center" bordercolor="#ccc">
+<?php /*$this->widget('ext.widgets.select2.XSelect2', array(
+    'model'=>$model,
+    'attribute'=>'fk_skpd',
+    'data'=>Lembaga::model()->options,
+    'htmlOptions'=>array(
+        'style'=>'width:300px',
+    ),
+));
+*/?>
 	<tr align="">
 		<td><?php echo $form->labelEx($model,'fk_skpd'); ?></td>
 		<td>Nama SKPD</td>
@@ -85,8 +94,9 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 ?>
 
 </td>
-		<td width="66.5%"><input type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>"></td>
-		
+		<td width="30.5%"><input type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>"></td>
+		<td width="36%"> <a href="<?php echo Yii::app()->request->baseUrl ?>/skpd" title="Click to add SKPD" onClick="return popup(this, 'notes')"><i class="icon-plus"></i></a></td>
+	
 	</tr>
 		<tr>
 		<td><?php echo $form->error($model,'fk_skpd'); ?></td>
@@ -148,7 +158,20 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox
 	</tr>
 	<tr>
 		<td><?php echo CHtml::activeFileField($model,'file'); ?>
-		<td width="66.5%"><?php echo CHtml::activeFileField($model,'kelengkapan'); ?>	
+		<td width="66.5%">
+			<?php  $this->widget('CMultiFileUpload',
+  array(
+       'model'=>$model,
+       'attribute' => 'kelengkapan',
+      // 'accept'=>'jpg|gif|png|doc|docx|pdf',
+       //'denied'=>'Only doc,docx,pdf and txt are allowed', 
+       'max'=>5,
+       'remove'=>'[x]',
+       'duplicate'=>'Already Selected',
+
+       )
+        );?>
+		</td>
 	</tr>
 	<tr>
 		<td><?php echo $form->error($model,'file'); ?></td>
@@ -268,7 +291,10 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 ));
 
 
-?></td></tr>
+?>
+</td>
+<td width="36%"><a  href="<?php echo Yii::app()->request->baseUrl ?>/masalah" title="Click to add SKPD" onClick="return popup(this, 'notes')" id="bootbox-regular" title="Click here to add !"><i class="icon-plus"></i></a></td>
+</tr>
 	<tr><td><?php echo $form->error($model,'kode_mslh'); ?></td></tr>
 	
 	<tr><td><?php echo $form->labelEx($model,'masalah'); ?></td></tr>
@@ -352,10 +378,40 @@ foreach($years as $year){
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
+
+
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-
+<?php
+/*
+$this->widget('xupload.XUpload', array(
+                    'url' => Yii::app()->createUrl("archive/upload"),
+                    'model' => $model,
+                    'attribute' => 'kelengkapan',
+                    'multiple' => true,
+));
+*/
+?>
+<SCRIPT TYPE="text/javascript">
+<!--
+function popup(mylink, windowname, w, h)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+var w = 300;
+var h = 200;
+var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+window.open(href, windowname, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+return false;
+}
+//-->
+</SCRIPT>
 <script>
 $(document).ready(function(){
     
@@ -370,4 +426,48 @@ $(document).ready(function(){
     
     
 });
+
+$("#bootbox-regular").on(ace.click_event, function() {
+					bootbox.prompt("What is your name?", function(result) {
+						if (result === null) {
+							//Example.show("Prompt dismissed");
+						} else {
+							//Example.show("Hi <b>"+result+"</b>");
+						}
+					});
+				});
+					
+				$("#bootbox-confirm").on(ace.click_event, function() {
+					bootbox.confirm("Are you sure?", function(result) {
+						if(result) {
+							bootbox.alert("You are sure!");
+						}
+					});
+				});
+					
+				$("#bootbox-options").on(ace.click_event, function() {
+					bootbox.dialog("I am a custom dialog with smaller buttons", [{
+						"label" : "Success!",
+						"class" : "btn-small btn-success",
+						"callback": function() {
+							//Example.show("great success");
+						}
+						}, {
+						"label" : "Danger!",
+						"class" : "btn-small btn-danger",
+						"callback": function() {
+							//Example.show("uh oh, look out!");
+						}
+						}, {
+						"label" : "Click ME!",
+						"class" : "btn-small btn-primary",
+						"callback": function() {
+							//Example.show("Primary button");
+						}
+						}, {
+						"label" : "Just a button...",
+						"class" : "btn-small"
+						}]
+					);
+				});
 </script>
