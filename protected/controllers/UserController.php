@@ -37,21 +37,14 @@ class UserController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
-			),
+
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','update','create'),
 				//'users'=>array('admin'),
 				'expression' => '$user->isAdmin()',
 			),
 			array('allow',
-                'actions'=>array('toggle','switch','qtoggle'),
+                'actions'=>array('toggle','switch','qtoggle','resetpassword'),
                         'users'=>array('@'),
                // 'expression' => '$user->isAdmin()',
                 ),
@@ -69,6 +62,29 @@ class UserController extends Controller
 	public function actionView($id)
 	{
 		$this->render('view',array(
+			'model'=>$this->loadModel($id),
+		));
+	}
+
+	public function actionResetpassword()
+	{
+		
+		$id = Yii::app()->user->id;
+		$model = $this->loadModel($id);
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			
+			if($model->save()){
+				Yii::app()->user->setFlash('success', "Password was changed !");
+				$this->redirect(array('resetpassword'));
+			} else {
+				Yii::app()->user->setFlash('error', CHtml::error($model,'password'));
+				$this->redirect(array('resetpassword'));	
+			}
+
+		}
+		$this->render('_password',array(
 			'model'=>$this->loadModel($id),
 		));
 	}

@@ -4,6 +4,13 @@ class EWebUser extends CWebUser{
  
     protected $_model;
  
+    function isGuest(){
+        $user = $this->loadUser();
+        if ($user)
+           return $user->fk_level==LevelLookUp::GUEST;
+        return false;
+    }
+
     function isAdmin(){
         $user = $this->loadUser();
         if ($user)
@@ -32,4 +39,17 @@ class EWebUser extends CWebUser{
         }
         return $this->_model;
     }
+
+    public function afterLogin()
+    {
+        if (parent::beforeLogout()) {
+            $user = User::model()->findByPk(Yii::app()->user->id);
+            $user->last_login=date('Y-m-d H:i:s');
+            $user->saveAttributes(array('last_login'));
+            return true;
+        } else {
+            return false;
+        }
+       
+    }   
 }

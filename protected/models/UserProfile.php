@@ -31,8 +31,9 @@ class UserProfile extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			//array('fk_user', 'required'),
+			//array('photo', 'file', 'types'=>'jpg,png','maxSize'=>1024*1024*1, 'tooLarge'=>'File tidak boleh lebih dari 1 MB'),
 			array('fk_user', 'numerical', 'integerOnly'=>true),
-			array('address, photo', 'length', 'max'=>50),
+			array('address, photo', 'length', 'max'=>127),
 			array('about_me', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

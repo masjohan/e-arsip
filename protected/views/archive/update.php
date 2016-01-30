@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Archive <?php echo $model->id; ?></h1>
+<h1>Update Archive <?php echo $model->code_archive; ?></h1>
 <div style="margin-left: 10px">
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

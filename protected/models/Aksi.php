@@ -3,7 +3,164 @@
 
 class Aksi extends CFormModel
 {
-	// get skpd / lembaga instansi dll
+	//report get excel
+    public static function getValidate($code_archive)
+    {
+        $sql = "SELECT * FROM arsipnew  WHERE id='$code_archive' LIMIT 1";
+                $connection=Yii::app()->db; 
+                $command=$connection->createCommand($sql);
+                $dataReader=$command->query(); // execute a query SQL
+                $rows=$dataReader->readAll();
+        return $rows;
+    }
+    //report get excel
+    public static function getExcel($status,$limit)
+    {
+        $sql = "SELECT month,years,masalah,uraian_masalah,kode_mslh,r_aktif,r_inaktif,j_retensi,nilai_guna.nilai_guna,tingkat_perkembangan,user_id,hasil FROM arsipnew INNER JOIN nilai_guna ON arsipnew.nilai_guna=nilai_guna.id WHERE status='$status' ORDER BY CONVERT(hasil, UNSIGNED INTEGER)  DESC LIMIT $limit";
+                $connection=Yii::app()->db; 
+                $command=$connection->createCommand($sql);
+                $dataReader=$command->query(); // execute a query SQL
+                $rows=$dataReader->readAll();
+        return $rows;
+    }
+
+    // count retensi
+    public static function getRetensi($model2)
+        {
+        $waktu = new Aksi;
+                
+        foreach ($model2 as $model2) {
+            $tgl_mulai = date('Y-m-d');
+            $tgl_end = $model2->batas_retensi;
+            list($thn,$bln,$tgl) = explode('-',$tgl_mulai); 
+            list($thn2,$bln2,$tgl2) = explode('-',$tgl_end);    
+            $dari = GregorianToJD($bln2, $tgl2, $thn2);
+            $now = GregorianToJD($bln, $tgl, $thn);
+            $duration = array();
+            //$duration[$model2->id] = $waktu->deadline($model2->batas_retensi);
+            $duration[$model2->id] = $dari - $now;
+            unset($_SESSION[$model2->id]);
+            Yii::app()->session[$model2->id] = $duration[$model2->id];
+            
+          
+            //print_r($duration[$model2->id]);
+        }
+            return true;  
+        }
+    // count all global
+    public static function getPicProfile($model,$user)
+        {
+            $sql = "SELECT * FROM $model WHERE fk_user='$user'";
+            $connection=Yii::app()->db; 
+            $command=$connection->createCommand($sql);
+            $dataReader=$command->query(); // execute a query SQL
+            $rows=$dataReader->readAll();
+            return $rows;  
+        }
+    // ambil nama APP
+    public static function getAppname()
+        {
+            $id = '1';
+            return Preferences::model()->findByPk($id);  
+        }    
+    // count all global
+    public static function getCount($model)
+        {
+            $sql = "SELECT COUNT(*) FROM $model";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }
+      //count retensi aktif dan inaktif
+    public static function getCountret($model,$status)
+        {       
+            $sql = "SELECT COUNT(*) FROM $model WHERE status='$status'";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }  
+        //count retensi aktif dan inaktif
+    public static function getCountretuser($model,$status,$user)
+        {       
+            $sql = "SELECT COUNT(*) FROM $model WHERE status='$status' AND user_id='$user'";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }
+       //count retensi inaktif tanpa tindakan
+    public static function getCountrettindakan($model,$status)
+        {   
+            $act = '0';    
+            $sql = "SELECT COUNT(*) FROM $model WHERE status='$status' AND c_action='$act'";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }
+ //count retensi inaktif tanpa tindakan
+    public static function getCountretclose($model,$status)
+        {   
+            //$exp = ($_SESSION >= '0') && ($element <= '7');    
+            $sql = "SELECT COUNT(*) FROM $model WHERE status='$status' AND (CONVERT(masa_retensi, UNSIGNED INTEGER) > 0  AND CONVERT(masa_retensi, UNSIGNED INTEGER) < 7)";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }    
+        
+        // count archive per user
+    public static function getCountUser($model,$user)
+        {       
+            $sql = "SELECT COUNT(*) FROM $model WHERE user_id='$user'";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }
+        //count usr input
+    public static function getCountUserInput($model,$user)
+        {       
+            $sql = "SELECT COUNT(*) FROM $model WHERE fk_level='$user'";
+            $count = Yii::app()->db->createCommand($sql)->queryScalar();
+            return $count;  
+        }
+        // count max hasil archive    
+    public static function getMax($model)
+        {       
+            $sql="SELECT hasil,by_user from $model ORDER BY CONVERT(hasil, UNSIGNED INTEGER)  DESC LIMIT 1";
+            $connection=Yii::app()->db; 
+            $command=$connection->createCommand($sql);
+            $dataReader=$command->query(); // execute a query SQL
+            $rows=$dataReader->readAll();
+            return $rows;  
+        }  
+
+    public static function getMin($model)
+        {       
+            $sql="SELECT hasil,by_user from $model ORDER BY CONVERT(hasil, UNSIGNED INTEGER) ASC LIMIT 1";
+            $connection=Yii::app()->db; 
+            $command=$connection->createCommand($sql);
+            $dataReader=$command->query(); // execute a query SQL
+            $rows=$dataReader->readAll();
+            return $rows;  
+        }                            
+
+    // get kode klasifikasi instansi dll
+    public static function getKlasifikasi($keyword,$limit=20)
+    {
+        $models=Klasifikasi::model()->findAll(array(
+            'condition'=>"(kode_klasifikasi LIKE :keyword OR nama_klasifikasi LIKE :keyword)",   // or id_penembak LIKE \"$keyword\" ",
+            'order'=>'kode_klasifikasi',
+            'limit'=>$limit,
+            'params'=>array(':keyword'=>"%$keyword%")
+        ));
+        $suggest=array();
+        foreach($models as $model) {
+            $suggest[] = array(
+                'label'=>$model->kode_klasifikasi.' - '.$model->nama_klasifikasi.'',//.' - '.$model->call_code,  // label for dropdown list
+                'value'=>$model->kode_klasifikasi,  // value for input field
+                  // return values from autocomplete
+                'code'=>$model->kode_klasifikasi,
+                'nama'=>$model->nama_klasifikasi,       // return values from autocomplete
+                //'nis'=>$model->nis_lec,
+                //'call_code'=>$model->call_code,
+            );
+        }
+        return $suggest;
+    }
+
+    // get skpd / lembaga instansi dll
 	public static function getSKPD($keyword,$limit=20)
 	{
 		$models=Lembaga::model()->findAll(array(
@@ -16,7 +173,7 @@ class Aksi extends CFormModel
 		foreach($models as $model) {
 			$suggest[] = array(
 				'label'=>$model->kode_skpd.' - '.$model->nama_skpd.'',//.' - '.$model->call_code,  // label for dropdown list
-				'value'=>$model->kode_skpd,  // value for input field
+				'value'=>$model->id,  // value for input field
 			      // return values from autocomplete
 				'code'=>$model->kode_skpd,
 				'nama'=>$model->nama_skpd,       // return values from autocomplete
@@ -160,7 +317,14 @@ class Aksi extends CFormModel
             } else {
                 return $deadmsg;
             }
-        }        
+        }
+
+    public static function getIP()
+    {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+
+    
 	
 }
 	

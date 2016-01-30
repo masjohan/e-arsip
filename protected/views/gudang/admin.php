@@ -26,7 +26,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<input class="btn btn-sm btn-primary" type="button" value="Tambah Gudang" onclick="javascript:window.location.href='index.php?r=gudang/create'" />
+<input class="btn btn-sm btn-primary" type="button" value="Tambah Gudang" onclick="javascript:window.location.href='create'" />
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'gudang-grid',
 	'dataProvider'=>$model->search(),

@@ -3,14 +3,13 @@
 /* @var $model UserProfile */
 
 $this->breadcrumbs=array(
-	'User Profiles'=>array('index'),
-	$model->fk_user=>array('view','id'=>$model->fk_user),
+	'User Profiles'=>array('create'),
 	'Update',
 );
 
 
 ?>
 
-<h1>Update User Profile <?php echo $model->fk_user; ?></h1>
+<h1>Update User Profile <?php echo $model->fkUser->name_person; ?></h1>
 <div style="margin-left: 10px">
 <?php $this->renderPartial('_form', array('model'=>$model,'model2'=>$model2)); ?>

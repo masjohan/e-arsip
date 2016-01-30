@@ -12,4 +12,4 @@ $this->breadcrumbs=array(
 
 <h1>User Profile</h1>
 <div style="margin-left: 10px">
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'model2'=>$model2)); ?>

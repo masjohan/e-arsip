@@ -27,19 +27,17 @@ class UserProfileController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
+			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','view'),
 				'users'=>array('@'),
 				//'users'=>'Yii::app()->user->name',
 				//'expression'=>'$model->isAdmin()',
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				//'users'=>array('admin'),
+				'expression'=>'$model->isAdmin()',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -65,29 +63,45 @@ class UserProfileController extends Controller
 	public function actionCreate()
 	{
 		$model=new UserProfile;
-
+		$fk_user = Yii::app()->user->id;
+		$model2 = User::model()->findByPk($fk_user);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		if (isset($_POST['User'])){
+            $model2->attributes = $_POST['User'];
+            $model2->name_person = $_POST['User']['name_person'];
+            $model2->email = $_POST['User']['email'];
+        	$model2->save();
+        }
 		if(isset($_POST['UserProfile']))
 		{
 			$model->attributes=$_POST['UserProfile'];
+			$model->fk_user = Yii::app()->user->id;
+			$simpanArsip=CUploadedFile::getInstance($model,'photo');
+			$model->photo=CUploadedFile::getInstance($model, 'photo');
+			
+			if(!empty($model->photo)){
+				$name = $model->photo->name;
+				mkdir(Yii::app()->basePath . "/../wh/photo/{$model->fk_user}/");
+				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/photo/{$model->fk_user}/" . $name);
+				}
 			if($model->save())
+					
 					Yii::app()->user->setFlash('success', "Data was saved !");
 				$this->redirect(array('view','id'=>$model->fk_user));
 		}
-		/*$id = Yii::app()->user->id;
-		$load=$this->loadModel($id);
-		$data = UserProfile::getProfile();
-		*/
-		/*if(!empty($data)){
-			$this->redirect("index.php?r=userProfile/update&id=$id",array('model'=>$load));
-		} else {
-		*/
-		$this->render('create',array(
-			'model'=>$model,
-		));
-		//}
+			$data = Aksi::getPicProfile('user_profile',Yii::app()->user->id);
+			if(!empty($data))
+				$this->redirect(array('view','id'=>Yii::app()->user->id));
+			else
+			
+			$this->render('create',array(
+				'model'=>$model,
+				'model2'=>$model2,
+			));
+			
+		
+		
 	}
 
 	/**
@@ -98,14 +112,37 @@ class UserProfileController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model2 = User::model()->findByPk($id);
-		$model3= new User;
+		$prevFile = $model->photo;
+		$fk_user = $model->fk_user;
+		$model2 = User::model()->findByPk($fk_user);
+		
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+		if (isset($_POST['User'])){
+            $model2->attributes = $_POST['User'];
+            $model2->name_person = $_POST['User']['name_person'];
+            $model2->email = $_POST['User']['email'];
+        	$model2->save();
+        }
 		if (isset($_POST['UserProfile'])){
             $model->attributes = $_POST['UserProfile'];
-           if(!$model->save())
-           $model->addError('Error broooo !');
+
+			$simpanArsip=CUploadedFile::getInstance($model,'photo');
+			$model->photo=  CUploadedFile::getInstance($model, 'photo');
+			//$model2->file = $_POST['File']['file'];
+			
+
+			if(!empty($model->photo))
+			{
+				$name = $model->photo;
+				$this->rrmdir(Yii::app()->basePath . "/../wh/photo/{$model->fk_user}/");
+				mkdir(Yii::app()->basePath . "/../wh/photo/{$model->fk_user}/");
+				$simpanArsip->saveAs(Yii::app()->basePath . "/../wh/photo/{$model->fk_user}/" . $name);
+			} elseif(empty($model->photo)) {
+		    	$model->photo = $prevFile;
+		    }
+
+          
             if ($model->save()) {
                 ////$modelEmail = new User;
                 //$modelEmail->attributes = $_POST['User'];
@@ -120,19 +157,22 @@ class UserProfileController extends Controller
             'model' => $model,
             'model2'=>$model2,
         ));
-    
-	/*	if(isset($_POST['UserProfile']))
-		{
-			$model->attributes=$_POST['UserProfile'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->fk_user));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-		*/
+  
 	}
+
+	//function menghapus folder 
+	public function rrmdir($dir) { 
+		   if (is_dir($dir)) { 
+		     $objects = scandir($dir); 
+		     foreach ($objects as $object) { 
+		       if ($object != "." && $object != "..") { 
+			 if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink	($dir."/".$object); 
+		       } 
+		     } 
+		     reset($objects); 
+		     rmdir($dir); 
+		   } 
+		} 
 
 	/**
 	 * Deletes a particular model.

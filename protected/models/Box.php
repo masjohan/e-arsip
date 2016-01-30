@@ -32,11 +32,13 @@ class Box extends CActiveRecord
 		return array(
 			
 			array('id, fk_gudang, fk_lajur', 'numerical', 'integerOnly'=>true),
-			array('nama_box, by_user', 'length', 'max'=>50),
+			array('kode_box', 'unique', 'message'=>'{attribute} {value} sudah ada !'),
+			array('nama_box, by_user, kode_box', 'length', 'max'=>50),
+			array('kode_box, nama_box, fk_gudang, fk_lajur', 'required'),
 			array('create_at, edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, fk_gudang, fk_lajur, nama_box, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
+			array('id, fk_gudang, kode_box, fk_lajur, nama_box, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -48,7 +50,15 @@ class Box extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'fkGudang' => array(self::BELONGS_TO, 'Gudang', 'fk_gudang'),
+			'fkLajur' => array(self::BELONGS_TO, 'Lajur', 'fk_lajur'),
 		);
+	}
+	public function beforeSave()
+	{
+		$this->edit_at = date('Y-m-d H:i:s',time());
+		$this->by_user = Yii::app()->user->name;
+		return true;
 	}
 
 	/**
@@ -58,9 +68,10 @@ class Box extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'fk_gudang' => 'Fk Gudang',
-			'fk_lajur' => 'Fk Lajur',
+			'fk_gudang' => 'Gudang',
+			'fk_lajur' => 'Lajur',
 			'nama_box' => 'Nama Box',
+			'kode_box' => 'Kode Box',
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
 			'by_user' => 'By User',
@@ -89,6 +100,7 @@ class Box extends CActiveRecord
 		$criteria->compare('fk_gudang',$this->fk_gudang);
 		$criteria->compare('fk_lajur',$this->fk_lajur);
 		$criteria->compare('nama_box',$this->nama_box,true);
+		$criteria->compare('kode_box',$this->kode_box,true);
 		$criteria->compare('create_at',$this->create_at,true);
 		$criteria->compare('edit_at',$this->edit_at,true);
 		$criteria->compare('by_user',$this->by_user,true);

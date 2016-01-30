@@ -34,6 +34,7 @@ class Lembaga extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('kode_skpd, nama_skpd, by_user', 'length', 'max'=>50),
+			array('kode_skpd', 'required'),
 			array('keterangan, create_at, edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -70,8 +71,8 @@ class Lembaga extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'kode_skpd' => 'Kode Skpd',
-			'nama_skpd' => 'Nama Skpd',
+			'kode_skpd' => 'Kode Unit Kerja',
+			'nama_skpd' => 'Nama Unit Kerja',
 			'keterangan' => 'Keterangan',
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
@@ -126,6 +127,9 @@ class Lembaga extends CActiveRecord
 	 */
 	public function getOptions()
 	{
+		if($this->isNewRecord)
 		return CHtml::listData($this->findAll(),'kode_skpd','nama_skpd');
+		else 
+			return CHtml::listData($this->findAll(array('condition'=>"kode_skpd='005'")),'kode_skpd','nama_skpd');
 	}
 }

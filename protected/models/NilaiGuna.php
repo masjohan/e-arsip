@@ -29,6 +29,7 @@ class NilaiGuna extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nilai_guna', 'length', 'max'=>250),
+			array('nilai_guna', 'required'),
 			array('by_user', 'length', 'max'=>50),
 			array('create_at, edit_at', 'safe'),
 			// The following rule is used by search().

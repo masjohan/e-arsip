@@ -28,7 +28,7 @@ class SettingController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','index'),
+				'actions'=>array('system','create','update','index','backupDatabase'),
 				'expression' => '$user->isAdmin()',
 			),			
 			
@@ -37,13 +37,60 @@ class SettingController extends Controller
 			),
 		);
 	}
+	//action backup database
 
+	public function actionBackup()
+	{
+		$user='e-arsip';
+		$passw='earsip2015';
+		$dbName='e_arsip2';
+		shell_exec("C:\wamp\bin\mysql\mysql5.5.8\bin\mysqldump $dbName > backup.sql --user=$user --password=$passw");
+		header("Content-Disposition: attachment; filename=backup.sql");
+		header("Content-type: application/download");
+		$fp  = fopen("backup.sql", 'r');
+		$content = fread($fp, filesize("backup.sql"));
+		fclose($fp);
+		echo $content;
+	}
+
+	public function actionBackupDatabase()
+    {
+    	$model=new Preferences;
+    	unset($_SESSION['sql']);
+        set_time_limit(190);
+                $backupFileName = Yii::getPathOfAlias('backup_sql')."/backup_arsip_".date('mdy_His').".sql";
+               // $data = Helpers::backupDb($backupFileName);
+                Yii::app()->session['sql'] = $backupFileName;
+                Helpers::backupDb($backupFileName);
+                	
+                echo "<script>alert('Database was backup !');
+                	window.location.href = 'system';
+                </script>";
+
+                 
+              /*  $this->render('backup_finished',array( 
+                        'model'=>$model,
+                ));
+                */
+    }
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
+		$id = 1;
+		$xxx = $this->loadModel($id);
+		if(!empty($xxx)) 
+		$this->redirect(array('update', 'id'=>$id));
+		else if(empty($xxx))
 		$this->redirect(array('create'));
+	}
+
+	public function actionSystem()
+	{
+		//unset($_SESSION['sql']);
+		$this->render('_system');
+		
 	}
 
 	/**
@@ -54,7 +101,7 @@ class SettingController extends Controller
 	{
 		$id = 1;
 		$model=new Preferences;
-		$xxx = $this->loadModel($id);
+		//$xxx = $this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -62,15 +109,17 @@ class SettingController extends Controller
 		{
 			$model->attributes=$_POST['Preferences'];
 			if($model->save())
-				$this->redirect('index.php?r=dashboard');
+				$this->redirect(array('update', 'id'=>$id));
 		}	
 
-		if(isset($xxx))
-			$this->redirect(array('update','id'=>$id));
-		else
+		// if(!empty($xxx)){
+		// 	$this->redirect(array('update','id'=>$id));
+		// } else {
+		//	echo "tes";
 		$this->render('create',array(
 			'model'=>$model,
 		));
+		
 	}
 
 	/**
@@ -89,7 +138,8 @@ class SettingController extends Controller
 		{
 			$model->attributes=$_POST['Preferences'];
 			if($model->save())
-				$this->redirect('index.php?r=dashboard');
+				Yii::app()->user->setFlash('success', "Nama Aplikasi was updated !");
+				$this->redirect(array('update','id'=>$id));
 		}
 
 		$this->render('update',array(

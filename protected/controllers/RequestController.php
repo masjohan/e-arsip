@@ -22,7 +22,7 @@ class RequestController extends Controller
 		return array(
 			array('allow',
 				'actions'=>array(
-					'suggestMasalah','index','suggestSKPD','suggestDosen','legacySuggestCountry','fillTree','treePath','loadContent','suggestAuPlaces',
+					'suggestMasalah','suggestKlasifikasi','index','suggestSKPD','suggestDosen','legacySuggestCountry','fillTree','treePath','loadContent','suggestAuPlaces',
 					'suggestAuHierarchy','suggestLastname','fillAuTree','viewUnitPath','viewUnitLabel','initPerson',
 					'suggestPerson','suggestPersonGroupCountry','listPersonsWithSameFirstname',
 					'addTabularInputs','addTabularInputsAsTable','uploadFile'
@@ -55,6 +55,11 @@ class RequestController extends Controller
                                 'class'=>'ext.actions.XSuggestAction',
                                 'modelName'=>'Aksi',
                                 'methodName'=>'getMasalah',
+                        ),
+			'suggestKlasifikasi'=>array(
+                                'class'=>'ext.actions.XSuggestAction',
+                                'modelName'=>'Aksi',
+                                'methodName'=>'getKlasifikasi',
                         ),
 			
 			'legacySuggestCountry'=>array(

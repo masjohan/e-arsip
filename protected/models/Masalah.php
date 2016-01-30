@@ -32,8 +32,9 @@ class Masalah extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('code_masalah, by_user', 'length', 'max'=>50),
-			array('name_masalah', 'length', 'max'=>250),
+			array('code_masalah, by_user', 'length', 'max'=>127),
+			array('code_masalah', 'required'),
+			array('name_masalah', 'length', 'max'=>127),
 			array('create_at, edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -69,8 +70,8 @@ class Masalah extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'code_masalah' => 'Code Masalah',
-			'name_masalah' => 'Name Masalah',
+			'code_masalah' => 'Kode Masalah',
+			'name_masalah' => 'Nama Masalah',
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
 			'by_user' => 'By User',
@@ -95,7 +96,7 @@ class Masalah extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		//$criteria->compare('id',$this->id);
 		$criteria->compare('code_masalah',$this->code_masalah,true);
 		$criteria->compare('name_masalah',$this->name_masalah,true);
 		$criteria->compare('create_at',$this->create_at,true);

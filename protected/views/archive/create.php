@@ -15,4 +15,4 @@ $this->menu=array(
 
 
 <div style="margin-left: 10px">
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'model2'=>$model2)); ?>

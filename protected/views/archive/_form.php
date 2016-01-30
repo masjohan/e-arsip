@@ -2,13 +2,51 @@
 /* @var $this ArchiveController */
 /* @var $model Archive */
 /* @var $form CActiveForm */
-//print_r($_SESSION['fk_gudang']);
+//print_r($_SESSION);
 ?>
 <style>
 .errorMessage {
 	color : red;
 }
 </style>
+
+<?php if(empty($_SESSION['file']) && ($model->isNewRecord)) { ?>
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'file-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'action'=>array('file'),
+	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+)); ?>
+
+<table width="100%" align="left" class="table table-striped table-bordered table-hover dataTable">
+	<tr>
+		<td><?php echo $form->labelEx($model2,'file_name'); ?></td>
+		
+	</tr>
+	<tr>
+		<td><?php echo CHtml::activeFileField($model2,'file_name'); ?>
+		<td width="60%"><?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save'); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $form->error($model2,'file_name'); ?></td>
+		
+	</tr>				
+</table>
+<?php $this->endWidget(); ?>
+	<?php } ?>
+
+<?php if(!empty($_SESSION['file']) || !empty($model->id)) { ?>
+
+<p class="note">Fields with <span class="required">*</span> are required.</p>
+
+<?php if(!empty($_SESSION['file'])) { ?> <a target=_new href="<?php echo $this->createUrl("/wh/upload/{$_SESSION['file']}/{$_SESSION['namefile']}") ?>"><button class="btn btn-info" title="Click to Preview file !"><?php echo $_SESSION['namefile'] ?></button></a><?php } ?>
+<br />
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -21,22 +59,27 @@
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
+	
 	<?php //echo $form->errorSummary($model); ?>
+
+
+
 <table width=100% border="0" align="center" bordercolor="#ccc">
 <?php /*$this->widget('ext.widgets.select2.XSelect2', array(
     'model'=>$model,
     'attribute'=>'fk_skpd',
     'data'=>Lembaga::model()->options,
+    //'data'=>$model->fk_skpd,
     'htmlOptions'=>array(
         'style'=>'width:300px',
+        // 'value'=>$model->fk_skpd,
     ),
 ));
-*/?>
+*/
+?>
 	<tr align="">
 		<td><?php echo $form->labelEx($model,'fk_skpd'); ?></td>
-		<td>Nama SKPD</td>
+		<td>Nama Unit Kerja</td>
 		
 	</tr>
 		<tr align="">
@@ -69,7 +112,7 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 	$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
     'model'=>$model,
     //'attribute'=>'fk_skpd',
-  	'value'=>$model->fkSKPD->kode_skpd ,
+  	'value'=>$model->fkSKPD->id ,
     'name'=>'Archive[fk_skpd]',
     'source'=>$this->createUrl('request/suggestSKPD'),
    'options'=>array(
@@ -91,12 +134,15 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
     ),
 ));
 }
-?>
 
+?>
 </td>
-		<td width="30.5%"><input type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>"></td>
-		<td width="36%"> <a href="<?php echo Yii::app()->request->baseUrl ?>/skpd" title="Click to add SKPD" onClick="return popup(this, 'notes')"><i class="icon-plus"></i></a></td>
-	
+		<td width="66.5%"><input style="width: 400px" type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>">
+		&nbsp; &nbsp;
+		<a href="<?php echo Yii::app()->request->baseUrl ?>/archive/skpdadd" title="Click to add SKPD" onClick="return popup(this, 'notes')"><i class="icon-plus"></i></a>
+
+		</td>
+		
 	</tr>
 		<tr>
 		<td><?php echo $form->error($model,'fk_skpd'); ?></td>
@@ -153,11 +199,11 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox
 </table>
 <table width="100%" align="left">
 	<tr>
-		<td><?php echo $form->labelEx($model,'file'); ?></td>
+		
 		<td><?php echo $form->labelEx($model,'kelengkapan'); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo CHtml::activeFileField($model,'file'); ?>
+		
 		<td width="66.5%">
 			<?php  $this->widget('CMultiFileUpload',
   array(
@@ -174,7 +220,7 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox
 		</td>
 	</tr>
 	<tr>
-		<td><?php echo $form->error($model,'file'); ?></td>
+		
 		<td><?php echo $form->error($model,'kelengkapan'); ?></td>
 	</tr>				
 </table>	
@@ -184,7 +230,38 @@ echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox
 		<td><?php echo $form->labelEx($model,'unit_pengolah'); ?></td>
 	</tr>
 	<tr>		
-		<td><?php echo $form->textField($model,'kode_klasifikasi',array('size'=>50,'maxlength'=>50)); ?></td>
+		<td><?php //echo $form->textField($model,'kode_klasifikasi',array('size'=>50,'maxlength'=>50)); ?>
+			<?php
+$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+    'attribute'=>'kode_klasifikasi',
+  //  'value'=>$model->kode_mslh,
+   
+    'name'=>'Archive[kode_klasifikasi]',
+    'source'=>$this->createUrl('request/suggestKlasifikasi'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#klasifikasi').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode disini !',
+        //'autocomplete'=>'on',
+        //'value'=>$model->kode_mslh,
+    ),
+));
+
+
+?>
+			&nbsp;&nbsp;
+			<a href="<?php echo Yii::app()->request->baseUrl ?>/archive/klasifikasiadd" title="Click to add Kode Klasifikasi" onClick="return popup(this, 'notes')"><i class="icon-plus"></i></a>	
+		</td>
 		<td width="66.5%"><?php echo $form->textField($model,'unit_pengolah',array('size'=>50,'maxlength'=>50)); ?></td>
 	</tr>
 	<tr>		
@@ -243,7 +320,7 @@ foreach($years as $year){
 		<td><?php echo $form->labelEx($model,'bentuk_redaksi'); ?></td>
 	</tr>
 	<tr>
-		<td >
+		<td>
 			<?php echo CHtml::dropDownList('Archive[media]', $model->media, 
               $model->getMedia(),
               array('empty' => 'Select Media',  'ajax' => array(
@@ -263,6 +340,8 @@ foreach($years as $year){
 		<td><?php echo $form->error($model,'media'); ?></td>
 		<td><?php echo $form->error($model,'bentuk_redaksi'); ?></td>
 	</tr>
+</table>
+<table width="100%">	
 	<tr><td><?php echo $form->labelEx($model,'kode_mslh'); ?></td></tr>
 	<tr><td> <?php
 $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
@@ -292,13 +371,15 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 
 
 ?>
+&nbsp;&nbsp;
+<a  href="<?php echo Yii::app()->request->baseUrl ?>/archive/masalahadd" title="Click to add Masalah" onClick="return popup(this, 'notes')" id="bootbox-regular" title="Click here to add !"><i class="icon-plus"></i></a>
 </td>
-<td width="36%"><a  href="<?php echo Yii::app()->request->baseUrl ?>/masalah" title="Click to add SKPD" onClick="return popup(this, 'notes')" id="bootbox-regular" title="Click here to add !"><i class="icon-plus"></i></a></td>
+
 </tr>
 	<tr><td><?php echo $form->error($model,'kode_mslh'); ?></td></tr>
 	
 	<tr><td><?php echo $form->labelEx($model,'masalah'); ?></td></tr>
-	<tr><td><?php echo $form->textField($model,'masalah',array('size'=>60,'maxlength'=>100)); ?></td></tr>
+	<tr><td><?php echo $form->textField($model,'masalah',array('style'=>'width: 500px','maxlength'=>250)); ?></td></tr>
 	<tr><td><?php echo $form->error($model,'masalah'); ?></td></tr>
 
 
@@ -309,13 +390,7 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 	<tr><td><?php echo $form->error($model,'uraian_masalah'); ?></td></tr>
 	
 </table>
-<!--
-	<div class="row">
-		<?php echo $form->labelEx($model,'kode_mslh'); ?>
-		<?php echo $form->textField($model,'kode_mslh'); ?>
-		<?php echo $form->error($model,'kode_mslh'); ?>
-	</div>
--->
+
 	<table width="100%">
 		<tr>
 			<td><?php echo $form->labelEx($model,'r_aktif'); ?></td>
@@ -341,18 +416,7 @@ $this->widget('zii.widgets.jui.CJuiAutoComplete', array(
 		<td style="width: 66.5%"><?php echo $form->labelEx($model,'tingkat_perkembangan'); ?></td>	
 	</tr>
 	<tr>
-		<!--<td>Tssss</td>-->
-		<!--<td>
-		<select name="Archive[thn_retensi]">
-<?php 
-$years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
-foreach($years as $year){ 
-    echo'<option value="'.$year.'">'.$year.'</option>'; 
-} 
-?> 
-</select>
-		<?php //echo $form->textField($model,'thn_retensi',array('size'=>4,'maxlength'=>4)); ?></td>
-		--><td>
+		<td>
 		
 			<?php echo CHtml::dropDownList('Archive[nilai_guna]', $model->nilai_guna, 
               CHtml::listData(NilaiGuna::model()->findAll(), 'id', 'nilai_guna'),
@@ -372,17 +436,33 @@ foreach($years as $year){
 
 
 </table>
-
-
-	<div class="row buttons" style="margin-left: 1%">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-
+	<?php if(($model->status == '0') && (!$model->isNewRecord))
+	{ ?>
+	
+	Pilih Tindakan <br />
+	<?php echo ZHtml::enumDropDownList($model,'action',array('prompt'=>'Pilih Tindakan'));
+	}
+	?>
+	<br />
+		<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<button type="submit" class="btn btn-sm btn-primary"><?php if($model->isNewRecord) echo 'Create'; else echo 'Save'; ?></button>
+		<?php if($model->isNewRecord) { ?>
+		<input class="btn btn-sm btn-danger" type="button" value="Cancel" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/cancel'" />
+		<?php  } else ?> 
+		<?php if(isset($_SESSION['status'])) { if($_SESSION['status'] == '1') { ?>
+		<input style="display: none" class="btn btn-sm btn-danger" type="button" value="Cancel" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/retensi_ia' " />
+		<input class="btn btn-sm btn-danger" type="button" value="Cancel" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/retensi_a' " />
+		<?php } ?>
+		<?php if($_SESSION['status'] == '0') { ?>
+		<input style="display: none" class="btn btn-sm btn-danger" type="button" value="Cancel" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/retensi_a' " />
+		<input class="btn btn-sm btn-danger" type="button" value="Cancel" onclick="javascript:window.location.href='\<?php echo Yii::app()->request->baseUrl ?>/archive/retensi_ia' " />
+		<?php } }?>
+		
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<?php } ?>
 <?php
 /*
 $this->widget('xupload.XUpload', array(
@@ -393,8 +473,8 @@ $this->widget('xupload.XUpload', array(
 ));
 */
 ?>
+
 <SCRIPT TYPE="text/javascript">
-<!--
 function popup(mylink, windowname, w, h)
 {
 if (! window.focus)return true;
@@ -403,16 +483,16 @@ if (typeof(mylink) == 'string')
    href=mylink;
 else
    href=mylink.href;
-var w = 300;
-var h = 200;
+var w = 350;
+var h = 250;
 var left = (screen.width/2)-(w/2);
   var top = (screen.height/2)-(h/2);
 window.open(href, windowname, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
 return false;
 }
-//-->
+
 </SCRIPT>
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
     
      $("#Archive_r_inaktif").keyup(function(){
@@ -426,48 +506,4 @@ $(document).ready(function(){
     
     
 });
-
-$("#bootbox-regular").on(ace.click_event, function() {
-					bootbox.prompt("What is your name?", function(result) {
-						if (result === null) {
-							//Example.show("Prompt dismissed");
-						} else {
-							//Example.show("Hi <b>"+result+"</b>");
-						}
-					});
-				});
-					
-				$("#bootbox-confirm").on(ace.click_event, function() {
-					bootbox.confirm("Are you sure?", function(result) {
-						if(result) {
-							bootbox.alert("You are sure!");
-						}
-					});
-				});
-					
-				$("#bootbox-options").on(ace.click_event, function() {
-					bootbox.dialog("I am a custom dialog with smaller buttons", [{
-						"label" : "Success!",
-						"class" : "btn-small btn-success",
-						"callback": function() {
-							//Example.show("great success");
-						}
-						}, {
-						"label" : "Danger!",
-						"class" : "btn-small btn-danger",
-						"callback": function() {
-							//Example.show("uh oh, look out!");
-						}
-						}, {
-						"label" : "Click ME!",
-						"class" : "btn-small btn-primary",
-						"callback": function() {
-							//Example.show("Primary button");
-						}
-						}, {
-						"label" : "Just a button...",
-						"class" : "btn-small"
-						}]
-					);
-				});
 </script>

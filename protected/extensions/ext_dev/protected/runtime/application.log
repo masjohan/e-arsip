@@ -1,0 +1,21 @@
+2013/06/28 03:11:31 [error] [exception.CException] exception 'CException' with message 'SiteController and its behaviors do not have a method or closure named "registerCoreScript".' in E:\WebProject\yii\framework\base\CComponent.php:265
+Stack trace:
+#0 E:\WebProject\ext_dev\protected\views\site\pdf_viewer.php(3): CComponent->__call('registerCoreScr...', Array)
+#1 E:\WebProject\ext_dev\protected\views\site\pdf_viewer.php(3): SiteController->registerCoreScript('jQuery')
+#2 E:\WebProject\yii\framework\web\CBaseController.php(126): require('E:\WebProject\e...')
+#3 E:\WebProject\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('E:\WebProject\e...', NULL, true)
+#4 E:\WebProject\yii\framework\web\CController.php(869): CBaseController->renderFile('E:\WebProject\e...', NULL, true)
+#5 E:\WebProject\yii\framework\web\CController.php(782): CController->renderPartial('pdf_viewer', NULL, true)
+#6 E:\WebProject\ext_dev\protected\controllers\SiteController.php(36): CController->render('pdf_viewer')
+#7 E:\WebProject\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionPdfViewer()
+#8 E:\WebProject\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 E:\WebProject\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#10 E:\WebProject\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 E:\WebProject\yii\framework\web\CWebApplication.php(282): CController->run('pdfViewer')
+#12 E:\WebProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/pdfViewer')
+#13 E:\WebProject\yii\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 E:\WebProject\ext_dev\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/ext_dev/index.php?r=site/pdfViewer
+HTTP_REFERER=http://localhost/ext_dev/
+---

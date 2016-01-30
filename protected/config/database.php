@@ -5,10 +5,10 @@ return array(
 //	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 	// uncomment the following lines to use a MySQL database
 	
-	'connectionString' => 'mysql:host=localhost;dbname=e_arsip',
+	'connectionString' => 'mysql:host=localhost;dbname=e_arsip2',
 	'emulatePrepare' => true,
-	'username' => 'e-arsip',
-	'password' => 'earsip2014',
+	'username' => 'earsip2015',
+	'password' => 'earsip',
 	'charset' => 'utf8',
 	
 );

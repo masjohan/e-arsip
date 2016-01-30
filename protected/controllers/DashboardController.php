@@ -43,9 +43,17 @@ class DashboardController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		
+		
+
 		if(Yii::app()->user->isUser()) 
-			$this->render('user/index'); else $this->render('admin/index'); 
+			$this->render('user/index'); 
+		else if(Yii::app()->user->isSupervisor()) 
+			$this->render('supervisor/index');
+		else $this->render('admin/index'); 
 		
 	}
+
+	
 
 }

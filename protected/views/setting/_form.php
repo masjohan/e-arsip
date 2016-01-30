@@ -9,7 +9,7 @@
 }
 </style>
 
-<div class="form">
+<div class="form" style="margin-left: 3%">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'preferences-form',
@@ -27,7 +27,7 @@
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'program_name'); ?>
-		<?php echo $form->textArea($model,'program_name',array('size'=>100,'maxlength'=>100)); ?>
+		<?php echo $form->textArea($model,'program_name',array('rows'=>4, 'cols'=>30,'style'=>'margin: 0px 0px 10px; width: 70%;')); ?>
 		<?php echo $form->error($model,'program_name'); ?>
 	</div>
 

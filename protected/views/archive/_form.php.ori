@@ -1,0 +1,476 @@
+<?php
+/* @var $this ArchiveController */
+/* @var $model Archive */
+/* @var $form CActiveForm */
+//print_r($_SESSION['fk_gudang']);
+?>
+<style>
+.errorMessage {
+	color : red;
+}
+</style>
+<div class="form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'archive-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+)); ?>
+
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
+
+	<?php //echo $form->errorSummary($model); ?>
+<table width=100% border="0" align="center" bordercolor="#ccc">
+<?php /*$this->widget('ext.widgets.select2.XSelect2', array(
+    'model'=>$model,
+    'attribute'=>'fk_skpd',
+    'data'=>Lembaga::model()->options,
+    //'data'=>$model->fk_skpd,
+    'htmlOptions'=>array(
+        'style'=>'width:300px',
+        // 'value'=>$model->fk_skpd,
+    ),
+));
+*/
+?>
+	<tr align="">
+		<td><?php echo $form->labelEx($model,'fk_skpd'); ?></td>
+		<td>Nama SKPD</td>
+		
+	</tr>
+		<tr align="">
+		<td>
+        <?php if($model->isNewRecord) {
+$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+   'name'=>'Archive[fk_skpd]',
+    'source'=>$this->createUrl('request/suggestSKPD'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#nis').val(ui.item.nis);
+            $('#nama').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+       // 'value'=>$model->fk_skpd,
+
+    ),
+));
+} else {
+
+	$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+    //'attribute'=>'fk_skpd',
+  	'value'=>$model->fkSKPD->kode_skpd ,
+    'name'=>'Archive[fk_skpd]',
+    'source'=>$this->createUrl('request/suggestSKPD'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#nis').val(ui.item.nis);
+            $('#nama').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+       // 'value'=>$model->fk_skpd,
+
+    ),
+));
+}
+?>
+
+</td>
+		<td width="30.5%"><input type="text" id="nama" name="Archive[nama_skpd]" value="<?php if(!$model->isNewRecord) echo $model->fkSKPD->nama_skpd; ?>"></td>
+		<td width="36%"> <a href="<?php echo Yii::app()->request->baseUrl ?>/skpd" title="Click to add SKPD" onClick="return popup(this, 'notes')"><i class="icon-plus"></i></a></td>
+	
+	</tr>
+		<tr>
+		<td><?php echo $form->error($model,'fk_skpd'); ?></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<table width=100%>
+	<tr>
+		<td><?php echo $form->labelEx($model,'fk_gudang'); ?></td>
+		<td ><?php echo $form->labelEx($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->labelEx($model,'fk_box'); ?></td>
+		
+	</tr>	
+	<tr>
+	<?php                                   
+  echo '<td>'.CHtml::dropDownList('Archive[fk_gudang]',$model->fk_gudang, 
+	  CHtml::listData(Gudang::model()->findAll(),'id' ,'nama'),
+	 
+	  array(
+	    'prompt'=>'Select Gudang',
+
+	    'ajax' => array(
+	    'type'=>'POST', 
+	    'url'=>Yii::app()->createUrl('archive/loadlajur'), //or $this->createUrl('loadcities') if '$this' extends CController
+	    'update'=>'#Archive_fk_lajur', //or 'success' => 'function(data){...handle the data in the way you want...}',
+	  'data'=>array('id'=>'js:this.value'),
+	  )))
+ 
+.'</td>'; 
+ 
+ 
+ 
+echo '<td>'.CHtml::dropDownList('Archive[fk_lajur]',$model->fk_lajur, $model->getLajur(), array('prompt'=>'Select Lajur', 
+		'ajax' => array(
+	    'type'=>'POST', 
+	    'url'=>Yii::app()->createUrl('archive/loadbox'), //or $this->createUrl('loadcities') if '$this' extends CController
+	    'update'=>'#Archive_fk_box', //or 'success' => 'function(data){...handle the data in the way you want...}',
+	  'data'=>array('id'=>'js:this.value'),
+	  ))).'</td>';
+echo '<td>'.CHtml::dropDownList('Archive[fk_box]',$model->fk_box, $model->getBox(), array('prompt'=>'Select Box / Rack')).'</td>';
+
+?>
+
+	</tr>
+	<tr>
+		<td><?php echo $form->error($model,'fk_gudang'); ?></td>
+		<td ><?php echo $form->error($model,'fk_lajur'); ?></td>
+		<td ><?php echo $form->error($model,'fk_box'); ?></td>
+		
+	</tr>	
+
+</table>
+<table width="100%" align="left">
+	<tr>
+		<td><?php echo $form->labelEx($model,'file'); ?></td>
+		<td><?php echo $form->labelEx($model,'kelengkapan'); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo CHtml::activeFileField($model,'file'); ?>
+		<td width="66.5%">
+			<?php  $this->widget('CMultiFileUpload',
+  array(
+       'model'=>$model,
+       'attribute' => 'kelengkapan',
+      // 'accept'=>'jpg|gif|png|doc|docx|pdf',
+       //'denied'=>'Only doc,docx,pdf and txt are allowed', 
+       'max'=>5,
+       'remove'=>'[x]',
+       'duplicate'=>'Already Selected',
+
+       )
+        );?>
+		</td>
+	</tr>
+	<tr>
+		<td><?php echo $form->error($model,'file'); ?></td>
+		<td><?php echo $form->error($model,'kelengkapan'); ?></td>
+	</tr>				
+</table>	
+<table width=100% border="0" align="left" bordercolor="#ccc">
+	<tr>		
+		<td><?php echo $form->labelEx($model,'kode_klasifikasi'); ?></td>
+		<td><?php echo $form->labelEx($model,'unit_pengolah'); ?></td>
+	</tr>
+	<tr>		
+		<td><?php echo $form->textField($model,'kode_klasifikasi',array('size'=>50,'maxlength'=>50)); ?></td>
+		<td width="66.5%"><?php echo $form->textField($model,'unit_pengolah',array('size'=>50,'maxlength'=>50)); ?></td>
+	</tr>
+	<tr>		
+		<td><?php echo $form->error($model,'kode_klasifikasi'); ?></td>
+		<td><?php echo $form->error($model,'unit_pengolah'); ?></td>
+	</tr>
+</table>	
+<table width="100%">
+	<tr><td><?php echo $form->labelEx($model,'isi_berkas'); ?></td></tr>
+	<tr><td><?php echo $form->textArea($model,'isi_berkas',array('rows'=>5, 'cols'=>60,'style'=>'margin: 0px 0px 10px; width: 100%;')); ?></td></tr>
+	<tr><td><?php echo $form->error($model,'isi_berkas'); ?></td></tr>
+	
+</table>
+<table width="100%">
+	<tr>
+		
+		<td><?php echo $form->labelEx($model,'month'); ?></td>
+		<td><?php echo $form->labelEx($model,'years'); ?></td>
+	</tr>
+	<tr>
+		
+		
+		<td><?php echo CHtml::dropDownList('Archive[month]', $model->month, 
+              $model->getMonth(),
+              array('empty' => 'Select Bulan')); ?>
+			<?php //echo $form->textField($model,'bln_thn'); ?></td>
+		
+		<td width="66.5%">
+			<select name="Archive[years]">
+<?php 
+$years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
+foreach($years as $year){ 
+	if($model->isNewRecord)
+    echo'<option value="'.$year.'" >'.$year.'</option>'; 
+	else 
+		echo'<option value="'.$year.'" ';
+	if($year==$model->years){
+	echo 'selected="selected"'; } 
+	echo '>'.$year.'</option>'; 
+} 
+?> 
+</select>
+		
+		</td>
+	</tr>
+	<tr>
+		
+		<td><?php echo $form->error($model,'month'); ?></td>
+		<td><?php echo $form->error($model,'years'); ?></td>
+	</tr>
+	
+</table>
+<table width="100%">
+	<tr>
+		<td><?php echo $form->labelEx($model,'media'); ?></td>
+		<td><?php echo $form->labelEx($model,'bentuk_redaksi'); ?></td>
+	</tr>
+	<tr>
+		<td >
+			<?php echo CHtml::dropDownList('Archive[media]', $model->media, 
+              $model->getMedia(),
+              array('empty' => 'Select Media',  'ajax' => array(
+	    'type'=>'POST', 
+	    'url'=>Yii::app()->createUrl('archive/loadbentukredaksi'), //or $this->createUrl('loadcities') if '$this' extends CController
+	    'update'=>'#Archive_bentuk_redaksi', //or 'success' => 'function(data){...handle the data in the way you want...}',
+	  'data'=>array('type_media'=>'js:this.value'),
+	  ))); ?>
+			<?php //echo $form->textField($model,'media',array('size'=>50,'maxlength'=>50)); ?></td>
+		<td width="66.5%">
+			<?php echo CHtml::dropDownList('Archive[bentuk_redaksi]', $model->bentuk_redaksi, 
+              CHtml::listData(BentukRedaksi::model()->findAll(),'bentuk_redaksi' ,'bentuk_redaksi'),
+              array('empty' => 'Select Redaksi')); ?>
+			<?php //echo $form->textField($model,'bentuk_redaksi',array('size'=>50,'maxlength'=>50)); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $form->error($model,'media'); ?></td>
+		<td><?php echo $form->error($model,'bentuk_redaksi'); ?></td>
+	</tr>
+	<tr><td><?php echo $form->labelEx($model,'kode_mslh'); ?></td></tr>
+	<tr><td> <?php
+$this->widget('zii.widgets.jui.CJuiAutoComplete', array(
+    'model'=>$model,
+    'attribute'=>'kode_mslh',
+  //  'value'=>$model->kode_mslh,
+   
+    'name'=>'Archive[kode_mslh]',
+    'source'=>$this->createUrl('request/suggestMasalah'),
+   'options'=>array(
+        'delay'=>30,
+        'minLength'=>1,
+        'showAnim'=>'fold',
+        'select'=>"js:function(event, ui) {
+            $('#label').val(ui.item.label);
+            $('#code').val(ui.item.code);
+            $('#Archive_masalah').val(ui.item.nama);
+        }"
+       ),
+        'htmlOptions'=>array(
+        'size'=>'25',
+        'placeholder'=>'Cari kode/nama disini !',
+        //'autocomplete'=>'on',
+        //'value'=>$model->kode_mslh,
+    ),
+));
+
+
+?>
+</td>
+<td width="36%"><a  href="<?php echo Yii::app()->request->baseUrl ?>/masalah" title="Click to add SKPD" onClick="return popup(this, 'notes')" id="bootbox-regular" title="Click here to add !"><i class="icon-plus"></i></a></td>
+</tr>
+	<tr><td><?php echo $form->error($model,'kode_mslh'); ?></td></tr>
+	
+	<tr><td><?php echo $form->labelEx($model,'masalah'); ?></td></tr>
+	<tr><td><?php echo $form->textField($model,'masalah',array('size'=>60,'maxlength'=>100)); ?></td></tr>
+	<tr><td><?php echo $form->error($model,'masalah'); ?></td></tr>
+
+
+</table>
+	<table width="100%">
+	<tr><td><?php echo $form->labelEx($model,'uraian_masalah'); ?></td></tr>
+	<tr><td><?php echo $form->textArea($model,'uraian_masalah',array('rows'=>5, 'cols'=>60,'style'=>'margin: 0px 0px 10px; width: 100%;')); ?></td></tr>
+	<tr><td><?php echo $form->error($model,'uraian_masalah'); ?></td></tr>
+	
+</table>
+<!--
+	<div class="row">
+		<?php echo $form->labelEx($model,'kode_mslh'); ?>
+		<?php echo $form->textField($model,'kode_mslh'); ?>
+		<?php echo $form->error($model,'kode_mslh'); ?>
+	</div>
+-->
+	<table width="100%">
+		<tr>
+			<td><?php echo $form->labelEx($model,'r_aktif'); ?></td>
+			<td><?php echo $form->labelEx($model,'r_inaktif'); ?></td>
+			<td><?php echo "Jumlah Retensi"; ?></td>
+		</tr>
+		<tr>
+			<td><?php echo $form->textField($model,'r_aktif'); ?></td>
+			<td><?php echo $form->textField($model,'r_inaktif',array('onCange'=>'Total()')); ?></td>
+			<td><input type="text" name="jumlahretensi" id="jumlah_retensi" readonly value="<?php if(!$model->isNewRecord) echo $model->j_retensi; ?>"/></td>
+
+		</tr>
+		<tr>
+			<td><?php echo $form->error($model,'r_aktif'); ?></td>
+			<td><?php echo $form->error($model,'r_inaktif'); ?></td>
+		
+		</tr>
+	</table>
+<table width="100%">
+	<tr>
+		<!--<td><?php echo $form->labelEx($model,'thn_retensi'); ?></td>-->
+		<td><?php echo $form->labelEx($model,'nilai_guna'); ?></td>
+		<td style="width: 66.5%"><?php echo $form->labelEx($model,'tingkat_perkembangan'); ?></td>	
+	</tr>
+	<tr>
+		<!--<td>Tssss</td>-->
+		<!--<td>
+		<select name="Archive[thn_retensi]">
+<?php 
+$years = range(date("Y"), date("Y", strtotime("now - 100 years"))); 
+foreach($years as $year){ 
+    echo'<option value="'.$year.'">'.$year.'</option>'; 
+} 
+?> 
+</select>
+		<?php //echo $form->textField($model,'thn_retensi',array('size'=>4,'maxlength'=>4)); ?></td>
+		--><td>
+		
+			<?php echo CHtml::dropDownList('Archive[nilai_guna]', $model->nilai_guna, 
+              CHtml::listData(NilaiGuna::model()->findAll(), 'id', 'nilai_guna'),
+              array('empty' => 'Select Nilai Guna')); ?>
+			<?php //echo $form->textField($model,'nilai_guna',array('size'=>50,'maxlength'=>50)); ?></td>
+		<td>
+<?php echo CHtml::dropDownList('Archive[tingkat_perkembangan]', $model->tingkat_perkembangan, 
+              $model->getTk(),
+              array('empty' => 'Select Tk. Perkembangan')); ?>
+			<?php //echo $form->textField($model,'tingkat_perkembangan',array('size'=>50,'maxlength'=>50)); ?></td>	
+	</tr>
+	<tr>
+		<!--<td><?php echo $form->error($model,'thn_retensi'); ?></td>		-->
+		<td><?php echo $form->error($model,'nilai_guna'); ?></td>
+		<td><?php echo $form->error($model,'tingkat_perkembangan'); ?></td>	
+	</tr>
+
+
+</table>
+
+
+	<div class="row buttons" style="margin-left: 1%">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	</div>
+
+
+
+<?php $this->endWidget(); ?>
+
+</div><!-- form -->
+<?php
+/*
+$this->widget('xupload.XUpload', array(
+                    'url' => Yii::app()->createUrl("archive/upload"),
+                    'model' => $model,
+                    'attribute' => 'kelengkapan',
+                    'multiple' => true,
+));
+*/
+?>
+<SCRIPT TYPE="text/javascript">
+<!--
+function popup(mylink, windowname, w, h)
+{
+if (! window.focus)return true;
+var href;
+if (typeof(mylink) == 'string')
+   href=mylink;
+else
+   href=mylink.href;
+var w = 300;
+var h = 200;
+var left = (screen.width/2)-(w/2);
+  var top = (screen.height/2)-(h/2);
+window.open(href, windowname, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+return false;
+}
+//-->
+</SCRIPT>
+<script>
+$(document).ready(function(){
+    
+     $("#Archive_r_inaktif").keyup(function(){
+        $("Archive_r_inaktif").css("background-color", "white");
+        var a = $("#Archive_r_aktif").val();
+        var b = $("#Archive_r_inaktif").val();
+
+        var total = eval(a) + eval(b);
+        $("#jumlah_retensi").val(total);
+    });
+    
+    
+});
+
+$("#bootbox-regular").on(ace.click_event, function() {
+					bootbox.prompt("What is your name?", function(result) {
+						if (result === null) {
+							//Example.show("Prompt dismissed");
+						} else {
+							//Example.show("Hi <b>"+result+"</b>");
+						}
+					});
+				});
+					
+				$("#bootbox-confirm").on(ace.click_event, function() {
+					bootbox.confirm("Are you sure?", function(result) {
+						if(result) {
+							bootbox.alert("You are sure!");
+						}
+					});
+				});
+					
+				$("#bootbox-options").on(ace.click_event, function() {
+					bootbox.dialog("I am a custom dialog with smaller buttons", [{
+						"label" : "Success!",
+						"class" : "btn-small btn-success",
+						"callback": function() {
+							//Example.show("great success");
+						}
+						}, {
+						"label" : "Danger!",
+						"class" : "btn-small btn-danger",
+						"callback": function() {
+							//Example.show("uh oh, look out!");
+						}
+						}, {
+						"label" : "Click ME!",
+						"class" : "btn-small btn-primary",
+						"callback": function() {
+							//Example.show("Primary button");
+						}
+						}, {
+						"label" : "Just a button...",
+						"class" : "btn-small"
+						}]
+					);
+				});
+</script>

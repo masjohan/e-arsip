@@ -3,8 +3,8 @@
 /* @var $model UserProfile */
 
 $this->breadcrumbs=array(
-	'User Profiles'=>array('index'),
-	$model->fk_user,
+	'User Profiles'=>array('create'),
+	$model->fkUser->name_person,
 );
 
 $this->menu=array(
@@ -20,8 +20,15 @@ $this->menu=array(
 	<div id="user-profile-1" class="user-profile row-fluid">
 									<div class="span3 center">
 										<div>
+											<?php $photo = Aksi::getPicProfile('user_profile',Yii::app()->user->id); 
+											foreach ($photo as $photo) {
+											 ?>
 											<span class="profile-picture">
-												<img id="avatar" class="editable" alt="Alex's Avatar" src="<?php echo Yii::app()->theme->baseUrl; ?>/avatars/profile-pic.jpg" />
+												<?php if(empty($photo['photo'])) { ?>
+												<img id="avatar" class="editable" alt="Alex's Avatar" src="<?php echo Yii::app()->theme->baseUrl; ?>/avatars/user-no.png" />
+												<?php } else { ?>
+												<img id="avatar" class="editable" alt="Alex's Avatar" src="<?php echo Yii::app()->request->baseUrl; ?>/wh/photo/<?php echo Yii::app()->user->id.'/'.$model->photo;?>" />
+												<?php } }?>
 											</span>
 
 											<div class="space-4"></div>
@@ -57,7 +64,7 @@ $this->menu=array(
 											</div>
 
 											<div class="profile-info-row">
-												<div class="profile-info-name"> Location </div>
+												<div class="profile-info-name"> Address </div>
 
 												<div class="profile-info-value">
 													<i class="icon-map-marker light-orange bigger-110"></i>
@@ -86,7 +93,7 @@ $this->menu=array(
 												<div class="profile-info-name"> Last Online </div>
 
 												<div class="profile-info-value">
-													<span class="editable" id="login">3 hours ago</span>
+													<span class="editable" id="login"><?php echo Yii::app()->user->last_login; ?></span>
 												</div>
 											</div>
 
@@ -102,12 +109,12 @@ $this->menu=array(
 												<div class="profile-info-name"> Status </div>
 
 												<div class="profile-info-value">
-													<span class="editable" id="status"><?php echo $model->fkUser->fk_level; ?></span>
+													<span class="editable" id="status"><?php echo $model->fkUser->fkLevel->level; ?></span>
 												</div>
 											</div>
 
 											<div class="center" style="margin-left: 88%">
-											<a href="index.php?r=userProfile/update&id=<?php echo $model->fk_user; ?>"><span class="btn btn-small btn-primary no-hover">
+											<a href="<?php echo Yii::app()->request->baseUrl; ?>/userProfile/update/id/<?php echo $model->fk_user; ?>"><span class="btn btn-small btn-primary no-hover">
 												<span class="bigger-175"> Edit</span>
 												<br />	
 											</span></a>
@@ -119,3 +126,8 @@ $this->menu=array(
 									</div>
 								</div>
 
+<script type="text/javascript">
+   jQuery(document).ready(function() {
+     $("abbr.timeago").timeago();
+   });
+</script>

@@ -5,6 +5,7 @@ class LevelLookUp {
       const SUPERVISOR = 2;
       const ADMINISTRATOR  = 1;
       const USER = 3;
+      const GUEST = 10;
    
       // For CGridView, CListView Purposes
       public static function getLabel( $level ){

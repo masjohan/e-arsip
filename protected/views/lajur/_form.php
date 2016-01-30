@@ -9,7 +9,7 @@
 }
 </style>
 
-<div class="form">
+<div class="form" style="margin-left: 3%">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'lajur-form',

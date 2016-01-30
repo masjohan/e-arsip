@@ -2,7 +2,52 @@
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */
-/* @var $form CActiveForm  */ ?>
+/* @var $form CActiveForm  */ 
+ 
+		$criteria = new CDbCriteria();
+		$criteria->condition = 'status=:status';
+		$criteria->params = array(':status'=>'1');
+		$model2 = Archive::model()->findAll($criteria);
+		//create  session masa retensi
+		Aksi::getRetensi($model2);
+		$data = $_SESSION;
+
+		$data_baru = array_filter($data, "filter");
+		
+		//print_r($data_baru);
+		//save session masa retensi
+		foreach ($model2 as $model2) {
+		//echo ($_SESSION[$model2->id]);
+			if((!empty($data_baru)))
+			{
+			$save = Archive::model()->findByPk($model2->id);
+			$save->masa_retensi = $data_baru[$model2->id];
+			$save->save();
+				if($data_baru[$model2->id] == '0')
+				{
+					$save->status = '0';
+					$save->save();
+				}
+			}			
+		} 
+//$array = array("smiles.gif", "kittens.jpg", "biscuits.png", "butthead.jpg");
+
+function filter($element) {
+   // $bad_words = array('beavis','butthead','winehouse');  
+   // $bad_extensions = array('gif','tiff');
+
+    //list($name, $extension) = explode(".", $element);
+    //if(in_array($name, $bad_words))
+    // 	return;
+
+    // if(in_array($extension, $bad_extensions))
+    // 	return;
+
+    return (($element >= '0') && ($element <= '7'));
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -44,6 +89,30 @@
 		<div class="main-container">
 			<div class="main-content">
 				<div class="row">
+					<?php
+								$flashMessages = Yii::app()->user->getFlashes();
+								
+								if ($flashMessages) { ?>
+					<div class="row-fluid">
+						<div class="span12">
+							
+							<div class="alert alert-block alert-error">
+								<button type="button" class="close" data-dismiss="alert">
+									<i class="icon-remove"></i>
+								</button>
+
+									<?php
+								   	    foreach($flashMessages as $key => $message) {
+								        echo $message;
+								    }
+								    
+								
+								?>
+								
+							</div>
+						</div>
+					</div>
+					<?php } ?>		
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="login-container">
 							<div class="center">
@@ -74,12 +143,13 @@
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
+	'action' => 'login',
 )); ?>	
-											<form method="post" action="<?php echo Yii::app()->request->baseUrl ?>/site/login">
+											
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" name="LoginForm[username]"/>
+															<input type="text" class="form-control" placeholder="Username" name="LoginForm[username]"  required="true"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 																<?php echo $form->error($model,'username'); ?>
@@ -87,7 +157,7 @@
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" name="LoginForm[password]"/>
+															<input type="password" class="form-control" placeholder="Password" name="LoginForm[password]" required="true" />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 																	<?php echo $form->error($model,'password'); ?>
@@ -109,7 +179,7 @@
 
 													<div class="space-4"></div>
 												</fieldset>
-											</form>
+											
 <?php $this->endWidget(); ?>
 </div><!-- form -->
 											<!--<div class="social-or-login center">
@@ -134,7 +204,7 @@
 										-->
 										</div><!-- /.widget-main -->
 
-										<div class="toolbar clearfix">
+										<!-- <div class="toolbar clearfix">
 											<div>
 												<a href="#" data-target="#forgot-box" class="forgot-password-link">
 													<i class="ace-icon fa fa-arrow-left"></i>
@@ -149,141 +219,13 @@
 												</a>
 											</div>
 										</div>
+										 -->
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 
-								<div id="forgot-box" class="forgot-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header red lighter bigger">
-												<i class="ace-icon fa fa-key"></i>
-												Retrieve Password
-											</h4>
-
-											<div class="space-6"></div>
-											<p>
-												Enter your email and to receive instructions
-											</p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
-															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">Send Me!</span>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div><!-- /.widget-main -->
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												Back to login
-												<i class="ace-icon fa fa-arrow-right"></i>
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.forgot-box -->
-
-								<div id="signup-box" class="signup-box widget-box no-border">
-									<div class="widget-body">
-										<div class="widget-main">
-											<h4 class="header green lighter bigger">
-												<i class="ace-icon fa fa-users blue"></i>
-												New User Registration
-											</h4>
-
-											<div class="space-6"></div>
-											<p> Enter your details to begin: </p>
-
-											<form>
-												<fieldset>
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
-															<i class="ace-icon fa fa-user"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-													</label>
-
-													<label class="block">
-														<input type="checkbox" class="ace" />
-														<span class="lbl">
-															I accept the
-															<a href="#">User Agreement</a>
-														</span>
-													</label>
-
-													<div class="space-24"></div>
-
-													<div class="clearfix">
-														<button type="reset" class="width-30 pull-left btn btn-sm">
-															<i class="ace-icon fa fa-refresh"></i>
-															<span class="bigger-110">Reset</span>
-														</button>
-
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
-															<span class="bigger-110">Register</span>
-
-															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-														</button>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-
-										<div class="toolbar center">
-											<a href="#" data-target="#login-box" class="back-to-login-link">
-												<i class="ace-icon fa fa-arrow-left"></i>
-												Back to login
-											</a>
-										</div>
-									</div><!-- /.widget-body -->
-								</div><!-- /.signup-box -->
 							</div><!-- /.position-relative -->
 
-							<div class="navbar-fixed-top align-right">
-								<br />
-								&nbsp;
-								<a id="btn-login-dark" href="#">Dark</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-blur" href="#">Blur</a>
-								&nbsp;
-								<span class="blue">/</span>
-								&nbsp;
-								<a id="btn-login-light" href="#">Light</a>
-								&nbsp; &nbsp; &nbsp;
-							</div>
+							
 						</div>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -293,7 +235,7 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="assets/js/jquery.2.1.1.min.js"></script>
+		<!--<script src="assets/js/jquery.2.1.1.min.js"></script>-->
 
 		<!-- <![endif]-->
 
@@ -313,10 +255,11 @@
  window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
+<!--
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile-1.4.5.min.js'>"+"<"+"/script>");
 		</script>
-
+-->
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {

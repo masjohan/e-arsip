@@ -49,8 +49,19 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
-			if(!$this->_identity->authenticate())
-				$this->addError('password','Incorrect username or password.');
+			 if(!$this->_identity->authenticate())
+			//	$this->addError('password','Incorrect username or password.');
+			 {
+			 	if($this->_identity->errorCode == 666)
+                    $this->addError('password',Yii::t('zii','You are not allow to use this app . Please contact administrator for new installation !' ));
+			 	elseif(($this->_identity->errorCode == 1) or ($this->_identity->errorCode == 2))
+                    $this->addError('password',Yii::t('zii','Incorrect username or password.'));
+                elseif($this->_identity->errorCode == 3)
+                    $this->addError('password',Yii::t('zii','Username is currently not active ! Contact your Supervisor !' ));
+                else
+                    $this->addError('username',Yii::t('zii','Invalid Exception'));
+			 }
+			 
 		}
 	}
 

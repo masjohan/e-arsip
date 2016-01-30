@@ -28,7 +28,7 @@ class MasterController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('box','update','index','masalah','nilai_guna'),
+				'actions'=>array('box','update','index','masalah','nilai_guna','pdfViewer'),
 				'expression' => '$user->isAdmin()',
 			),			
 			
@@ -46,6 +46,10 @@ class MasterController extends Controller
 		//$this->redirect(array('create'));
 		echo "halo";
 	}
+	public function actionPdfViewer(){
+                $this->render('pdf_viewer');
+        }
+
 
 	/**
 	 * Creates a new model.

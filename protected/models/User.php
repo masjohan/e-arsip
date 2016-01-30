@@ -14,6 +14,7 @@
  * @property integer $fk_level
   * @property integer $status
  * @property string $create_at
+  * @property string $last_login
  * @property string $edit_at
  * @property string $by_user
  *
@@ -22,6 +23,8 @@
  */
 class User extends CActiveRecord
 {
+	
+	protected $lama; 
 	/**
 	 * @return string the associated database table name
 	 */
@@ -38,14 +41,14 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, name_person, email, status, fk_level', 'required'),
+			array('username, password, status, fk_level', 'required'),
 			array('fk_level,status', 'numerical', 'integerOnly'=>true),
 			array('username, password, name_person, auth_key, email, by_user', 'length', 'max'=>50),
 			array('email','email', 'message'=>'Wrong Email Format !'),
 			array('edit_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_user, username, password, name_person, auth_key, email, keterangan, fk_level, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
+			array('last_login, id_user, username, password, name_person, auth_key, email, keterangan, fk_level, create_at, edit_at, by_user', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,6 +82,7 @@ class User extends CActiveRecord
 			'create_at' => 'Create At',
 			'edit_at' => 'Edit At',
 			'by_user' => 'By User',
+			'last_login' => 'Last Login',
 		);
 	}
 
@@ -112,6 +116,7 @@ class User extends CActiveRecord
 		$criteria->compare('create_at',$this->create_at,true);
 		$criteria->compare('edit_at',$this->edit_at,true);
 		$criteria->compare('by_user',$this->by_user,true);
+		$criteria->compare('last_login',$this->last_login,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -131,6 +136,7 @@ class User extends CActiveRecord
 
 	public function validatePassword($password)
 	{
+		// return $this->hashPassword($password,$this->auth_key)===$this->password;
 		return $this->hashPassword($password,$this->auth_key)===$this->password;
 	}
 	public function hashPassword($password,$salt)
@@ -138,17 +144,36 @@ class User extends CActiveRecord
 		return md5($salt.$password);
 	}
 	
+	public function afterFind()
+	{
+		$this->lama = $this->attributes;
+		return parent::afterFind();
+	}
+
 	public function beforeSave()
 	{
-	$encrypt=$this->generateSalt();
-	$pass=$this->password;
-	$this->auth_key=$encrypt;
-	$this->password=$this->hashPassword($pass,$encrypt);
+	if($this->isNewRecord){
+			$encrypt=$this->generateSalt();
+			$pass=$this->password;
+			$this->auth_key=$encrypt;
+			$this->password=$this->hashPassword($pass,$encrypt);
+			$this->by_user = Yii::app()->user->name ;
+			$this->edit_at = date('Y-m-d H:i:s',time());
+		}
+		if(!$this->isNewRecord){
+		 if(isset($this->lama['password']) && $this->password != $this->lama['password']){
+			$encrypt=$this->generateSalt();
+			$pass=$this->password;
+			$this->auth_key=$encrypt;
+			$this->password=$this->hashPassword($pass,$encrypt);
+		} else {
 
-	$this->by_user = Yii::app()->user->name ;
-	$this->edit_at = date('Y-m-d H:i:s',time());
-	//$this->fk_level=3;
-		return true;
+			$this->password = $this->lama['password'];
+			$this->auth_key = $this->lama['auth_key'];
+	
+		}
+		}
+		return parent::beforeSave();
 	}
 	
 	protected function generateSalt()

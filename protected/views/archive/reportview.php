@@ -20,9 +20,9 @@
             }
             -->
             </style>
-            <h3 align="center">DAFTAR ARSIP <?php //echo $name;?></h3>
+            <h3 align="center">DAFTAR ARSIP <?php //echo strtoupper($name);?></h3>
             <h3 align="center"><?php echo $nama->program_name; ?></h3>
-            <h4 align="left" style="margin-top: -5px"><b>Kode Lembaga : 001</b></h4>
+             <h4 align="left" style="margin-top: -5px"><b>Kode Lembaga : <?php echo $skpd->kode_skpd; ?></b></h4> 
            <!-- <div style="text-align: right">    <?php echo 'Jam '.date('H:i:s A'); ?> </div>-->
 			<table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #E8F3F5; text-align: center; font-size: 11pt;">
                 <tr style="color: #000; background-color: #ccc;" >
@@ -42,7 +42,10 @@
             <table cellspacing="0" border="1" style="width: 100%" >
             <?php
              $no = 1;
-             foreach ($model as $data) { ?>
+             foreach ($model as $data) { 
+                $ng = $data['nilai_guna'];
+                $nilai_guna = NilaiGuna::model()->findByPk($ng);
+                ?>
             
             <tr>
                 <td style="width: 5%; text-align: center; vertical-align:middle"><?php echo $no; ?></td>
@@ -53,7 +56,7 @@
                 <td style="width: 6%; text-align: center; vertical-align:middle"><?php echo $data['r_inaktif']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['j_retensi']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['thn_retensi']; ?></td>
-                <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $data['nilai_guna']; ?></td>
+                <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $nilai_guna->nilai_guna ?></td>
                 <td style="width: 10%; text-align: center; vertical-align:middle;"><?php echo $data['tingkat_perkembangan']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['user_id'].'/'.$data['hasil']; ?></td>
             </tr>

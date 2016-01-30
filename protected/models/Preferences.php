@@ -52,6 +52,12 @@ class Preferences extends CActiveRecord
 		);
 	}
 
+	public function beforeSave()
+	{
+		$this->program_name = strtoupper($this->program_name);
+
+		return true;
+	}
 	// fungsi sebelum dilakukan penyimpanan 
 	/*	public function beforeSave()
 	{

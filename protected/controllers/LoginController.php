@@ -48,9 +48,34 @@ class LoginController extends Controller
 
 public function actionLogin()
 	{
+		$ip = Aksi::getIP();
+        if(($ip != '192.168.43.112') AND ($ip != '127.0.0.1'))
+        {
+            // echo "Silahkan hubungi admin untuk instalasi";
+            // echo $ip;
+            echo "<link rel='stylesheet' href='".Yii::app()->theme->baseUrl."/css/bootstrap.min.css' />";
+            echo "<link rel='stylesheet' href='".Yii::app()->theme->baseUrl."/css/ace.min.css' />";
+            echo "<center>";
+            echo    "<div class='row-fluid'>
+                        <div class='span12'>
+                            <div class='alert alert-block alert-danger'>
+                                <h1>Oops !</h1>
+                                <i class='icon-ok green'></i>
+                                <strong class='red'>
+                                    Please call Administrator for new instalation !
+                                </strong>
+                                <h1>Hotline : 082243965755 </h1>
+                                <a href='mailto:wisnuagungpro@gmail.com'>email : wisnuagungpro@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>";
+            echo "</center>";               
+            
+        } else {
+
 		Yii::app()->theme = 'classic';
 		$model=new LoginForm;
-
+		$model2 = new UserLog;
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
@@ -63,13 +88,29 @@ public function actionLogin()
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-			//	$this->redirect(Yii::app()->user->returnUrl);
-			$this->redirect('dashboard');
+			
+			if($model->validate() && $model->login()) {
+				$model2->by_user = $model->username;
+				$model2->save();
+				$this->redirect('dashboard');		
+			}
+			
+			
 		}
+		
 		// display the login form
+		if(!empty($_SESSION['isLogin']))
+				{
+					$this->redirect(Yii::app()->user->returnUrl);
+				} else {
 		$this->render('login',array('model'=>$model));
+		}
+
 	}
+	}
+
+ 
+
 
 
 }

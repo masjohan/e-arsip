@@ -20,7 +20,7 @@
             }
             -->
             </style>
-            <h3 align="center">DAFTAR ARSIP <?php //echo $name;?></h3>
+            <h3 align="center">DAFTAR ARSIP <?php //echo strtoupper($name);?></h3>
            <!-- <h3 align="center"><?php echo $nama->program_name; ?></h3>-->
             <!--<h4 align="left" style="margin-top: -5px"><b>NAMA SKPD / BUMN   :</b></h4>
             <h4 align="left" style="margin-top: -5px"><b>ALAMAT   :</b></h4>
@@ -29,12 +29,12 @@
             <table>
                 <tr>
                     <td><b style="font-size: 15pt">NAMA SKPD / BUMN</b></td>
-                    <td><b style="font-size: 15pt">:</b></td>
+                    <td><b style="font-size: 15pt">: <?php echo $skpd->nama_skpd; ?></b></td>
                     
                 </tr>
                 <tr>
                     <td><b style="font-size: 15pt">ALAMAT</b></td>
-                    <td><b style="font-size: 15pt">:</b></td>
+                    <td><b style="font-size: 15pt">: <?php echo $skpd->keterangan; ?></b></td>
                 </tr>
             </table>
            </div>
@@ -57,7 +57,10 @@
             <table cellspacing="0" border="1" style="width: 100%" >
             <?php
              $no = 1;
-             foreach ($model as $data) { ?>
+             foreach ($model as $data) { 
+                $ng = $data['nilai_guna'];
+                $nilai_guna = NilaiGuna::model()->findByPk($ng);
+                ?>
             
             <tr>
                 <td style="width: 5%; text-align: center; vertical-align:middle"><?php echo $no; ?></td>
@@ -68,8 +71,8 @@
                 <td style="width: 6%; text-align: center; vertical-align:middle"><?php echo $data['r_inaktif']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['j_retensi']; ?></td>
                 <td style="width: 7%; text-align: center; vertical-align:middle"><?php echo $data['thn_retensi']; ?></td>
-                <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $data['nilai_guna']; ?></td>
-                <td style="width: 7%; text-align: center; vertical-align:middle;"><?php echo $data['pelaksana_hasil']; ?></td>
+                <td style="width: 9%; text-align: center; vertical-align:middle"><?php echo $nilai_guna->nilai_guna; ?></td>
+                <td style="width: 7%; text-align: center; vertical-align:middle;"><?php echo $data['user_id'].'/'.$data['hasil']; ?></td>
                 <td style="width: 10%; text-align: center; vertical-align:middle"><?php echo $data['tingkat_perkembangan']; ?></td>
             </tr>
         
@@ -83,6 +86,7 @@
             -->
             <br />
             <div style="margin-left: 750px; font-size: 13pt">
+                <!-- <div style="text-align: center">Semarang , <?php echo date('d F Y'); ?></div> -->
                 <div style="text-align: center">....................,...................</div>
                 
                 <div style="text-align: center">Pimpinan SKPD / BUMN</div>
